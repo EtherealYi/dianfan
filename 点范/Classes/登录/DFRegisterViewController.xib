@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DFRegisterViewController">
+            <connections>
+                <outlet property="nextBtn" destination="us7-ZP-9gm" id="pOv-Vj-40Z"/>
+                <outlet property="phoneText" destination="Jl9-Ia-6Gm" id="AH4-Bx-Oyv"/>
+                <outlet property="textLabel" destination="Ha4-Hc-J69" id="L3O-kc-Y1e"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入你的手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jl9-Ia-6Gm">
+                    <rect key="frame" x="50" y="114" width="500" height="40"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="0.40242456896551726" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="2Ep-gt-JSN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="us7-ZP-9gm">
+                    <rect key="frame" x="50" y="204" width="500" height="40"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="p9I-TE-OmZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="下一步">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="next:" destination="-1" eventType="touchUpInside" id="7lN-G4-ep3"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ha4-Hc-J69">
+                    <rect key="frame" x="50" y="280" width="500" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="ajn-P5-56z"/>
+                    </constraints>
+                    <attributedString key="attributedText"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Ha4-Hc-J69" firstAttribute="top" secondItem="us7-ZP-9gm" secondAttribute="bottom" constant="36" id="60L-Ka-kdb"/>
+                <constraint firstAttribute="trailing" secondItem="us7-ZP-9gm" secondAttribute="trailing" constant="50" id="IDa-QY-lFL"/>
+                <constraint firstAttribute="trailing" secondItem="Ha4-Hc-J69" secondAttribute="trailing" constant="50" id="OKv-bb-RhH"/>
+                <constraint firstItem="us7-ZP-9gm" firstAttribute="top" secondItem="Jl9-Ia-6Gm" secondAttribute="bottom" constant="50" id="OjU-Dh-s8i"/>
+                <constraint firstItem="Jl9-Ia-6Gm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="PdV-1y-emQ"/>
+                <constraint firstItem="us7-ZP-9gm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="fKv-cZ-HDe"/>
+                <constraint firstItem="Jl9-Ia-6Gm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="114" id="nna-4a-iQQ"/>
+                <constraint firstAttribute="trailing" secondItem="Jl9-Ia-6Gm" secondAttribute="trailing" constant="50" id="oc4-fZ-oMB"/>
+                <constraint firstItem="Ha4-Hc-J69" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="zMa-3k-Nqm"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

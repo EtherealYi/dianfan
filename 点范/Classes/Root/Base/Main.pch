@@ -1,0 +1,43 @@
+//
+//  Main.pch
+//  点范
+//
+//  Created by Masteryi on 16/9/5.
+//  Copyright © 2016年 Masteryi. All rights reserved.
+//
+
+#ifndef Main_pch
+#define Main_pch
+
+#import "UIButton+DFExtension.h"
+#import "UIView+DFExtension.h"
+#import "DFConst.h"
+#import "NSString+DFExtension.h"
+#import "UILabel+DFExtension.h"
+#import "CALayer+DFExtension.h"
+
+
+#ifdef DEBUG //处于开发阶段
+#define DFLog(...) NSLog(@"%s %d\n %@\n\n", __func__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])
+#else //处于发布阶段
+#define NSLog(...)
+#endif
+
+
+
+#define DFColor(R,G,B) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1]
+#define MainColor DFColor(197, 56, 39)
+#define WhiteColor [UIColor whiteColor]
+#define BaseFont(A) [UIFont systemFontOfSize:A];
+#define DFFunc NSLog(@"%s",__func__);
+#define apiStr(url) [NSString stringWithFormat:@"%@?token=%@",url,[DFUser sharedManager].token]
+
+#define MYWriteToFile(data,fileName) [data writeToFile:fileName atomically:YES];
+
+#define fDeviceWidth ([UIScreen mainScreen].bounds.size.width)
+#define fDeviceHeight ([UIScreen mainScreen].bounds.size.height)
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* Main_pch */
