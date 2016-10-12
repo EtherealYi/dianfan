@@ -10,6 +10,7 @@
 
 @implementation DFUser
 
+
 + (DFUser *)sharedManager{
     
     static DFUser *sharedAccountManagerInstance = nil;
@@ -22,10 +23,19 @@
     
 }
 
-- (void)initWithDict:(NSDictionary *)dict{
+- (void)initWithDict:(NSUserDefaults *)dict{
     //self = [super init];
     self.username = [dict objectForKey:@"username"];
     self.token = [dict objectForKey:@"token"];
-    
+    //self.login = [dict objectForKey:@"isLogin"];
+    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"isLogin"];
+}
+- (void)didLogout{
+    self.username = nil;
+    self.token = nil;
+    [[NSUserDefaults standardUserDefaults]setObject:@NO forKey:@"isLogin"];
+}
+- (BOOL)isLogin {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"isLogin"];
 }
 @end

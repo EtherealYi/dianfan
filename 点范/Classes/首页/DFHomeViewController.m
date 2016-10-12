@@ -52,13 +52,22 @@
     [self setupTitleView];
     
     [self addChildView];
+//    
 
-    
+//
+//         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    NSLog(@"%@",[userDefault objectForKey:@"token"]);
 }
 
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    if ([DFUser sharedManager].isLogin == YES) {
+        NSLog(@"home DFUser = %@,name = %@",[DFUser sharedManager].token,[DFUser sharedManager].username);
+        NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+        NSLog(@"home user = %@",[userdefault objectForKey:@"token"]);
+    }
+ 
 
 }
 
@@ -184,11 +193,7 @@
 
 #pragma mark -点击事件
 - (void)meClick{
-//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    NSString *name = [userDefault objectForKey:@"username"];
-    //NSString *name = [DFUser sharedManager].username;
-    //NSLog(@"DFHomeViewController = %@",name);
-    if ([DFUser sharedManager].username == nil) {//如果没有值，进入未登录界面
+    if ([DFUser sharedManager].isLogin == NO ) {//如果没有值，进入未登录界面
         DFMeViewController *Me = [[DFMeViewController alloc]init];
         [self.navigationController pushViewController:Me animated:YES];
     }else{//有值，进入登录界面

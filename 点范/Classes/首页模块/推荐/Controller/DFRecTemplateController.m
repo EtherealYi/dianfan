@@ -10,6 +10,7 @@
 #import "DFeditTempalteController.h"
 #import "UIImageView+WebCache.h"
 #import "DFBuyTempController.h"
+#import "DFUser.h"
 
 @interface DFRecTemplateController ()
 
@@ -62,6 +63,7 @@
 }
 
 - (void)buttonClick{
+
     DFeditTempalteController *edit = [[DFeditTempalteController alloc]init];
     edit.recModel = self.recModel;
     

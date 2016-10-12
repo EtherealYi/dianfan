@@ -62,7 +62,8 @@
 
 - (void)setUserData{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *name = [userDefault objectForKey:@"name"];
+//    NSString *name = [userDefault objectForKey:@"name"];
+//    NSString *token = [userDefault objectForKey:@"token"];
     [[DFUser sharedManager] initWithDict:userDefault];
     NSLog(@"AppDelagate %@",[DFUser sharedManager].token);
     

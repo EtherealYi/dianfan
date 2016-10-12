@@ -76,6 +76,7 @@ static NSString *AlreadyID = @"AlreadyCell";
     headView.frame = CGRectMake(0, 0, self.view.frame.size.width, 150 );
     //背景图片
     UIImageView *bmgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"背景"]];
+    
     bmgView.frame = headView.frame;
 
     [headView addSubview:bmgView];
@@ -111,8 +112,16 @@ static NSString *AlreadyID = @"AlreadyCell";
     label.frame = CGRectMake(imageView.df_right + DFMargin,0,130,10);
     label.df_centerY = imageView.df_centerY;
     NSString *number = [DFUser sharedManager].username;
-    NSString *account = [NSString stringWithFormat:@"%@****%@",[number substringToIndex:3],[number substringFromIndex:7]];
-    label.text = account;
+    //NSString *account = [NSString stringWithFormat:@"%@****%@",[number substringToIndex:3],[number substringFromIndex:7]];
+    //label.text = account;
+    BOOL isNumber = [NSString isPureInt:number];
+    if (isNumber == YES) {
+        NSString *account = [NSString stringWithFormat:@"%@****%@",[number substringToIndex:3],[number substringFromIndex:7]];
+        label.text = account;
+    }else{
+        label.text = number;
+    }
+    
     label.numberOfLines = 0;
     label.font = [UIFont systemFontOfSize:14];
     label.textColor = [UIColor whiteColor];
@@ -203,11 +212,10 @@ static NSString *AlreadyID = @"AlreadyCell";
                 //点击按钮的响应事件；
                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                 [userDefaults removeObjectForKey:@"username"];
-                [userDefaults removeObjectForKey:@"password"];
                 [userDefaults removeObjectForKey:@"token"];
                 [userDefaults synchronize];
-                [DFUser sharedManager].username = nil;
-                [DFUser sharedManager].token = nil;
+                [[DFUser sharedManager]didLogout];
+                
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }]];
             

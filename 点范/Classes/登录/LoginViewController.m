@@ -31,6 +31,12 @@
 /** 网络 */
 @property (nonatomic,strong)DFHTTPSessionManager *manager;
 
+@property (nonatomic,assign) NSString *usid;
+
+@property (nonatomic,strong)NSString *token;
+
+@property (nonatomic,strong)NSString *username;
+
 //@property (nonatomic,strong) NSNumber* code;
 
 
@@ -38,16 +44,21 @@
 
 @implementation LoginViewController
 
-
+- (DFHTTPSessionManager *)manager{
+    if (!_manager) {
+        _manager = [DFHTTPSessionManager manager];
+        
+    }
+    return _manager;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"登录";
-    //添加监听
+    //输入框添加监听
     self.loginBtn.enabled = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldChanged) name:UITextFieldTextDidChangeNotification object:nil];
-    
     
     //设置按钮
     [self.loginBtn CornerAndShdow];
@@ -58,7 +69,6 @@
 
 - (IBAction)QQLogin:(id)sender {
     UMSocialDataService *service = [[UMSocialDataService alloc]init];
-    //service.socialDataDelegate = self;
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
     
     snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
@@ -68,24 +78,64 @@
         if (response.responseCode == UMSResponseCodeSuccess) {
             NSLog(@"登录成功");
             NSDictionary *dict = [UMSocialAccountManager socialAccountDictionary];
+        
             UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:snsPlatform.platformName];
             
-//            NSLog(@"\nusername = %@,\n usid = %@,\n token = %@ iconUrl = %@,\n unionId = %@,\n thirdPlatformUserProfile = %@,\n thirdPlatformResponse = %@ \n, message = %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL, snsAccount.unionId, response.thirdPlatformUserProfile, response.thirdPlatformResponse, response.message);
-//            NSString *url = [AccountAPI stringByAppendingString:apiStr(@"thPartyLogin.htm")];
-//            NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-//            parameter[@"openId"] = snsAccount.usid;
-//            NSLog(@"%@",snsAccount.usid);
-//            [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
+            //本地保存
+            NSString *url = [AccountAPI stringByAppendingString:apiStr(@"thPartyLogin.htm")];
+            
+            NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+            parameter[@"openId"] = snsAccount.usid;
+            [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
+                
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                NSLog(@"%@",responseObject);
+                //数据存储
+                NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+                [userDefault setObject:snsAccount.userName forKey:@"username"];
+                [userDefault setObject:responseObject[@"data"][@"token"] forKey:@"token"];
+                [userDefault synchronize];
+                [[DFUser sharedManager]initWithDict:userDefault];
+               
+                [self back];
 //                
-//            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//                NSLog(@"%@",responseObject);
-//            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//                NSLog(@"%@",error);
-//            }];
+//                NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//                [dict setValue:snsAccount.userName forKey:@"username"];
+//                [dict setValue:responseObject[@"data"][@"token"] forKey:@"token"];
+//                [[DFUser sharedManager]initWithDict:dict];
+//                
+//                NSLog(@"%@",[DFUser sharedManager].username);
+//                NSLog(@"%@",[DFUser sharedManager].token);
+//                self.username = snsAccount.userName;
+//                self.token = responseObject[@"data"][@"token"];
+//                [self loadViewIfNeeded];
+//                [self loginThiid];
+               
+                
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                NSLog(@"%@",error);
+            }];
             
         }});
     
+    
+    
 }
+
+/**
+ 第三方登录数据持久化
+ */
+- (void)loginThiid{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:self.username forKey:@"username"];
+    [userDefault setObject:self.token forKey:@"token"];
+    [userDefault synchronize];
+    [[DFUser sharedManager]initWithDict:userDefault];
+    [self back];
+    
+    NSLog(@"username = %@,token = %@",[DFUser sharedManager].username,[DFUser sharedManager].token);
+}
+
 
 - (IBAction)weChatLogin:(id)sender {
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
@@ -107,11 +157,6 @@
 }
 
 - (void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response{
-    DFFunc
-    if (response.responseCode == UMSResponseCodeSuccess) {
-        NSLog(@"---------------------------------------------------------------------授权成功");
-    }
-    
 }
 
 -(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType{
@@ -143,8 +188,7 @@
 }
 #pragma mark - 登录事件
 - (void)loginSuccess{
-    DFFunc
-
+    
     NSMutableDictionary *parmates = [NSMutableDictionary dictionary];
     NSString *result = [self md5:self.pwdText.text];
     parmates[@"password"] = result;
@@ -163,15 +207,15 @@
             //数据存储
             NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
             [userDefault setObject:self.accont.text forKey:@"username"];
-            [userDefault setObject:self.pwdText.text forKey:@"password"];
+            //[userDefault setObject:self.pwdText.text forKey:@"password"];
             [userDefault setObject:responseObject[@"data"][@"token"] forKey:@"token"];
             [userDefault synchronize];
             [[DFUser sharedManager]initWithDict:userDefault];
             
             //单例模式数据
-            [DFUser sharedManager].username = [userDefault objectForKey:@"username"];
-            [DFUser sharedManager].token = [userDefault objectForKey:@"token"];
-            
+//            [DFUser sharedManager].username = [userDefault objectForKey:@"username"];
+//            [DFUser sharedManager].token = [userDefault objectForKey:@"token"];
+//            
             [self dismissViewControllerAnimated:YES completion:nil];
             //直接返回主控制器
             [self back];

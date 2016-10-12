@@ -29,5 +29,19 @@
 
 }
 
+/**
+ 判断字符串是否为纯数字
+
+ */
++ (BOOL)isPureInt:(NSString *)string{
+    
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    
+    int val;
+    
+    return [scan scanInt:&val] && [scan isAtEnd];
+    
+}
+
 
 @end

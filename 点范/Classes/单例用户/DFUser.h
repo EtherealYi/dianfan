@@ -12,10 +12,15 @@
 
 @property (nonatomic,assign)NSString *username;
 
+
 @property (nonatomic,assign)NSString *token;
 
-- (void)initWithDict:(NSDictionary *)dict;
+@property (nonatomic,assign)BOOL isLogin;
 
+@property (nonatomic,assign)NSString *login;
+
+- (void)initWithDict:(NSUserDefaults *)dict;
+- (void)didLogout;
 + (DFUser *)sharedManager;
 
 @end

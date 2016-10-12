@@ -10,4 +10,6 @@
 
 @interface NSString (DFExtension)
 - (NSString *)MD5;
+
++ (BOOL)isPureInt:(NSString *)string;
 @end

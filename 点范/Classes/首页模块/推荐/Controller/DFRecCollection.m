@@ -121,12 +121,13 @@ static NSString * const headerID = @"RecHead";
     //取消所有请求
     
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    NSString *url = [TemplataAPI stringByAppendingString:apiStr(@"list.htm")];
+//    NSString *url = [TemplataAPI stringByAppendingString:apiStr(@"list.htm")];
+    NSString *url = @"http://10.0.0.30:8080/app/dishTemplate/list.htm";
     [self.manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.recModelS = [DFRecModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
-        NSLog(@"DFRecCollection = %@",self.recModelS[0].rec_id);
+
         [self.collectionView reloadData];
         //让【刷新控件】结束刷新
         [self.collectionView.mj_header endRefreshing];
@@ -157,6 +158,15 @@ static NSString * const headerID = @"RecHead";
 }
 #pragma mark - 弹出中间菜单
 - (void)buttonClick{
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:@"username"];
+    [userDefaults removeObjectForKey:@"password"];
+    [userDefaults removeObjectForKey:@"token"];
+    [userDefaults synchronize];
+    [DFUser sharedManager].username = nil;
+    [DFUser sharedManager].token = nil;
+    return ;
 
     XWPopMenuController *vc = [[XWPopMenuController alloc]init];
     
