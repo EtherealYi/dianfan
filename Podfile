@@ -15,4 +15,5 @@ pod 'MJRefresh'
 pod 'PNChart'
 pod 'Masonry'
 pod 'AMAnimatedNumber'
+pod 'Pingpp'
 end

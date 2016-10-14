@@ -16,11 +16,12 @@
 #import "UMSocialSinaSSOHandler.h"
 #import "UMSocialQQHandler.h"
 #import "UMSocialWechatHandler.h"
-
+#import "Pingpp.h"
+#import "DFBuySuccessController.h"
+#import "DFBuyTempController.h"
 
 
 @interface AppDelegate ()
-
 
 
 @end
@@ -55,7 +56,8 @@
     [UMSocialWechatHandler setWXAppId:@"wxdc1e388c3822c80b" appSecret:@"a393c1527aaccb95f3a4c88d6d1455f6" url:@"http://www.umeng.com/social"];
 
  
-    
+    //ping ++
+    [Pingpp setDebugMode:YES];
     
     return YES;
 }
@@ -92,18 +94,24 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-//- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
-//    BOOL result = [UMSocialSnsService handleOpenURL:url];
-//    if (result == FALSE) {
-//        //调用其他SDK，例如支付宝SDK等
-//    }
-//    return result;
-//}
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
+    BOOL result = [UMSocialSnsService handleOpenURL:url];
+    if (result == FALSE) {
+        //调用其他SDK，例如支付宝SDK等
+        result = [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
+            NSLog(@"支付成功回调");
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"push" object:self];
+            
+        }];
+    }
+    return result;
 }
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+//{
+//    return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+//}
 //- (void)applicationDidBecomeActive:(UIApplication *)application{
 //    [UMSocialSnsService  applicationDidBecomeActive];
 //}
+
 @end

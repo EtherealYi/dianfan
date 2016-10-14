@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DFBuyTempController : UITableViewController
 
+
+@interface DFBuyTempController : UITableViewController
+- (void)push;
+- (void)pop;
+
+//- (void)pushToMe;
 @end

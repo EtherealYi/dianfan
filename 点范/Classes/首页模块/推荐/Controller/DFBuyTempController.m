@@ -13,8 +13,16 @@
 #import "DFPayViewCell.h"
 #import "DFUser.h"
 #import "DFHTTPSessionManager.h"
+#import "MJExtension.h"
+#import "DFBuyModel.h"
+#import "SVProgressHUD.h"
+#import "Pingpp.h"
+#import "DFBuySuccessController.h"
+#import "DFNavigationController.h"
 
-@interface DFBuyTempController ()
+@interface DFBuyTempController (){
+    UIAlertView* mAlert;
+}
 /** 名称数组 */
 @property (nonatomic,strong)NSArray *nameArray;
 /** 内容数组 */
@@ -23,6 +31,8 @@
 @property (nonatomic,strong)NSArray *payArray;
 /** 网络管理 */
 @property (nonatomic,strong)DFHTTPSessionManager *manager;
+/** 购买模型 */
+@property (nonatomic,strong)DFBuyModel *buyModel;
 
 @end
 
@@ -69,7 +79,6 @@ static NSString *const buyCell = @"buyCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"购买与发布";
-    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:buyCell];
 
     _nameArray = @[ @"餐厅名称",
@@ -93,19 +102,24 @@ static NSString *const buyCell = @"buyCell";
                    @"微信支付"
                   ];
     [self loadcreateTrade];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(push) name:@"push" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pop) name:@"pop" object:nil];
 }
 
 - (void)loadcreateTrade{
     NSString *url = [TradeAPI stringByAppendingString:apiStr(@"createTrade.htm")];
     NSMutableDictionary *parmeter = [NSMutableDictionary dictionary];
     parmeter[@"dishTemplateId"] = @"5";
+    __weak typeof(self) weakSelf = self;
     [self.manager GET:url parameters:parmeter progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
-        [self.view setNeedsDisplay];
+        [SVProgressHUD show];
+        weakSelf.buyModel = [DFBuyModel mj_objectWithKeyValues:responseObject[@"data"][@"trade"][@"dishTemplate"]];
+        [self.tableView reloadData];
+        [SVProgressHUD dismiss];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error");
+       // NSLog(@"error");
     }];
 }
 
@@ -125,31 +139,41 @@ static NSString *const buyCell = @"buyCell";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   
-
-    if (indexPath.section == 0) {
-        DFbuyheaderCell *header = [DFbuyheaderCell DF_ViewFromXib];
-        
-        return header;
-    }else if(indexPath.section == 1){
-        DFbuyContentCell *cell = [DFbuyContentCell DF_ViewFromXib];
-       
-        cell.nameLab.text = [_nameArray objectAtIndex:indexPath.row];
-        cell.placeholderText.placeholder = [_contentArray objectAtIndex:indexPath.row];
-        if(indexPath.row == _nameArray.count - 1) {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.placeholderText.enabled = NO;
+    
+    switch (indexPath.section) {
+        case 0:{
+            DFbuyheaderCell *header = [DFbuyheaderCell DF_ViewFromXib];
+            header.buyModel = self.buyModel;
+            return header;
         }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    }else{
-        DFPayViewCell *payCell = [DFPayViewCell DF_ViewFromXib];
-        [payCell.payImg setImage:[UIImage imageNamed:[_payArray objectAtIndex:indexPath.row]]];
-        payCell.payLab.text = [_payArray objectAtIndex:indexPath.row];
-        payCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-   
-        return payCell;
+            break;
+        case 1:{
+            DFbuyContentCell *cell = [DFbuyContentCell DF_ViewFromXib];
+            
+            cell.nameLab.text = [_nameArray objectAtIndex:indexPath.row];
+            cell.placeholderText.placeholder = [_contentArray objectAtIndex:indexPath.row];
+            if(indexPath.row == _nameArray.count - 1) {
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.placeholderText.enabled = NO;
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+            break;
+        case 2:{
+            DFPayViewCell *payCell = [DFPayViewCell DF_ViewFromXib];
+            [payCell.payImg setImage:[UIImage imageNamed:[_payArray objectAtIndex:indexPath.row]]];
+            payCell.payLab.text = [_payArray objectAtIndex:indexPath.row];
+            payCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            return payCell;
+
+        }
+            break;
+        default:
+            break;
     }
+    return nil;
 
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -159,7 +183,68 @@ static NSString *const buyCell = @"buyCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-     [tableView setEditing:NO animated:YES];
+    if (indexPath.section == 2) {
+        if (indexPath.row == 0) {
+            [self pingApp:@"alipay"];
+        }else{
+            [self pingApp:@"wx"];
+        }
+    }
+     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+- (void)showAlertMessage:(NSString*)msg
+{
+    mAlert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [mAlert show];
+}
+
+- (void)pingApp:(NSString *)channel{
+    NSString *amountStr = @"100";
+    NSURL* url = [NSURL URLWithString:@"http://218.244.151.190/demo/charge"];
+    NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
+    
+    NSDictionary* dict = @{
+                           @"channel" : channel,
+                           @"amount"  : amountStr
+                           };
+    NSData* data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *bodyData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    [postRequest setHTTPBody:[NSData dataWithBytes:[bodyData UTF8String] length:strlen([bodyData UTF8String])]];
+    [postRequest setHTTPMethod:@"POST"];
+    [postRequest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    DFBuyTempController * __weak weakSelf = self;
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:postRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+            
+            if (httpResponse.statusCode != 200) {
+                //NSLog(@"statusCode=%ld error = %@", (long)httpResponse.statusCode, connectionError);
+                
+                return;
+            }
+            if (connectionError != nil) {
+                //NSLog(@"error = %@", connectionError);
+                
+                return;
+            }
+            NSString* charge = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            // NSLog(@"charge = %@", charge);
+            [Pingpp createPayment:charge
+                   viewController:weakSelf
+                     appURLScheme:@"dianfan"
+                   withCompletion:^(NSString *result, PingppError *error) {
+                       //NSLog(@"completion block: %@", result);
+                       if (error == nil) {
+                           //NSLog(@"PingppError is nil");
+                       } else {
+                          // NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
+                       }
+                       [self showAlertMessage:result];
+                   }];
+        });
+    }];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -179,6 +264,26 @@ static NSString *const buyCell = @"buyCell";
         return 30;
     }
     return 10;
+}
+
+- (void)push{
+    DFBuySuccessController *buySuccess = [[DFBuySuccessController alloc]init];
+    DFNavigationController *Nav = [[DFNavigationController alloc]initWithRootViewController:buySuccess];
+    //[self.navigationController pushViewController:buySuccess animated:YES];
+    [self presentViewController:Nav animated:YES completion:nil];
+}
+- (void)pop{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+}
+- (void)pushToMe{
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"meClick" object:nil];
+    
+}
+
+- (void)dealloc{
+    [SVProgressHUD dismiss];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 @end
 

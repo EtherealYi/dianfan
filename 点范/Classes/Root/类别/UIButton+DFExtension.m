@@ -36,7 +36,7 @@ static char eventKey;
 
 - (void)CornerAndShdow{
     self.layer.cornerRadius = 5;
-    self.layer.shadowOffset = CGSizeMake(3, 3);
+    self.layer.shadowOffset = CGSizeMake(2, 2);
     self.layer.shadowOpacity = 0.3;
     self.layer.shadowColor = [UIColor blackColor].CGColor;
     self.backgroundColor = MainColor;

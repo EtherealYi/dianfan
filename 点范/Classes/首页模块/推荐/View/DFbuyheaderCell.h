@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DFBuyModel.h"
 
 @interface DFbuyheaderCell : UITableViewCell
+
+@property (nonatomic,strong)DFBuyModel *buyModel;
 
 @end

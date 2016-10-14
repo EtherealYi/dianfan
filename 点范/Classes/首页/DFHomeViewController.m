@@ -20,6 +20,7 @@
 #import "DFUser.h"
 #import "AFNetworking.h"
 #import "DFTestViewController.h"
+#import "DFNavigationController.h"
 
 @interface DFHomeViewController ()<UIScrollViewDelegate>
 /** 选中按钮 **/
@@ -52,11 +53,8 @@
     [self setupTitleView];
     
     [self addChildView];
-//    
 
-//
-//         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    NSLog(@"%@",[userDefault objectForKey:@"token"]);
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(meClick) name:@"meClick" object:nil];
 }
 
 
@@ -67,7 +65,6 @@
         NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
         NSLog(@"home user = %@",[userdefault objectForKey:@"token"]);
     }
- 
 
 }
 
@@ -248,4 +245,9 @@
     [self addChildView];
 }
 
+
+- (void)dealloc{
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 @end

@@ -12,6 +12,7 @@
 		E907A6441D90DE3700E91660 /* DFResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E907A6431D90DE3700E91660 /* DFResultModel.m */; };
 		E907A6471D90EBA400E91660 /* DFRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = E907A6461D90EBA400E91660 /* DFRefreshFooter.m */; };
 		E907EAED1D9BAA1000AA76C0 /* DFTempWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E907EAEC1D9BAA1000AA76C0 /* DFTempWebViewController.m */; };
+		E921FCB81DB075710081F317 /* DFiconChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E921FCB71DB075710081F317 /* DFiconChooseController.m */; };
 		E927EF961D87D07A00ED5B6E /* DFeditTempalteController.m in Sources */ = {isa = PBXBuildFile; fileRef = E927EF951D87D07A00ED5B6E /* DFeditTempalteController.m */; };
 		E927EFDB1D87F65C00ED5B6E /* DFLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E927EFDA1D87F65C00ED5B6E /* DFLineLayout.m */; };
 		E93A5A061D813AC10050232C /* DFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A5A051D813AC10050232C /* DFUser.m */; };
@@ -86,6 +87,10 @@
 		E9C2C9D81D7FC76700A94678 /* OneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C2C9D31D7FC76700A94678 /* OneViewController.m */; };
 		E9C2C9D91D7FC76700A94678 /* ThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C2C9D51D7FC76700A94678 /* ThreeViewController.m */; };
 		E9C2C9DA1D7FC76700A94678 /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C2C9D71D7FC76700A94678 /* TwoViewController.m */; };
+		E9C3485F1DAE37C000DAAEEE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C3485E1DAE37C000DAAEEE /* CFNetwork.framework */; };
+		E9C348611DAE37D300DAAEEE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C348601DAE37D300DAAEEE /* QuartzCore.framework */; };
+		E9C348631DAE37F500DAAEEE /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C348621DAE37F500DAAEEE /* libsqlite3.0.tbd */; };
+		E9C348651DAE380F00DAAEEE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C348641DAE380F00DAAEEE /* CoreMotion.framework */; };
 		E9CBC37E1D9CCC6A00A8B64C /* DFbuyheaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CBC37C1D9CCC6A00A8B64C /* DFbuyheaderCell.m */; };
 		E9CBC37F1D9CCC6A00A8B64C /* DFbuyheaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CBC37D1D9CCC6A00A8B64C /* DFbuyheaderCell.xib */; };
 		E9CBC3831D9CF2D500A8B64C /* DFbuyContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CBC3811D9CF2D500A8B64C /* DFbuyContentCell.m */; };
@@ -94,6 +99,8 @@
 		E9CBC3891D9D053400A8B64C /* DFPayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CBC3871D9D053400A8B64C /* DFPayViewCell.xib */; };
 		E9CFE4DF1D9627A100F4099D /* DFReadMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CFE4DE1D9627A100F4099D /* DFReadMessage.m */; };
 		E9D6665D1D98B83000370510 /* DFMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D6665C1D98B83000370510 /* DFMerchant.m */; };
+		E9DAA3881DAF284700C9D999 /* DFBuyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DAA3871DAF284700C9D999 /* DFBuyModel.m */; };
+		E9DAA38E1DAF6E2200C9D999 /* DFBuySuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DAA38D1DAF6E2200C9D999 /* DFBuySuccessController.m */; };
 		E9DF04E21D7E622F0004B2AA /* DFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DF04E11D7E622F0004B2AA /* DFHomeViewController.m */; };
 		E9DF04F91D7EA9C80004B2AA /* DFMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DF04F61D7EA9C80004B2AA /* DFMessageController.m */; };
 		E9DF04FD1D7EA9EA0004B2AA /* DFMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DF04FB1D7EA9EA0004B2AA /* DFMessageCell.m */; };
@@ -156,6 +163,8 @@
 		E907A6461D90EBA400E91660 /* DFRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFRefreshFooter.m; sourceTree = "<group>"; };
 		E907EAEB1D9BAA1000AA76C0 /* DFTempWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTempWebViewController.h; sourceTree = "<group>"; };
 		E907EAEC1D9BAA1000AA76C0 /* DFTempWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTempWebViewController.m; sourceTree = "<group>"; };
+		E921FCB61DB075710081F317 /* DFiconChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFiconChooseController.h; sourceTree = "<group>"; };
+		E921FCB71DB075710081F317 /* DFiconChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFiconChooseController.m; sourceTree = "<group>"; };
 		E927EF941D87D07A00ED5B6E /* DFeditTempalteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFeditTempalteController.h; sourceTree = "<group>"; };
 		E927EF951D87D07A00ED5B6E /* DFeditTempalteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFeditTempalteController.m; sourceTree = "<group>"; };
 		E927EFD91D87F65C00ED5B6E /* DFLineLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFLineLayout.h; sourceTree = "<group>"; };
@@ -282,6 +291,10 @@
 		E9C2C9D51D7FC76700A94678 /* ThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeViewController.m; sourceTree = "<group>"; };
 		E9C2C9D61D7FC76700A94678 /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
 		E9C2C9D71D7FC76700A94678 /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
+		E9C3485E1DAE37C000DAAEEE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E9C348601DAE37D300DAAEEE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E9C348621DAE37F500DAAEEE /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		E9C348641DAE380F00DAAEEE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		E9CBC37B1D9CCC6A00A8B64C /* DFbuyheaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFbuyheaderCell.h; sourceTree = "<group>"; };
 		E9CBC37C1D9CCC6A00A8B64C /* DFbuyheaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFbuyheaderCell.m; sourceTree = "<group>"; };
 		E9CBC37D1D9CCC6A00A8B64C /* DFbuyheaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFbuyheaderCell.xib; sourceTree = "<group>"; };
@@ -295,6 +308,10 @@
 		E9CFE4DE1D9627A100F4099D /* DFReadMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFReadMessage.m; sourceTree = "<group>"; };
 		E9D6665B1D98B83000370510 /* DFMerchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFMerchant.h; sourceTree = "<group>"; };
 		E9D6665C1D98B83000370510 /* DFMerchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFMerchant.m; sourceTree = "<group>"; };
+		E9DAA3861DAF284700C9D999 /* DFBuyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFBuyModel.h; sourceTree = "<group>"; };
+		E9DAA3871DAF284700C9D999 /* DFBuyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFBuyModel.m; sourceTree = "<group>"; };
+		E9DAA38C1DAF6E2200C9D999 /* DFBuySuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DFBuySuccessController.h; path = "../../../个人中心/登录与注册/Controller/DFBuySuccessController.h"; sourceTree = "<group>"; };
+		E9DAA38D1DAF6E2200C9D999 /* DFBuySuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DFBuySuccessController.m; path = "../../../个人中心/登录与注册/Controller/DFBuySuccessController.m"; sourceTree = "<group>"; };
 		E9DF04E01D7E622F0004B2AA /* DFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFHomeViewController.h; sourceTree = "<group>"; };
 		E9DF04E11D7E622F0004B2AA /* DFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFHomeViewController.m; sourceTree = "<group>"; };
 		E9DF04F51D7EA9C80004B2AA /* DFMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFMessageController.h; sourceTree = "<group>"; };
@@ -358,6 +375,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C348651DAE380F00DAAEEE /* CoreMotion.framework in Frameworks */,
+				E9C348631DAE37F500DAAEEE /* libsqlite3.0.tbd in Frameworks */,
+				E9C348611DAE37D300DAAEEE /* QuartzCore.framework in Frameworks */,
+				E9C3485F1DAE37C000DAAEEE /* CFNetwork.framework in Frameworks */,
 				E957EBBC1DAB7DB000164805 /* libc++.tbd in Frameworks */,
 				E956245E1D8E9AC30066C22C /* CoreTelephony.framework in Frameworks */,
 				E973F60D1D9E1D81001D9C3F /* AVFoundation.framework in Frameworks */,
@@ -402,6 +423,10 @@
 		C7EF4E3F4397C46A711F1528 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9C348641DAE380F00DAAEEE /* CoreMotion.framework */,
+				E9C348621DAE37F500DAAEEE /* libsqlite3.0.tbd */,
+				E9C348601DAE37D300DAAEEE /* QuartzCore.framework */,
+				E9C3485E1DAE37C000DAAEEE /* CFNetwork.framework */,
 				E957EBBB1DAB7DB000164805 /* libc++.tbd */,
 				E973F60C1D9E1D81001D9C3F /* AVFoundation.framework */,
 				E973F60A1D9E185C001D9C3F /* JavaScriptCore.framework */,
@@ -496,6 +521,8 @@
 				E99F49ED1DA8CF07003F71D1 /* DFAlreadyController.m */,
 				E99F49EE1DA8CF07003F71D1 /* DFMeViewController.h */,
 				E99F49EF1DA8CF07003F71D1 /* DFMeViewController.m */,
+				E921FCB61DB075710081F317 /* DFiconChooseController.h */,
+				E921FCB71DB075710081F317 /* DFiconChooseController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -855,6 +882,8 @@
 				E907EAEC1D9BAA1000AA76C0 /* DFTempWebViewController.m */,
 				E968C37A1D9CB6EC00B5B823 /* DFBuyTempController.h */,
 				E968C37B1D9CB6EC00B5B823 /* DFBuyTempController.m */,
+				E9DAA38C1DAF6E2200C9D999 /* DFBuySuccessController.h */,
+				E9DAA38D1DAF6E2200C9D999 /* DFBuySuccessController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -872,6 +901,8 @@
 				E907A6431D90DE3700E91660 /* DFResultModel.m */,
 				E9D6665B1D98B83000370510 /* DFMerchant.h */,
 				E9D6665C1D98B83000370510 /* DFMerchant.m */,
+				E9DAA3861DAF284700C9D999 /* DFBuyModel.h */,
+				E9DAA3871DAF284700C9D999 /* DFBuyModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1266,9 +1297,11 @@
 				E96234371D96662D00578E94 /* DFTemplateCell.m in Sources */,
 				E9A9CE1A1D923A9F00257459 /* UILabel+DFExtension.m in Sources */,
 				E93A5A061D813AC10050232C /* DFUser.m in Sources */,
+				E921FCB81DB075710081F317 /* DFiconChooseController.m in Sources */,
 				E9DF05051D7EAF7D0004B2AA /* DFReadMessageController.m in Sources */,
 				E9C2C9CF1D7FC70700A94678 /* PublishMenuButton.m in Sources */,
 				E99F4A351DA8D0EF003F71D1 /* DFDataView.m in Sources */,
+				E9DAA38E1DAF6E2200C9D999 /* DFBuySuccessController.m in Sources */,
 				E9B013B91D8FE681002E4DD8 /* DFTempMedol.m in Sources */,
 				E99F4A041DA8CF07003F71D1 /* DFfootDataController.m in Sources */,
 				E9CBC3881D9D053400A8B64C /* DFPayViewCell.m in Sources */,
@@ -1303,6 +1336,7 @@
 				E9E014C01D7F07000015D4C9 /* DFJapanFoodController.m in Sources */,
 				E9E014BD1D7F06C00015D4C9 /* DFQuickFoodController.m in Sources */,
 				E971C03C1D8265AB004C4E94 /* DFForgetPassword.m in Sources */,
+				E9DAA3881DAF284700C9D999 /* DFBuyModel.m in Sources */,
 				E9FB80C91D7D3D110083D39C /* AppDelegate.m in Sources */,
 				E9E201071D86535B00F805AD /* VPImageCropperViewController.m in Sources */,
 				E99F4A411DA8D10B003F71D1 /* DFtableHeader.m in Sources */,
@@ -1453,9 +1487,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "点范/Classes/Root/Base/Main.pch";
 				INFOPLIST_FILE = "点范/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "hboxs.--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/** ${SRCROOT}/**";
@@ -1468,9 +1504,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "点范/Classes/Root/Base/Main.pch";
 				INFOPLIST_FILE = "点范/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "hboxs.--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/** ${SRCROOT}/**";

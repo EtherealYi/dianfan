@@ -26,10 +26,12 @@
     //右边按钮
     UIButton *buyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [buyBtn setText:@"购买" andFont:15 andColor:WhiteColor];
-    [buyBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
-        DFBuyTempController *buyTemp = [[DFBuyTempController alloc]init];
-        [self.navigationController pushViewController:buyTemp animated:YES];
-    }];
+//    [buyBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+//        DFFunc
+//        DFBuyTempController *buyTemp = [[DFBuyTempController alloc]init];
+//        [self.navigationController pushViewController:buyTemp animated:YES];
+//    }];
+    [buyBtn addTarget:self action:@selector(toBuyController) forControlEvents:UIControlEventTouchUpInside];
   
     [buyBtn sizeToFit];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:buyBtn];
@@ -55,6 +57,11 @@
     imageView.frame = CGRectMake(0, 0, self.view.df_width, self.view.df_height);
     [imageView sd_setImageWithURL:[NSURL URLWithString:self.recModel.image] placeholderImage:nil options:SDWebImageProgressiveDownload];
     [self.view addSubview:imageView];
+}
+
+- (void)toBuyController{
+    DFBuyTempController *buyTemp = [[DFBuyTempController alloc]init];
+    [self.navigationController pushViewController:buyTemp animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

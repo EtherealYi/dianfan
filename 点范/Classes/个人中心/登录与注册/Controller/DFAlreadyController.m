@@ -15,6 +15,7 @@
 #import "DFUser.h"
 #import "DFDataView.h"
 #import "DFDataCenterViewController.h"
+#import "DFiconChooseController.h"
 
 #define ORIGINAL_MAX_WIDTH 640.0f
 
@@ -97,6 +98,7 @@ static NSString *AlreadyID = @"AlreadyCell";
     imageView.df_centerX = headView.df_centerX;
     imageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGeture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(alterHeadPortrait)];
+   // UITapGestureRecognizer *tapGeture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pushToChoose)];
     
     [imageView addGestureRecognizer:tapGeture];
     //设置为圆形
@@ -290,6 +292,11 @@ static NSString *AlreadyID = @"AlreadyCell";
     [self presentViewController:alert animated:YES completion:nil];
 }
 #pragma mark - PickerImage
+
+- (void)pushToChoose{
+    DFiconChooseController *iconChoose = [[DFiconChooseController alloc]init];
+    [self.navigationController pushViewController:iconChoose animated:YES];
+}
 //PickerImage完成后的代理方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     //定义一个newPhoto，用来存放我们选择的图片。

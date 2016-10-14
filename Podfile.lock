@@ -19,6 +19,17 @@ PODS:
   - Masonry (1.0.1)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
+  - Pingpp (2.2.8):
+    - Pingpp/Alipay (= 2.2.8)
+    - Pingpp/Core (= 2.2.8)
+    - Pingpp/UnionPay (= 2.2.8)
+  - Pingpp/Alipay (2.2.8):
+    - Pingpp/Core
+  - Pingpp/Core (2.2.8):
+    - Pingpp/Network
+  - Pingpp/Network (2.2.8)
+  - Pingpp/UnionPay (2.2.8):
+    - Pingpp/Core
   - PNChart (0.8.9):
     - UICountingLabel (~> 1.2.0)
   - SDWebImage (3.8.2):
@@ -35,6 +46,7 @@ DEPENDENCIES:
   - Masonry
   - MJExtension
   - MJRefresh
+  - Pingpp
   - PNChart
   - SDWebImage
   - SVProgressHUD
@@ -47,12 +59,13 @@ SPEC CHECKSUMS:
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  Pingpp: b5ad287bd6969d69cff1f2438ea63147976711c9
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   UMengSocialCOM: 074c135ce349aa4c8848d3fb8458757bcb6ffb67
 
-PODFILE CHECKSUM: d045d1357b2fc891f711a81489321e20f7926fc6
+PODFILE CHECKSUM: 7e6739175af36145b167aa03ea767d777da322a0
 
 COCOAPODS: 1.0.1

@@ -84,7 +84,6 @@ static NSString * const headerID = @"RecHead";
     button.df_bottom = self.view.df_height - 100;
     button.alpha = 0.9;
     [button setImage:[UIImage imageNamed:@"X键"] forState:UIControlStateNormal];
-    
     [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     
@@ -158,15 +157,6 @@ static NSString * const headerID = @"RecHead";
 }
 #pragma mark - 弹出中间菜单
 - (void)buttonClick{
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults removeObjectForKey:@"username"];
-    [userDefaults removeObjectForKey:@"password"];
-    [userDefaults removeObjectForKey:@"token"];
-    [userDefaults synchronize];
-    [DFUser sharedManager].username = nil;
-    [DFUser sharedManager].token = nil;
-    return ;
 
     XWPopMenuController *vc = [[XWPopMenuController alloc]init];
     
