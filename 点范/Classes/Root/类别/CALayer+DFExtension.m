@@ -26,5 +26,11 @@
     return animation;
 }
 
+- (void)cellShadow{
+    self.shadowOpacity = 0.3;
+    self.shadowOffset = CGSizeMake(4, 4);
+    self.shadowColor = [UIColor grayColor].CGColor;
+    self.masksToBounds = NO;
+}
 
 @end

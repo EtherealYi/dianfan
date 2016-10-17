@@ -11,7 +11,7 @@
 
 @class UIButton;
 
-typedef void(^buttonClickBlock)();
+typedef void(^ClickBlock)();
 
 @interface UIButton (DFExtension)
 /**
@@ -20,7 +20,7 @@ typedef void(^buttonClickBlock)();
  *  @param event 事件
  *  @param buttonClickBlock block代码
  */
-- (void) handleControlEvent:(UIControlEvents)event withBlock:(buttonClickBlock)action;
+- (void) handleEvent:(UIControlEvents)event withBlock:(ClickBlock)action;
 /**
  圆角与阴影
  */

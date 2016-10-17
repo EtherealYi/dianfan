@@ -19,21 +19,22 @@
         sharedAccountManagerInstance = [[self alloc] init];
     });
     return sharedAccountManagerInstance;
-    
-    
 }
 
 - (void)initWithDict:(NSUserDefaults *)dict{
-    //self = [super init];
     self.username = [dict objectForKey:@"username"];
-    self.token = [dict objectForKey:@"token"];
-    //self.login = [dict objectForKey:@"isLogin"];
+    self.token    = [dict objectForKey:@"token"];
     [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"isLogin"];
 }
+
 - (void)didLogout{
     self.username = nil;
-    self.token = nil;
+    self.token    = nil;
+    self.icon     = nil;
     [[NSUserDefaults standardUserDefaults]setObject:@NO forKey:@"isLogin"];
+}
+- (void)saveIcon:(NSUserDefaults *)userDefault{
+    self.icon = [userDefault objectForKey:@"icon"];
 }
 - (BOOL)isLogin {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"isLogin"];

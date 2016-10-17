@@ -21,3 +21,11 @@ UIKIT_EXTERN NSString const *MemberAPI;
 UIKIT_EXTERN NSString const *TradeAPI;
 /** 登录注册接口 */
 UIKIT_EXTERN NSString const *AccountAPI;
+/** 上传接口 */
+UIKIT_EXTERN NSString const *UploadAPI;
+/** ping++ */
+UIKIT_EXTERN NSString const *PingAPI;
+///** 上传Logo */
+//UIKIT_EXTERN NSString const *upLoadLogo;
+///** 上传头像 */
+//UIKIT_EXTERN NSString const *upLoadAvator;

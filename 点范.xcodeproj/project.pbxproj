@@ -13,6 +13,7 @@
 		E907A6471D90EBA400E91660 /* DFRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = E907A6461D90EBA400E91660 /* DFRefreshFooter.m */; };
 		E907EAED1D9BAA1000AA76C0 /* DFTempWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E907EAEC1D9BAA1000AA76C0 /* DFTempWebViewController.m */; };
 		E921FCB81DB075710081F317 /* DFiconChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E921FCB71DB075710081F317 /* DFiconChooseController.m */; };
+		E921FCC11DB0DE220081F317 /* DFPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E921FCC01DB0DE220081F317 /* DFPersonalViewController.m */; };
 		E927EF961D87D07A00ED5B6E /* DFeditTempalteController.m in Sources */ = {isa = PBXBuildFile; fileRef = E927EF951D87D07A00ED5B6E /* DFeditTempalteController.m */; };
 		E927EFDB1D87F65C00ED5B6E /* DFLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E927EFDA1D87F65C00ED5B6E /* DFLineLayout.m */; };
 		E93A5A061D813AC10050232C /* DFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A5A051D813AC10050232C /* DFUser.m */; };
@@ -20,6 +21,9 @@
 		E93D19CF1DAA3474009D30AB /* DFStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D19CE1DAA3474009D30AB /* DFStarView.m */; };
 		E93D19D31DAA5361009D30AB /* DFQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D19D11DAA5361009D30AB /* DFQuestionCell.m */; };
 		E93D19D41DAA5361009D30AB /* DFQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93D19D21DAA5361009D30AB /* DFQuestionCell.xib */; };
+		E9546B061DB1E53000C8B06E /* DFPublishController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9546B051DB1E53000C8B06E /* DFPublishController.m */; };
+		E9546B091DB207C100C8B06E /* DFSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9546B081DB207C100C8B06E /* DFSettingViewController.m */; };
+		E9546B0C1DB20B2900C8B06E /* DFSettingHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E9546B0B1DB20B2900C8B06E /* DFSettingHeader.m */; };
 		E95624541D8E9A800066C22C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95624531D8E9A800066C22C /* Security.framework */; };
 		E95624561D8E9A950066C22C /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E95624551D8E9A950066C22C /* libiconv.tbd */; };
 		E95624581D8E9AA10066C22C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95624571D8E9AA10066C22C /* SystemConfiguration.framework */; };
@@ -165,6 +169,8 @@
 		E907EAEC1D9BAA1000AA76C0 /* DFTempWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTempWebViewController.m; sourceTree = "<group>"; };
 		E921FCB61DB075710081F317 /* DFiconChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFiconChooseController.h; sourceTree = "<group>"; };
 		E921FCB71DB075710081F317 /* DFiconChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFiconChooseController.m; sourceTree = "<group>"; };
+		E921FCBF1DB0DE220081F317 /* DFPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPersonalViewController.h; sourceTree = "<group>"; };
+		E921FCC01DB0DE220081F317 /* DFPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPersonalViewController.m; sourceTree = "<group>"; };
 		E927EF941D87D07A00ED5B6E /* DFeditTempalteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFeditTempalteController.h; sourceTree = "<group>"; };
 		E927EF951D87D07A00ED5B6E /* DFeditTempalteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFeditTempalteController.m; sourceTree = "<group>"; };
 		E927EFD91D87F65C00ED5B6E /* DFLineLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFLineLayout.h; sourceTree = "<group>"; };
@@ -178,6 +184,12 @@
 		E93D19D01DAA5361009D30AB /* DFQuestionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFQuestionCell.h; sourceTree = "<group>"; };
 		E93D19D11DAA5361009D30AB /* DFQuestionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFQuestionCell.m; sourceTree = "<group>"; };
 		E93D19D21DAA5361009D30AB /* DFQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFQuestionCell.xib; sourceTree = "<group>"; };
+		E9546B041DB1E53000C8B06E /* DFPublishController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPublishController.h; sourceTree = "<group>"; };
+		E9546B051DB1E53000C8B06E /* DFPublishController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPublishController.m; sourceTree = "<group>"; };
+		E9546B071DB207C100C8B06E /* DFSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFSettingViewController.h; sourceTree = "<group>"; };
+		E9546B081DB207C100C8B06E /* DFSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFSettingViewController.m; sourceTree = "<group>"; };
+		E9546B0A1DB20B2900C8B06E /* DFSettingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFSettingHeader.h; sourceTree = "<group>"; };
+		E9546B0B1DB20B2900C8B06E /* DFSettingHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFSettingHeader.m; sourceTree = "<group>"; };
 		E95624531D8E9A800066C22C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E95624551D8E9A950066C22C /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		E95624571D8E9AA10066C22C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -523,6 +535,12 @@
 				E99F49EF1DA8CF07003F71D1 /* DFMeViewController.m */,
 				E921FCB61DB075710081F317 /* DFiconChooseController.h */,
 				E921FCB71DB075710081F317 /* DFiconChooseController.m */,
+				E921FCBF1DB0DE220081F317 /* DFPersonalViewController.h */,
+				E921FCC01DB0DE220081F317 /* DFPersonalViewController.m */,
+				E9546B041DB1E53000C8B06E /* DFPublishController.h */,
+				E9546B051DB1E53000C8B06E /* DFPublishController.m */,
+				E9546B071DB207C100C8B06E /* DFSettingViewController.h */,
+				E9546B081DB207C100C8B06E /* DFSettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -540,6 +558,8 @@
 				E99F4A321DA8D0EF003F71D1 /* DFDataView.h */,
 				E99F4A331DA8D0EF003F71D1 /* DFDataView.m */,
 				E99F4A341DA8D0EF003F71D1 /* DFDataView.xib */,
+				E9546B0A1DB20B2900C8B06E /* DFSettingHeader.h */,
+				E9546B0B1DB20B2900C8B06E /* DFSettingHeader.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1260,6 +1280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E921FCC11DB0DE220081F317 /* DFPersonalViewController.m in Sources */,
 				E9E014BA1D7F05A40015D4C9 /* DFChineseFoodController.m in Sources */,
 				E9E014C61D7F076F0015D4C9 /* DFWestController.m in Sources */,
 				E9C2C9DA1D7FC76700A94678 /* TwoViewController.m in Sources */,
@@ -1287,6 +1308,7 @@
 				E98431B11D9A6900004C425D /* DFTemplateSelectCell.m in Sources */,
 				E98431B41D9A69DA004C425D /* DFTemplateSelectController.m in Sources */,
 				E9DF04F91D7EA9C80004B2AA /* DFMessageController.m in Sources */,
+				E9546B061DB1E53000C8B06E /* DFPublishController.m in Sources */,
 				E9B0138D1D8F846F002E4DD8 /* DFConst.m in Sources */,
 				E927EF961D87D07A00ED5B6E /* DFeditTempalteController.m in Sources */,
 				E93D19D31DAA5361009D30AB /* DFQuestionCell.m in Sources */,
@@ -1313,6 +1335,7 @@
 				E971C0401D82B102004C4E94 /* DFRecheader.m in Sources */,
 				E907A6471D90EBA400E91660 /* DFRefreshFooter.m in Sources */,
 				E9E014C31D7F07260015D4C9 /* DFDessertController.m in Sources */,
+				E9546B091DB207C100C8B06E /* DFSettingViewController.m in Sources */,
 				E99F4A2E1DA8D0DA003F71D1 /* DFGeneralComment.m in Sources */,
 				E9E2010A1D86BBA800F805AD /* DFRecTemplateController.m in Sources */,
 				E9BD82AE1D94D9D00090EADD /* CALayer+DFExtension.m in Sources */,
@@ -1323,6 +1346,7 @@
 				E99F4A471DA8D11B003F71D1 /* DFBarChart.m in Sources */,
 				E99F4A061DA8CF07003F71D1 /* DFMeViewController.m in Sources */,
 				E99F4A081DA8CF07003F71D1 /* DFstotreDataController.m in Sources */,
+				E9546B0C1DB20B2900C8B06E /* DFSettingHeader.m in Sources */,
 				E99F4A2A1DA8D0DA003F71D1 /* DFfootDataHeader.m in Sources */,
 				E968C37C1D9CB6EC00B5B823 /* DFBuyTempController.m in Sources */,
 				E962343F1D96727400578E94 /* DFResultCell.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  DFiconChooseController.h
+//  DFPersonalViewController.h
 //  点范
 //
 //  Created by Masteryi on 2016/10/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DFiconChooseController : UIViewController
-
-@property (nonatomic,strong)NSString *pittureCtr;
+@interface DFPersonalViewController : UIViewController
 
 @end

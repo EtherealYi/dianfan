@@ -10,11 +10,15 @@
 
 @protocol pushToMeDelegate <NSObject>
 
+
+
 - (void)pushToMe;
 
 @end
 
 @interface DFBuySuccessController : UIViewController
+
+@property (nonatomic,strong)NSString *sn;
 
 @property (nonatomic,weak)id<pushToMeDelegate> delegate;
 

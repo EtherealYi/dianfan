@@ -60,16 +60,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    if ([DFUser sharedManager].isLogin == YES) {
-        NSLog(@"home DFUser = %@,name = %@",[DFUser sharedManager].token,[DFUser sharedManager].username);
-        NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
-        NSLog(@"home user = %@",[userdefault objectForKey:@"token"]);
-    }
-
+    //[[DFUser sharedManager]didLogout];
 }
 
 #pragma mark -中间滚动视图
 - (void)setupScrollView{
+    
     UIScrollView *scrollView = [[UIScrollView alloc]init];
     scrollView.frame = self.view.bounds;
     scrollView.pagingEnabled = YES;
@@ -114,6 +110,9 @@
     [messageBtn setImage:[UIImage imageNamed:@"消息"] forState:UIControlStateNormal];
     [messageBtn sizeToFit];
     [messageBtn addTarget:self action:@selector(MessageClick) forControlEvents:UIControlEventTouchUpInside];
+//    [messageBtn handleEvent:UIControlEventTouchUpInside withBlock:^{
+//        NSLog(@"Click");
+//    }];
     messageBtn.contentEdgeInsets = UIEdgeInsetsMake(4, 4,4, 3);
     UIBarButtonItem *messageItem = [[UIBarButtonItem alloc]initWithCustomView:messageBtn];
     

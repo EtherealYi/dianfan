@@ -17,14 +17,13 @@ static char eventKey;
  *  @param action block代码
  */
 
-- (void) handleControlEvent:(UIControlEvents)event withBlock:(void (^)())action {
-    
+- (void)handleEvent:(UIControlEvents)event withBlock:(ClickBlock)action{
     objc_setAssociatedObject(self, &eventKey, action, OBJC_ASSOCIATION_COPY_NONATOMIC);
     [self addTarget:self action:@selector(callActionBlock:) forControlEvents:event];
 }
 
 - (void)callActionBlock:(id)sender {
-    buttonClickBlock block = (buttonClickBlock)objc_getAssociatedObject(self, &eventKey);
+    ClickBlock block = (ClickBlock)objc_getAssociatedObject(self, &eventKey);
     if (block) {
         block();
     }
@@ -47,7 +46,8 @@ static char eventKey;
     
     [self setTitle:text forState:UIControlStateNormal];
     self.titleLabel.font = [UIFont systemFontOfSize:font];
-    self.tintColor = color;
+    //self.tintColor = color;
+    [self setTitleColor:color forState:UIControlStateNormal];
     
 }
 

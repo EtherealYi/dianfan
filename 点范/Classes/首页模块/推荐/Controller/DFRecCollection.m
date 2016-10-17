@@ -85,6 +85,9 @@ static NSString * const headerID = @"RecHead";
     button.alpha = 0.9;
     [button setImage:[UIImage imageNamed:@"X键"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+//    //[button handleEvent:UIControlEventTouchUpInside withBlock:^{
+//        NSLog(@"点击了");
+//    }];
     [self.view addSubview:button];
     
     [self loadRec];
@@ -205,11 +208,9 @@ static NSString * const headerID = @"RecHead";
     }else{
         
     DFRecCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-        
-        cell.layer.shadowOpacity = 0.3;
-        cell.layer.shadowOffset = CGSizeMake(4, 4);
-        cell.layer.shadowColor = [UIColor blackColor].CGColor;
-        cell.layer.masksToBounds = NO;
+        //添加阴影
+        [cell.layer cellShadow];
+
         cell.recModel = self.recModelS[indexPath.row];
 
         return cell;

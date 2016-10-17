@@ -12,4 +12,6 @@
 /** 渐显效果 */
 - (CATransition *)fadeFunction;
 
+- (void)cellShadow;
+
 @end

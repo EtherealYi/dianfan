@@ -57,19 +57,17 @@
 
  
     //ping ++
-    [Pingpp setDebugMode:YES];
+    //[Pingpp setDebugMode:YES];
     
     return YES;
 }
 
 - (void)setUserData{
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    NSString *name = [userDefault objectForKey:@"name"];
-//    NSString *token = [userDefault objectForKey:@"token"];
-    [[DFUser sharedManager] initWithDict:userDefault];
-    NSLog(@"AppDelagate %@",[DFUser sharedManager].token);
-    
-    
+    if ([[DFUser sharedManager]isLogin] == YES) {
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        [[DFUser sharedManager] initWithDict:userDefault];
+        NSLog(@"AppDelagate %@",[DFUser sharedManager].token);
+    }
     
 }
 
@@ -100,7 +98,7 @@
         //调用其他SDK，例如支付宝SDK等
         result = [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
             NSLog(@"支付成功回调");
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"push" object:self];
+            //[[NSNotificationCenter defaultCenter]postNotificationName:@"push" object:self];
             
         }];
     }

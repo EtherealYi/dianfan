@@ -11,11 +11,14 @@
 #import "VPImageCropperViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "AFNetworking.h"
 #import "DFUser.h"
 #import "DFDataView.h"
 #import "DFDataCenterViewController.h"
 #import "DFiconChooseController.h"
+#import "DFPersonalViewController.h"
+#import "DFSettingViewController.h"
+#import "DFHTTPSessionManager.h"
+#import "UIImageView+WebCache.h"
 
 #define ORIGINAL_MAX_WIDTH 640.0f
 
@@ -27,6 +30,10 @@
 
 @property (nonatomic,strong)UIImage *iconImage;
 
+@property (nonatomic,strong)DFHTTPSessionManager *manager;
+
+@property (nonatomic,copy)NSString *imgName;
+
 @end
 
 @implementation DFAlreadyController
@@ -34,7 +41,14 @@
 static NSString * const HeaderID =@"header";
 static NSString * const CellID = @"Me";
 static NSString *AlreadyID = @"AlreadyCell";
+static NSString *PersonalID = @"PersonalID";
 
+-(DFHTTPSessionManager *)manager{
+    if (!_manager) {
+        _manager = [DFHTTPSessionManager manager];
+    }
+    return _manager;
+}
 
 - (instancetype)init{
     return [self initWithStyle:UITableViewStyleGrouped];
@@ -45,16 +59,29 @@ static NSString *AlreadyID = @"AlreadyCell";
     [super viewDidLoad];
     self.title = @"个人中心";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:AlreadyID];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:PersonalID];
+
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0);
     [self setupHeader];
     [self setNavItem];
-    
-    
+    [self addChild];
+    [self loadIcon];
+
+}
+- (void)addChild{
+    DFPersonalViewController *personCtr = [[DFPersonalViewController alloc]init];
+    [self addChildViewController:personCtr];
+    UIView *publishView = (UIView *)self.childViewControllers[0].view;
+    publishView.frame = CGRectMake(0, 0, fDeviceWidth, 400);
+    self.tableView.tableFooterView = publishView;
+   
 }
 - (void)setNavItem{
     
     //个人中心
     UIButton *settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [settingBtn setImage:[UIImage imageNamed:@"设置"] forState:UIControlStateNormal];
+    [settingBtn addTarget:self action:@selector(pushToSetting) forControlEvents:UIControlEventTouchUpInside];
     [settingBtn sizeToFit];
     //设置内边距
     settingBtn.contentEdgeInsets = UIEdgeInsetsMake(4, 4,3, 4);
@@ -85,21 +112,15 @@ static NSString *AlreadyID = @"AlreadyCell";
     
     //设置内容
     //头像
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    //NSLog(@"image - %@",[userDefaults objectForKey:@"avatar"]);
-    
-    
-    //UIImage *icon = [UIImage imageNamed:@"头像"];
-    UIImage *icon = [self getImage:[userDefaults objectForKey:@"avatar"]];
-    UIImageView *imageView = [[UIImageView alloc]initWithImage:icon];
+   
+    UIImageView *imageView = [[UIImageView alloc]init];
  
     //CGFloat imgH = icon.size.height * 0.5;
     imageView.frame = CGRectMake(0,DFMargin * 2, 62 , 62);
     imageView.df_centerX = headView.df_centerX;
     imageView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tapGeture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(alterHeadPortrait)];
-   // UITapGestureRecognizer *tapGeture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pushToChoose)];
-    
+    UITapGestureRecognizer *tapGeture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pushToChoose)];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:[DFUser sharedManager].icon] placeholderImage:nil options:SDWebImageProgressiveDownload];
     [imageView addGestureRecognizer:tapGeture];
     //设置为圆形
     imageView.layer.cornerRadius=imageView.frame.size.width/2;
@@ -107,6 +128,7 @@ static NSString *AlreadyID = @"AlreadyCell";
     //  给头像加一个圆形边框
     imageView.layer.borderWidth = 1.5f;
     imageView.layer.borderColor = [UIColor whiteColor].CGColor;
+    //[imageView sd_setImageWithURL:[NSURL URLWithString:@"http://10.0.0.30:8080/i/upload/image/avator/201610/dd178eaa-19da-4190-8c82-71541c02bc08.jpg"] placeholderImage:nil options:SDWebImageProgressiveDownload];
     self.iconImageView = imageView;
     
     //用户名
@@ -114,8 +136,7 @@ static NSString *AlreadyID = @"AlreadyCell";
     label.frame = CGRectMake(imageView.df_right + DFMargin,0,130,10);
     label.df_centerY = imageView.df_centerY;
     NSString *number = [DFUser sharedManager].username;
-    //NSString *account = [NSString stringWithFormat:@"%@****%@",[number substringToIndex:3],[number substringFromIndex:7]];
-    //label.text = account;
+
     BOOL isNumber = [NSString isPureInt:number];
     if (isNumber == YES) {
         NSString *account = [NSString stringWithFormat:@"%@****%@",[number substringToIndex:3],[number substringFromIndex:7]];
@@ -161,81 +182,85 @@ static NSString *AlreadyID = @"AlreadyCell";
     buttomlabel.text = @"   绑定手机，店铺提醒信息早知道";
     buttomlabel.font = [UIFont systemFontOfSize:14];
     buttomlabel.textColor = [UIColor blackColor];
-    
-
     [headView addSubview:buttomlabel];
     
     self.tableView.tableHeaderView = headView;
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)loadIcon{
+    NSString *url = [MemberAPI stringByAppendingString:apiStr(@"getAvator.htm")];
+    
+    [self.manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        self.imgName = responseObject[@"data"];
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        [userDefault setObject:self.imgName forKey:@"icon"];
+        [[DFUser sharedManager] saveIcon:userDefault];
+        //回到主线程刷新UI
+        dispatch_async(dispatch_get_main_queue(), ^{
+             [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:self.imgName] placeholderImage:nil options:SDWebImageProgressiveDownload];
+        });
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+       
+    }];
+}
+
+
+#pragma mark - 页面跳转
+- (void)pushToSetting{
+    DFSettingViewController *setting = [[DFSettingViewController alloc]init];
+    [self.navigationController pushViewController:setting animated:YES];
+}
+
+- (void)pushToChoose{
+    DFiconChooseController *iconChoose = [[DFiconChooseController alloc]init];
+    iconChoose.pittureCtr = [NSString stringWithFormat:@"%@",upLoadAvator];
+    [self.navigationController pushViewController:iconChoose animated:YES];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    if (section == 0) return 1;
     return 1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 0) {
-        DFDataView *dataView = [DFDataView DF_ViewFromXib];
-        dataView.df_width = fDeviceWidth;
-        
-        return dataView;
+    switch (indexPath.section) {
+        case 0:{
+            DFDataView *dataView = [DFDataView DF_ViewFromXib];
+            dataView.df_width = fDeviceWidth;
+            return dataView;
+
+        }
+            
+            break;
+
+        default:
+            break;
     }
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AlreadyID];
-    cell.textLabel.text = @"退出登录";
-    return cell;
+    return nil;
     
+
 
    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 1) {
-        if (indexPath.row == 0) {// 退出登录
-            //初始化提示框；
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定退出登录？" preferredStyle:  UIAlertControllerStyleAlert];
-            
-            [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                //点击按钮的响应事件；
-                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                [userDefaults removeObjectForKey:@"username"];
-                [userDefaults removeObjectForKey:@"token"];
-                [userDefaults synchronize];
-                [[DFUser sharedManager]didLogout];
-                
-                [self.navigationController popToRootViewControllerAnimated:YES];
-            }]];
-            
-            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-          
-            }]];
-            
-            //弹出提示框；
-            [self presentViewController:alert animated:true completion:nil];
-            
-        }
-    }else{// 进入数据中心
+  
+    if(indexPath.section == 0){// 进入数据中心
         DFDataCenterViewController *dataCenter = [[DFDataCenterViewController alloc]init];
         [self.navigationController pushViewController:dataCenter animated:YES];
         
-        
     }
-    
   // 取消选中
   [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
@@ -245,128 +270,7 @@ static NSString *AlreadyID = @"AlreadyCell";
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) return 150;
+    if (indexPath.section == 1) return 200;
     return 44;
 }
-
-/*************************访问相册**************************/
-
-//  方法：alterHeadPortrait
-- (void)alterHeadPortrait{
-    /**
-     *  弹出提示框
-     */
-    //初始化提示框
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    //按钮：从相册选择，类型：UIAlertActionStyleDefault
-    [alert addAction:[UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //初始化UIImagePickerController
-        UIImagePickerController *PickerImage = [[UIImagePickerController alloc]init];
-        //获取方式1：通过相册（呈现全部相册），UIImagePickerControllerSourceTypePhotoLibrary
-        //获取方式2，通过相机，UIImagePickerControllerSourceTypeCamera
-        //获取方法3，通过相册（呈现全部图片），UIImagePickerControllerSourceTypeSavedPhotosAlbum
-        PickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        //允许编辑，即放大裁剪
-        PickerImage.allowsEditing = YES;
-        //自代理
-        PickerImage.delegate = self;
-        //页面跳转
-        [self presentViewController:PickerImage animated:YES completion:nil];
-    }]];
-    
-    //按钮：拍照，类型：UIAlertActionStyleDefault
-    [alert addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        /**
-         其实和从相册选择一样，只是获取方式不同，前面是通过相册，而现在，我们要通过相机的方式
-         */
-        UIImagePickerController *PickerImage = [[UIImagePickerController alloc]init];
-        //获取方式:通过相机
-        PickerImage.sourceType = UIImagePickerControllerSourceTypeCamera;
-        PickerImage.allowsEditing = YES;
-        PickerImage.delegate = self;
-        [self presentViewController:PickerImage animated:YES completion:nil];
-    }]];
-    
-    //按钮：取消，类型：UIAlertActionStyleCancel
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-#pragma mark - PickerImage
-
-- (void)pushToChoose{
-    DFiconChooseController *iconChoose = [[DFiconChooseController alloc]init];
-    [self.navigationController pushViewController:iconChoose animated:YES];
-}
-//PickerImage完成后的代理方法
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    //定义一个newPhoto，用来存放我们选择的图片。
-    UIImage *newPhoto = [info objectForKey:@"UIImagePickerControllerEditedImage"];
-    self.iconImageView.image = newPhoto;
-    [self saveImage:newPhoto WithName:@"avatar"];
-    [self imageUpToWeb:newPhoto];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-
-    
-   
-}
-
-
-//保存图片
-- (void)saveImage:(UIImage *)tempImage WithName:(NSString *)imageName
-{
-    NSData* imageData = UIImagePNGRepresentation(tempImage);
-    NSString* documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString* totalPath = [documentPath stringByAppendingPathComponent:imageName];
-    //保存到 document
-    [imageData writeToFile:totalPath atomically:NO];
-    //保存到 NSUserDefaults
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:totalPath forKey:@"avatar"];
-    
-/*******************************************************************************/
-    
-}
-
-- (void)imageUpToWeb:(UIImage *)image{
-    
-    NSMutableDictionary *paramaters= [NSMutableDictionary dictionary];
-    paramaters[@"file"] = @"icon.jpg";
-    //paramaters[@"token"] = [DFUser sharedManager].token;
-    NSString *url = [NSString stringWithFormat:@"http://10.0.0.30:8080/appMember/login/member/upload.htm?token=%@",[DFUser sharedManager].token] ;
-
-    // 参数
-    [[AFHTTPSessionManager manager] POST:url parameters:paramaters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
-        NSData *imageData = UIImageJPEGRepresentation(image, 0.1);
-        //NSLog(@"%@",imageData);
-        //NSData *imageData = UIImagePNGRepresentation(tempImage);
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"yyyyMMddHHmmss";
-        NSString *str = [formatter stringFromDate:[NSDate date]];
-        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
-        
-        // 上传图片，以文件流的格式
-        [formData appendPartWithFileData:imageData  name:@"importFile"fileName:fileName mimeType:@"image/png"];
-        
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject[@"data"]);
-        NSLog(@"%@",responseObject);
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
-
-
-
-}
-
-//从document取得图片
-- (UIImage *)getImage:(NSString *)urlStr
-{
-    return [UIImage imageWithContentsOfFile:urlStr];
-}
-
 @end

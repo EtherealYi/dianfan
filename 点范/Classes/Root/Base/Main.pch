@@ -31,7 +31,8 @@
 #define BaseFont(A) [UIFont systemFontOfSize:A];
 #define DFFunc NSLog(@"%s",__func__);
 #define apiStr(url) [NSString stringWithFormat:@"%@?token=%@",url,[DFUser sharedManager].token]
-
+#define upLoadLogo @"uploadLogo.htm"
+#define upLoadAvator @"uploadAvator.htm"
 #define MYWriteToFile(data,fileName) [data writeToFile:fileName atomically:YES];
 
 #define fDeviceWidth ([UIScreen mainScreen].bounds.size.width)

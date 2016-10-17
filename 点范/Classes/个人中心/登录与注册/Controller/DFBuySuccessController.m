@@ -40,7 +40,7 @@
     [self.view addSubview:successLab];
     
     UILabel *orderLabel = [[UILabel alloc]init];
-    [orderLabel setText:@"订单号:203232323" andFont:14 andColor:[UIColor blackColor]];
+    [orderLabel setText:[NSString stringWithFormat:@"订单号:%@",self.sn] andFont:14 andColor:[UIColor blackColor]];
     [self.view addSubview:orderLabel];
     
     UIButton *homeBtn = [UIButton buttonWithType:UIButtonTypeCustom];

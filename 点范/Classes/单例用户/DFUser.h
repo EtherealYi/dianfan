@@ -9,18 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @interface DFUser : NSObject
-
+/** 用户名 */
 @property (nonatomic,assign)NSString *username;
-
-
+/** token */
 @property (nonatomic,assign)NSString *token;
-
+/** 是否登录 */
 @property (nonatomic,assign)BOOL isLogin;
-
-@property (nonatomic,assign)NSString *login;
+/** 头像 */
+@property (nonatomic,assign)NSString *icon;
 
 - (void)initWithDict:(NSUserDefaults *)dict;
 - (void)didLogout;
+- (void)saveIcon:(NSUserDefaults *)userDefault;
 + (DFUser *)sharedManager;
 
 @end
