@@ -76,11 +76,10 @@
         //          获取微博用户名、uid、token等
         
         if (response.responseCode == UMSResponseCodeSuccess) {
-            NSLog(@"登录成功");
             NSDictionary *dict = [UMSocialAccountManager socialAccountDictionary];
         
             UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:snsPlatform.platformName];
-            
+            NSLog(@"%@",snsAccount.iconURL);
             //本地保存
             NSString *url = [AccountAPI stringByAppendingString:apiStr(@"thPartyLogin.htm")];
             
@@ -94,23 +93,14 @@
                 NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
                 [userDefault setObject:snsAccount.userName forKey:@"username"];
                 [userDefault setObject:responseObject[@"data"][@"token"] forKey:@"token"];
+                [userDefault setObject:snsAccount.iconURL forKey:@"icon"];
                 [userDefault synchronize];
                 [[DFUser sharedManager]initWithDict:userDefault];
+                [[DFUser sharedManager]saveIcon:userDefault];
+                
                
                 [self back];
-//                
-//                NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//                [dict setValue:snsAccount.userName forKey:@"username"];
-//                [dict setValue:responseObject[@"data"][@"token"] forKey:@"token"];
-//                [[DFUser sharedManager]initWithDict:dict];
-//                
-//                NSLog(@"%@",[DFUser sharedManager].username);
-//                NSLog(@"%@",[DFUser sharedManager].token);
-//                self.username = snsAccount.userName;
-//                self.token = responseObject[@"data"][@"token"];
-//                [self loadViewIfNeeded];
-//                [self loginThiid];
-               
+
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 NSLog(@"%@",error);
@@ -190,16 +180,13 @@
 - (void)loginSuccess{
     
     NSMutableDictionary *parmates = [NSMutableDictionary dictionary];
-    NSString *result = [self md5:self.pwdText.text];
+    NSString *result = [self.pwdText.text MD5];
     parmates[@"password"] = result;
     parmates[@"username"] = self.accont.text;
     
     [[AFHTTPSessionManager manager]POST:@"http://10.0.0.30:8080/appMember/account/login.htm" parameters:parmates progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-      
-        
         NSNumber *compareCode = [NSNumber numberWithInt:0];
         NSNumber *code = responseObject[@"code"];
         if ([code isEqualToNumber:compareCode]) {
@@ -207,15 +194,10 @@
             //数据存储
             NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
             [userDefault setObject:self.accont.text forKey:@"username"];
-            //[userDefault setObject:self.pwdText.text forKey:@"password"];
             [userDefault setObject:responseObject[@"data"][@"token"] forKey:@"token"];
             [userDefault synchronize];
             [[DFUser sharedManager]initWithDict:userDefault];
-            
-            //单例模式数据
-//            [DFUser sharedManager].username = [userDefault objectForKey:@"username"];
-//            [DFUser sharedManager].token = [userDefault objectForKey:@"token"];
-//            
+            [self loadIcon];
             [self dismissViewControllerAnimated:YES completion:nil];
             //直接返回主控制器
             [self back];
@@ -239,6 +221,29 @@
 
     
 }
+
+- (void)loadIcon{
+    
+    NSString *url = [MemberAPI stringByAppendingString:apiStr(@"getAvator.htm")];
+    NSLog(@"tokrn = %@",[DFUser sharedManager].token);
+    [self.manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *imgName = responseObject[@"data"];
+        if (imgName.length > 0) {
+            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+            [userDefault setObject:imgName forKey:@"icon"];
+            [userDefault synchronize];
+            [[DFUser sharedManager] saveIcon:userDefault];
+            
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+
+
 //取消动画，并通知上一个页面返回首页
 - (void)back{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -260,21 +265,5 @@
 - (void)viewDidDisappear:(BOOL)animated{
     [SVProgressHUD dismiss];
 }
-
-- (NSString *) md5:(NSString *) input {
-    const char *cStr = [input UTF8String];
-    unsigned char digest[CC_MD5_DIGEST_LENGTH];
-    CC_MD5( cStr, strlen(cStr), digest ); // This is the md5 call
-    
-    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    
-    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-        [output appendFormat:@"%02x", digest[i]];
-    
-    return  output;
-}
-
-
-
 
 @end

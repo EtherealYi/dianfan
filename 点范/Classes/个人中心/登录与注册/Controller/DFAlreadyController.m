@@ -43,6 +43,7 @@ static NSString * const CellID = @"Me";
 static NSString *AlreadyID = @"AlreadyCell";
 static NSString *PersonalID = @"PersonalID";
 
+#pragma mark - 懒加载
 -(DFHTTPSessionManager *)manager{
     if (!_manager) {
         _manager = [DFHTTPSessionManager manager];
@@ -55,6 +56,7 @@ static NSString *PersonalID = @"PersonalID";
     
 }
 
+#pragma mark - 初始化
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人中心";
@@ -65,10 +67,12 @@ static NSString *PersonalID = @"PersonalID";
     [self setupHeader];
     [self setNavItem];
     [self addChild];
-    [self loadIcon];
+    //[self loadIcon];
+    [self loadPublish];
 
 }
 - (void)addChild{
+    //添加子控件
     DFPersonalViewController *personCtr = [[DFPersonalViewController alloc]init];
     [self addChildViewController:personCtr];
     UIView *publishView = (UIView *)self.childViewControllers[0].view;
@@ -98,6 +102,7 @@ static NSString *PersonalID = @"PersonalID";
     
     self.navigationItem.rightBarButtonItems = @[settingItem,messageItem];
 }
+
 - (void)setupHeader{
     //头部视图
     UIView *headView = [[UIView alloc]init];
@@ -120,7 +125,6 @@ static NSString *PersonalID = @"PersonalID";
     imageView.df_centerX = headView.df_centerX;
     imageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGeture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pushToChoose)];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[DFUser sharedManager].icon] placeholderImage:nil options:SDWebImageProgressiveDownload];
     [imageView addGestureRecognizer:tapGeture];
     //设置为圆形
     imageView.layer.cornerRadius=imageView.frame.size.width/2;
@@ -128,7 +132,11 @@ static NSString *PersonalID = @"PersonalID";
     //  给头像加一个圆形边框
     imageView.layer.borderWidth = 1.5f;
     imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-    //[imageView sd_setImageWithURL:[NSURL URLWithString:@"http://10.0.0.30:8080/i/upload/image/avator/201610/dd178eaa-19da-4190-8c82-71541c02bc08.jpg"] placeholderImage:nil options:SDWebImageProgressiveDownload];
+    [imageView setImage:[UIImage imageNamed:@"X键"]];
+    if ([DFUser sharedManager].icon) {
+        [imageView sd_setImageWithURL:[NSURL URLWithString:[DFUser sharedManager].icon] placeholderImage:nil options:SDWebImageProgressiveDownload];
+    }
+
     self.iconImageView = imageView;
     
     //用户名
@@ -188,25 +196,53 @@ static NSString *PersonalID = @"PersonalID";
     
 }
 
+#pragma mark - 网络请求
 - (void)loadIcon{
-    NSString *url = [MemberAPI stringByAppendingString:apiStr(@"getAvator.htm")];
     
+    NSString *url = [MemberAPI stringByAppendingString:apiStr(@"getAvator.htm")];
+    NSLog(@"tokrn = %@",[DFUser sharedManager].token);
     [self.manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.imgName = responseObject[@"data"];
-        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-        [userDefault setObject:self.imgName forKey:@"icon"];
-        [[DFUser sharedManager] saveIcon:userDefault];
-        //回到主线程刷新UI
-        dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.imgName.length > 0) {
+            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+            [userDefault setObject:self.imgName forKey:@"icon"];
+            [[DFUser sharedManager] saveIcon:userDefault];
+            //回到主线程刷新UI
              [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:self.imgName] placeholderImage:nil options:SDWebImageProgressiveDownload];
-        });
+        }
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
        
     }];
 }
-
+- (void)loadPublish{
+    
+    return ;
+    NSString *url1 = [NSString stringWithFormat:@"http://10.0.0.30:8080/appMember/login/member/myDishTemplates.htm?token=%@",[DFUser sharedManager].token];
+    [self.manager GET:url1 parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
+    
+    NSString *url = [NSString stringWithFormat:@"http://10.0.0.30:8080/appMember/login/member/myDishTemplateResults.htm?token=%@",[DFUser sharedManager].token];
+    
+    NSMutableDictionary *parmater = [NSMutableDictionary dictionary];
+    parmater[@"isMarketable"] = @"false";
+    [self.manager GET:url parameters:parmater progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
 
 #pragma mark - 页面跳转
 - (void)pushToSetting{

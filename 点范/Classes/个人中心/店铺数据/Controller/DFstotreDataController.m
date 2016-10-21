@@ -118,7 +118,7 @@ static NSString *const storeData = @"storeData";
             DFBarChart *barChart = [DFBarChart DF_ViewFromXib];
             barChart.df_width = cell.df_width;
             barChart.df_height = cell.df_height;
-            [barChart setBarView];
+            //[barChart setBarView];
             if (self.isSetup == YES) {
                 barChart.pieChart.displayAnimated = NO;
             }

@@ -25,7 +25,8 @@ UIKIT_EXTERN NSString const *AccountAPI;
 UIKIT_EXTERN NSString const *UploadAPI;
 /** ping++ */
 UIKIT_EXTERN NSString const *PingAPI;
-///** 上传Logo */
-//UIKIT_EXTERN NSString const *upLoadLogo;
-///** 上传头像 */
-//UIKIT_EXTERN NSString const *upLoadAvator;
+/** 菜品数据接口 */
+UIKIT_EXTERN NSString const *DishAPI;
+
+
+

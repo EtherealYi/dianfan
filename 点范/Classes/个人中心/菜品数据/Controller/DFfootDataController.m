@@ -13,10 +13,20 @@
 #import "DFVoiceEvaducte.h"
 #import "DFGeneralComment.h"
 #import "DFQuestionCell.h"
+#import "DFHTTPSessionManager.h"
+#import "DFfootDataModel.h"
+#import "MJExtension.h"
 
 @interface DFfootDataController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)UITableView *tableView;
+
+@property (nonatomic,strong)DFHTTPSessionManager *manager;
+
+@property (nonatomic,strong)DFfootDataModel *footArrays;
+@property (nonatomic,strong)NSArray *firtArrays;
+@property (nonatomic,strong)NSArray *secondArrays;
+@property (nonatomic,strong)NSArray *thirdArrays;
 
 @end
 
@@ -24,13 +34,42 @@
 
 static NSString *cellID = @"footData";
 
+- (DFHTTPSessionManager *)manager{
+    if (!_manager) {
+        _manager = [DFHTTPSessionManager manager];
+    }
+    return _manager;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"菜品数据";
     self.view.backgroundColor = [UIColor whiteColor];
-    //[self setPNChat];
     [self setupTableView];
+    [self loadDish];
+}
+
+- (void)loadDish{
+    NSString *url = @"http://10.0.0.30:8080/appMember/login/dish/viewDish.htm?token=f742c54d-bde1-496e-930b-0802db50b8b6";
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    parameter[@"id"]    = @"759";
+    parameter[@"year"]  = @"2016";
+    parameter[@"month"] = @"9";
+    parameter[@"data"]  = @"28";
+    [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        self.footArrays = [DFfootDataModel mj_objectWithKeyValues:responseObject[@"data"]];
+        self.footArrays.stroreFoot = [DFStoreViewModel mj_objectWithKeyValues:responseObject[@"data"][@"dish"]];
+        self.footArrays.areaModel = [DFAreaModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"areaAndRatio"]];
+        self.footArrays.genderRatio = [DFGenderRatio mj_objectWithKeyValues:responseObject[@"data"][@"genderRatio"]];
+        
+        [self.tableView reloadData];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 - (void)setupTableView{
@@ -56,12 +95,12 @@ static NSString *cellID = @"footData";
     if (indexPath.section == 0) {
         DFfootDataHeader *cell = [DFfootDataHeader DF_ViewFromXib];
         cell.userInteractionEnabled = NO;
-        [cell setupBoy];
-        [cell setupFootfrom];
+        cell.footModel = self.footArrays;
+        [cell setArea];
+        [cell setPNChart];
         return cell;
     }else if (indexPath.section == 1){
         DFfootReadTendency *cell = [DFfootReadTendency DF_ViewFromXib];
-        [cell setupTendency];
         return cell;
     }else if (indexPath.section == 2){
         DFGeneralComment *cell = [DFGeneralComment DF_ViewFromXib];
@@ -70,8 +109,6 @@ static NSString *cellID = @"footData";
         DFVoiceEvaducte *cell = [DFVoiceEvaducte DF_ViewFromXib];
         return cell;
     }
-    
-//    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     DFQuestionCell *cell = [DFQuestionCell DF_ViewFromXib];
     return cell;
 }

@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DFfootDataModel.h"
+#import "DFAreaModel.h"
 
 @interface DFfootDataHeader : UITableViewCell
 
+@property (nonatomic,strong)DFfootDataModel *footModel;
 
-- (void)setupBoy;
+//@property (nonatomic,strong)NSMutableArray<DFAreaModel *> *areaModel;
 
-- (void)setupFootfrom;
+
+
+- (void)setPNChart;
+
+- (void)setArea;
+
 @end

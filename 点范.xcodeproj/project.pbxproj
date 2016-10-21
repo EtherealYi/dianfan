@@ -11,11 +11,40 @@
 		E907A6411D90D0B900E91660 /* DFRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E907A6401D90D0B900E91660 /* DFRefreshHeader.m */; };
 		E907A6441D90DE3700E91660 /* DFResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E907A6431D90DE3700E91660 /* DFResultModel.m */; };
 		E907A6471D90EBA400E91660 /* DFRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = E907A6461D90EBA400E91660 /* DFRefreshFooter.m */; };
-		E907EAED1D9BAA1000AA76C0 /* DFTempWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E907EAEC1D9BAA1000AA76C0 /* DFTempWebViewController.m */; };
+		E90A141A1DB869F30026986B /* DFNoPublishController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14191DB869F30026986B /* DFNoPublishController.m */; };
+		E90A141D1DB86A0F0026986B /* DFMyPublishController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A141C1DB86A0F0026986B /* DFMyPublishController.m */; };
+		E90A14201DB8709C0026986B /* DFPersonalTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A141F1DB8709C0026986B /* DFPersonalTemplate.m */; };
+		E90A14271DB875770026986B /* DFPersonalTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14251DB875770026986B /* DFPersonalTemplateCell.m */; };
+		E90A14281DB875770026986B /* DFPersonalTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90A14261DB875770026986B /* DFPersonalTemplateCell.xib */; };
+		E90A142C1DB89FEC0026986B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E90A142B1DB89FEC0026986B /* Assets.xcassets */; };
+		E90A14691DB8AFBA0026986B /* DFBuySuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14301DB8AFBA0026986B /* DFBuySuccessController.m */; };
+		E90A146A1DB8AFBA0026986B /* DFBuyTempController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14321DB8AFBA0026986B /* DFBuyTempController.m */; };
+		E90A146B1DB8AFBA0026986B /* DFbuyContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14361DB8AFBA0026986B /* DFbuyContentCell.m */; };
+		E90A146C1DB8AFBA0026986B /* DFbuyContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90A14371DB8AFBA0026986B /* DFbuyContentCell.xib */; };
+		E90A146D1DB8AFBA0026986B /* DFbuyheaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14391DB8AFBA0026986B /* DFbuyheaderCell.m */; };
+		E90A146E1DB8AFBA0026986B /* DFbuyheaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90A143A1DB8AFBA0026986B /* DFbuyheaderCell.xib */; };
+		E90A146F1DB8AFBA0026986B /* DFPayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A143C1DB8AFBA0026986B /* DFPayViewCell.m */; };
+		E90A14701DB8AFBA0026986B /* DFPayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90A143D1DB8AFBA0026986B /* DFPayViewCell.xib */; };
+		E90A14711DB8AFBA0026986B /* DFTemplateSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14411DB8AFBA0026986B /* DFTemplateSelectController.m */; };
+		E90A14721DB8AFBA0026986B /* DFeditTempalteController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14471DB8AFBA0026986B /* DFeditTempalteController.m */; };
+		E90A14731DB8AFBA0026986B /* DFfootCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14491DB8AFBA0026986B /* DFfootCollectionController.m */; };
+		E90A14741DB8AFBA0026986B /* DFTempWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A144B1DB8AFBA0026986B /* DFTempWebViewController.m */; };
+		E90A14751DB8AFBA0026986B /* DFLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A144F1DB8AFBA0026986B /* DFLineLayout.m */; };
+		E90A14761DB8AFBA0026986B /* DFResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14511DB8AFBA0026986B /* DFResultCell.m */; };
+		E90A14771DB8AFBA0026986B /* DFResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90A14521DB8AFBA0026986B /* DFResultCell.xib */; };
+		E90A14781DB8AFBA0026986B /* DFTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14541DB8AFBA0026986B /* DFTemplateCell.m */; };
+		E90A14791DB8AFBA0026986B /* DFTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90A14551DB8AFBA0026986B /* DFTemplateCell.xib */; };
+		E90A147A1DB8AFBA0026986B /* DFTemplateSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14571DB8AFBA0026986B /* DFTemplateSelectCell.m */; };
+		E90A147B1DB8AFBA0026986B /* DFRecTemplateController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A145B1DB8AFBA0026986B /* DFRecTemplateController.m */; };
+		E90A147C1DB8AFBA0026986B /* DFRecCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14611DB8AFBA0026986B /* DFRecCollection.m */; };
+		E90A147D1DB8AFBA0026986B /* DFRecCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14651DB8AFBA0026986B /* DFRecCell.m */; };
+		E90A147E1DB8AFBA0026986B /* DFRecCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90A14661DB8AFBA0026986B /* DFRecCell.xib */; };
+		E90A147F1DB8AFBA0026986B /* DFRecheader.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14681DB8AFBA0026986B /* DFRecheader.m */; };
+		E90A14931DB8B3270026986B /* DFPrewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14921DB8B3270026986B /* DFPrewViewController.m */; };
+		E90A14971DB8B7E10026986B /* DFPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14951DB8B7E10026986B /* DFPublishViewController.m */; };
+		E90A14981DB8B7E10026986B /* DFPublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90A14961DB8B7E10026986B /* DFPublishViewController.xib */; };
 		E921FCB81DB075710081F317 /* DFiconChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E921FCB71DB075710081F317 /* DFiconChooseController.m */; };
 		E921FCC11DB0DE220081F317 /* DFPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E921FCC01DB0DE220081F317 /* DFPersonalViewController.m */; };
-		E927EF961D87D07A00ED5B6E /* DFeditTempalteController.m in Sources */ = {isa = PBXBuildFile; fileRef = E927EF951D87D07A00ED5B6E /* DFeditTempalteController.m */; };
-		E927EFDB1D87F65C00ED5B6E /* DFLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E927EFDA1D87F65C00ED5B6E /* DFLineLayout.m */; };
 		E93A5A061D813AC10050232C /* DFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A5A051D813AC10050232C /* DFUser.m */; };
 		E93D19CC1DA9DCC0009D30AB /* JXBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D19CB1DA9DCC0009D30AB /* JXBarChartView.m */; };
 		E93D19CF1DAA3474009D30AB /* DFStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D19CE1DAA3474009D30AB /* DFStarView.m */; };
@@ -34,21 +63,14 @@
 		E95624621D8E9AD80066C22C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E95624611D8E9AD80066C22C /* libz.tbd */; };
 		E95624651D8EA8E00066C22C /* DFMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E95624641D8EA8E00066C22C /* DFMessage.m */; };
 		E957EBBC1DAB7DB000164805 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E957EBBB1DAB7DB000164805 /* libc++.tbd */; };
-		E96234371D96662D00578E94 /* DFTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96234351D96662D00578E94 /* DFTemplateCell.m */; };
-		E96234381D96662D00578E94 /* DFTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96234361D96662D00578E94 /* DFTemplateCell.xib */; };
-		E962343F1D96727400578E94 /* DFResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E962343D1D96727400578E94 /* DFResultCell.m */; };
-		E96234401D96727400578E94 /* DFResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E962343E1D96727400578E94 /* DFResultCell.xib */; };
 		E9678F741D9E00CC0043F9C6 /* testVideo.html in Resources */ = {isa = PBXBuildFile; fileRef = E9678F731D9E00CC0043F9C6 /* testVideo.html */; };
-		E968C37C1D9CB6EC00B5B823 /* DFBuyTempController.m in Sources */ = {isa = PBXBuildFile; fileRef = E968C37B1D9CB6EC00B5B823 /* DFBuyTempController.m */; };
 		E971C0381D825ACB004C4E94 /* DFTopImg.m in Sources */ = {isa = PBXBuildFile; fileRef = E971C0371D825ACB004C4E94 /* DFTopImg.m */; };
 		E971C03C1D8265AB004C4E94 /* DFForgetPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = E971C03A1D8265AB004C4E94 /* DFForgetPassword.m */; };
 		E971C03D1D8265AB004C4E94 /* DFForgetPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = E971C03B1D8265AB004C4E94 /* DFForgetPassword.xib */; };
-		E971C0401D82B102004C4E94 /* DFRecheader.m in Sources */ = {isa = PBXBuildFile; fileRef = E971C03F1D82B102004C4E94 /* DFRecheader.m */; };
+		E971E4FD1DB9ABBB0037528B /* DFGenderRatio.m in Sources */ = {isa = PBXBuildFile; fileRef = E971E4FC1DB9ABBB0037528B /* DFGenderRatio.m */; };
 		E973F60B1D9E185C001D9C3F /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E973F60A1D9E185C001D9C3F /* JavaScriptCore.framework */; };
 		E973F60D1D9E1D81001D9C3F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E973F60C1D9E1D81001D9C3F /* AVFoundation.framework */; };
 		E97EFE7A1DA7EB3300ED3DC1 /* DFTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E97EFE791DA7EB3300ED3DC1 /* DFTestViewController.m */; };
-		E98431B11D9A6900004C425D /* DFTemplateSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E98431B01D9A6900004C425D /* DFTemplateSelectCell.m */; };
-		E98431B41D9A69DA004C425D /* DFTemplateSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = E98431B31D9A69DA004C425D /* DFTemplateSelectController.m */; };
 		E99F4A041DA8CF07003F71D1 /* DFfootDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99F49E71DA8CF07003F71D1 /* DFfootDataController.m */; };
 		E99F4A051DA8CF07003F71D1 /* DFAlreadyController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99F49ED1DA8CF07003F71D1 /* DFAlreadyController.m */; };
 		E99F4A061DA8CF07003F71D1 /* DFMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99F49EF1DA8CF07003F71D1 /* DFMeViewController.m */; };
@@ -72,7 +94,6 @@
 		E99F4A471DA8D11B003F71D1 /* DFBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E99F4A431DA8D11B003F71D1 /* DFBarChart.m */; };
 		E99F4A481DA8D11B003F71D1 /* DFBarChart.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99F4A441DA8D11B003F71D1 /* DFBarChart.xib */; };
 		E99F4A491DA8D11B003F71D1 /* DFPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E99F4A461DA8D11B003F71D1 /* DFPieChart.m */; };
-		E9A47B2C1D892D5200309821 /* DFfootCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A47B2B1D892D5200309821 /* DFfootCollectionController.m */; };
 		E9A9CE1A1D923A9F00257459 /* UILabel+DFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A9CE191D923A9F00257459 /* UILabel+DFExtension.m */; };
 		E9B0138C1D8F846F002E4DD8 /* DFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B0137E1D8F846F002E4DD8 /* DFButton.m */; };
 		E9B0138D1D8F846F002E4DD8 /* DFConst.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B013801D8F846F002E4DD8 /* DFConst.m */; };
@@ -95,16 +116,11 @@
 		E9C348611DAE37D300DAAEEE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C348601DAE37D300DAAEEE /* QuartzCore.framework */; };
 		E9C348631DAE37F500DAAEEE /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C348621DAE37F500DAAEEE /* libsqlite3.0.tbd */; };
 		E9C348651DAE380F00DAAEEE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C348641DAE380F00DAAEEE /* CoreMotion.framework */; };
-		E9CBC37E1D9CCC6A00A8B64C /* DFbuyheaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CBC37C1D9CCC6A00A8B64C /* DFbuyheaderCell.m */; };
-		E9CBC37F1D9CCC6A00A8B64C /* DFbuyheaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CBC37D1D9CCC6A00A8B64C /* DFbuyheaderCell.xib */; };
-		E9CBC3831D9CF2D500A8B64C /* DFbuyContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CBC3811D9CF2D500A8B64C /* DFbuyContentCell.m */; };
-		E9CBC3841D9CF2D500A8B64C /* DFbuyContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CBC3821D9CF2D500A8B64C /* DFbuyContentCell.xib */; };
-		E9CBC3881D9D053400A8B64C /* DFPayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CBC3861D9D053400A8B64C /* DFPayViewCell.m */; };
-		E9CBC3891D9D053400A8B64C /* DFPayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CBC3871D9D053400A8B64C /* DFPayViewCell.xib */; };
 		E9CFE4DF1D9627A100F4099D /* DFReadMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CFE4DE1D9627A100F4099D /* DFReadMessage.m */; };
 		E9D6665D1D98B83000370510 /* DFMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D6665C1D98B83000370510 /* DFMerchant.m */; };
+		E9D9DEAC1DB4D55D00CC7A26 /* DFfootDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D9DEAB1DB4D55D00CC7A26 /* DFfootDataModel.m */; };
+		E9D9DEAF1DB4DDE900CC7A26 /* DFStoreViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D9DEAE1DB4DDE900CC7A26 /* DFStoreViewModel.m */; };
 		E9DAA3881DAF284700C9D999 /* DFBuyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DAA3871DAF284700C9D999 /* DFBuyModel.m */; };
-		E9DAA38E1DAF6E2200C9D999 /* DFBuySuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DAA38D1DAF6E2200C9D999 /* DFBuySuccessController.m */; };
 		E9DF04E21D7E622F0004B2AA /* DFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DF04E11D7E622F0004B2AA /* DFHomeViewController.m */; };
 		E9DF04F91D7EA9C80004B2AA /* DFMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DF04F61D7EA9C80004B2AA /* DFMessageController.m */; };
 		E9DF04FD1D7EA9EA0004B2AA /* DFMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DF04FB1D7EA9EA0004B2AA /* DFMessageCell.m */; };
@@ -116,14 +132,10 @@
 		E9E014C01D7F07000015D4C9 /* DFJapanFoodController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E014BF1D7F07000015D4C9 /* DFJapanFoodController.m */; };
 		E9E014C31D7F07260015D4C9 /* DFDessertController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E014C21D7F07260015D4C9 /* DFDessertController.m */; };
 		E9E014C61D7F076F0015D4C9 /* DFWestController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E014C51D7F076F0015D4C9 /* DFWestController.m */; };
-		E9E014CC1D7F0B4A0015D4C9 /* DFRecCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E014C91D7F0B4A0015D4C9 /* DFRecCollection.m */; };
-		E9E014D01D7F0B850015D4C9 /* DFRecCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E014CE1D7F0B850015D4C9 /* DFRecCell.m */; };
-		E9E014D11D7F0B850015D4C9 /* DFRecCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E014CF1D7F0B850015D4C9 /* DFRecCell.xib */; };
 		E9E201071D86535B00F805AD /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E201061D86535B00F805AD /* VPImageCropperViewController.m */; };
-		E9E2010A1D86BBA800F805AD /* DFRecTemplateController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E201091D86BBA800F805AD /* DFRecTemplateController.m */; };
+		E9ED17761DB76AA20072C240 /* DFAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ED17751DB76AA20072C240 /* DFAreaModel.m */; };
 		E9FB80911D7D2BF50083D39C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FB80901D7D2BF50083D39C /* main.m */; };
 		E9FB809A1D7D2BF50083D39C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FB80981D7D2BF50083D39C /* Main.storyboard */; };
-		E9FB809C1D7D2BF50083D39C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9FB809B1D7D2BF50083D39C /* Assets.xcassets */; };
 		E9FB809F1D7D2BF50083D39C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FB809D1D7D2BF50083D39C /* LaunchScreen.storyboard */; };
 		E9FB80AA1D7D2BF60083D39C /* __Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FB80A91D7D2BF60083D39C /* __Tests.m */; };
 		E9FB80B51D7D2BF60083D39C /* __UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FB80B41D7D2BF60083D39C /* __UITests.m */; };
@@ -165,16 +177,65 @@
 		E907A6431D90DE3700E91660 /* DFResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFResultModel.m; sourceTree = "<group>"; };
 		E907A6451D90EBA400E91660 /* DFRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFRefreshFooter.h; sourceTree = "<group>"; };
 		E907A6461D90EBA400E91660 /* DFRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFRefreshFooter.m; sourceTree = "<group>"; };
-		E907EAEB1D9BAA1000AA76C0 /* DFTempWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTempWebViewController.h; sourceTree = "<group>"; };
-		E907EAEC1D9BAA1000AA76C0 /* DFTempWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTempWebViewController.m; sourceTree = "<group>"; };
+		E90A14181DB869F30026986B /* DFNoPublishController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFNoPublishController.h; sourceTree = "<group>"; };
+		E90A14191DB869F30026986B /* DFNoPublishController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFNoPublishController.m; sourceTree = "<group>"; };
+		E90A141B1DB86A0F0026986B /* DFMyPublishController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFMyPublishController.h; sourceTree = "<group>"; };
+		E90A141C1DB86A0F0026986B /* DFMyPublishController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFMyPublishController.m; sourceTree = "<group>"; };
+		E90A141E1DB8709C0026986B /* DFPersonalTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPersonalTemplate.h; sourceTree = "<group>"; };
+		E90A141F1DB8709C0026986B /* DFPersonalTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPersonalTemplate.m; sourceTree = "<group>"; };
+		E90A14241DB875770026986B /* DFPersonalTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPersonalTemplateCell.h; sourceTree = "<group>"; };
+		E90A14251DB875770026986B /* DFPersonalTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPersonalTemplateCell.m; sourceTree = "<group>"; };
+		E90A14261DB875770026986B /* DFPersonalTemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFPersonalTemplateCell.xib; sourceTree = "<group>"; };
+		E90A142B1DB89FEC0026986B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E90A142F1DB8AFBA0026986B /* DFBuySuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFBuySuccessController.h; sourceTree = "<group>"; };
+		E90A14301DB8AFBA0026986B /* DFBuySuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFBuySuccessController.m; sourceTree = "<group>"; };
+		E90A14311DB8AFBA0026986B /* DFBuyTempController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFBuyTempController.h; sourceTree = "<group>"; };
+		E90A14321DB8AFBA0026986B /* DFBuyTempController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFBuyTempController.m; sourceTree = "<group>"; };
+		E90A14351DB8AFBA0026986B /* DFbuyContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFbuyContentCell.h; sourceTree = "<group>"; };
+		E90A14361DB8AFBA0026986B /* DFbuyContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFbuyContentCell.m; sourceTree = "<group>"; };
+		E90A14371DB8AFBA0026986B /* DFbuyContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFbuyContentCell.xib; sourceTree = "<group>"; };
+		E90A14381DB8AFBA0026986B /* DFbuyheaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFbuyheaderCell.h; sourceTree = "<group>"; };
+		E90A14391DB8AFBA0026986B /* DFbuyheaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFbuyheaderCell.m; sourceTree = "<group>"; };
+		E90A143A1DB8AFBA0026986B /* DFbuyheaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFbuyheaderCell.xib; sourceTree = "<group>"; };
+		E90A143B1DB8AFBA0026986B /* DFPayViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPayViewCell.h; sourceTree = "<group>"; };
+		E90A143C1DB8AFBA0026986B /* DFPayViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPayViewCell.m; sourceTree = "<group>"; };
+		E90A143D1DB8AFBA0026986B /* DFPayViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFPayViewCell.xib; sourceTree = "<group>"; };
+		E90A14401DB8AFBA0026986B /* DFTemplateSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTemplateSelectController.h; sourceTree = "<group>"; };
+		E90A14411DB8AFBA0026986B /* DFTemplateSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTemplateSelectController.m; sourceTree = "<group>"; };
+		E90A14461DB8AFBA0026986B /* DFeditTempalteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFeditTempalteController.h; sourceTree = "<group>"; };
+		E90A14471DB8AFBA0026986B /* DFeditTempalteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFeditTempalteController.m; sourceTree = "<group>"; };
+		E90A14481DB8AFBA0026986B /* DFfootCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFfootCollectionController.h; sourceTree = "<group>"; };
+		E90A14491DB8AFBA0026986B /* DFfootCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFfootCollectionController.m; sourceTree = "<group>"; };
+		E90A144A1DB8AFBA0026986B /* DFTempWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTempWebViewController.h; sourceTree = "<group>"; };
+		E90A144B1DB8AFBA0026986B /* DFTempWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTempWebViewController.m; sourceTree = "<group>"; };
+		E90A144E1DB8AFBA0026986B /* DFLineLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFLineLayout.h; sourceTree = "<group>"; };
+		E90A144F1DB8AFBA0026986B /* DFLineLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFLineLayout.m; sourceTree = "<group>"; };
+		E90A14501DB8AFBA0026986B /* DFResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFResultCell.h; sourceTree = "<group>"; };
+		E90A14511DB8AFBA0026986B /* DFResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFResultCell.m; sourceTree = "<group>"; };
+		E90A14521DB8AFBA0026986B /* DFResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFResultCell.xib; sourceTree = "<group>"; };
+		E90A14531DB8AFBA0026986B /* DFTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTemplateCell.h; sourceTree = "<group>"; };
+		E90A14541DB8AFBA0026986B /* DFTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTemplateCell.m; sourceTree = "<group>"; };
+		E90A14551DB8AFBA0026986B /* DFTemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFTemplateCell.xib; sourceTree = "<group>"; };
+		E90A14561DB8AFBA0026986B /* DFTemplateSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTemplateSelectCell.h; sourceTree = "<group>"; };
+		E90A14571DB8AFBA0026986B /* DFTemplateSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTemplateSelectCell.m; sourceTree = "<group>"; };
+		E90A145A1DB8AFBA0026986B /* DFRecTemplateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFRecTemplateController.h; sourceTree = "<group>"; };
+		E90A145B1DB8AFBA0026986B /* DFRecTemplateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFRecTemplateController.m; sourceTree = "<group>"; };
+		E90A14601DB8AFBA0026986B /* DFRecCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFRecCollection.h; sourceTree = "<group>"; };
+		E90A14611DB8AFBA0026986B /* DFRecCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFRecCollection.m; sourceTree = "<group>"; };
+		E90A14641DB8AFBA0026986B /* DFRecCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFRecCell.h; sourceTree = "<group>"; };
+		E90A14651DB8AFBA0026986B /* DFRecCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFRecCell.m; sourceTree = "<group>"; };
+		E90A14661DB8AFBA0026986B /* DFRecCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFRecCell.xib; sourceTree = "<group>"; };
+		E90A14671DB8AFBA0026986B /* DFRecheader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFRecheader.h; sourceTree = "<group>"; };
+		E90A14681DB8AFBA0026986B /* DFRecheader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFRecheader.m; sourceTree = "<group>"; };
+		E90A14911DB8B3270026986B /* DFPrewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPrewViewController.h; sourceTree = "<group>"; };
+		E90A14921DB8B3270026986B /* DFPrewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPrewViewController.m; sourceTree = "<group>"; };
+		E90A14941DB8B7E10026986B /* DFPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPublishViewController.h; sourceTree = "<group>"; };
+		E90A14951DB8B7E10026986B /* DFPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPublishViewController.m; sourceTree = "<group>"; };
+		E90A14961DB8B7E10026986B /* DFPublishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFPublishViewController.xib; sourceTree = "<group>"; };
 		E921FCB61DB075710081F317 /* DFiconChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFiconChooseController.h; sourceTree = "<group>"; };
 		E921FCB71DB075710081F317 /* DFiconChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFiconChooseController.m; sourceTree = "<group>"; };
 		E921FCBF1DB0DE220081F317 /* DFPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPersonalViewController.h; sourceTree = "<group>"; };
 		E921FCC01DB0DE220081F317 /* DFPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPersonalViewController.m; sourceTree = "<group>"; };
-		E927EF941D87D07A00ED5B6E /* DFeditTempalteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFeditTempalteController.h; sourceTree = "<group>"; };
-		E927EF951D87D07A00ED5B6E /* DFeditTempalteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFeditTempalteController.m; sourceTree = "<group>"; };
-		E927EFD91D87F65C00ED5B6E /* DFLineLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFLineLayout.h; sourceTree = "<group>"; };
-		E927EFDA1D87F65C00ED5B6E /* DFLineLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFLineLayout.m; sourceTree = "<group>"; };
 		E93A5A041D813AC10050232C /* DFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUser.h; sourceTree = "<group>"; };
 		E93A5A051D813AC10050232C /* DFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFUser.m; sourceTree = "<group>"; };
 		E93D19CA1DA9DCC0009D30AB /* JXBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXBarChartView.h; sourceTree = "<group>"; };
@@ -201,30 +262,18 @@
 		E95624631D8EA8E00066C22C /* DFMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFMessage.h; sourceTree = "<group>"; };
 		E95624641D8EA8E00066C22C /* DFMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFMessage.m; sourceTree = "<group>"; };
 		E957EBBB1DAB7DB000164805 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		E96234341D96662D00578E94 /* DFTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTemplateCell.h; sourceTree = "<group>"; };
-		E96234351D96662D00578E94 /* DFTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTemplateCell.m; sourceTree = "<group>"; };
-		E96234361D96662D00578E94 /* DFTemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFTemplateCell.xib; sourceTree = "<group>"; };
-		E962343C1D96727400578E94 /* DFResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFResultCell.h; sourceTree = "<group>"; };
-		E962343D1D96727400578E94 /* DFResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFResultCell.m; sourceTree = "<group>"; };
-		E962343E1D96727400578E94 /* DFResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFResultCell.xib; sourceTree = "<group>"; };
 		E9678F731D9E00CC0043F9C6 /* testVideo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = testVideo.html; sourceTree = "<group>"; };
-		E968C37A1D9CB6EC00B5B823 /* DFBuyTempController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFBuyTempController.h; sourceTree = "<group>"; };
-		E968C37B1D9CB6EC00B5B823 /* DFBuyTempController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFBuyTempController.m; sourceTree = "<group>"; };
 		E971C0361D825ACB004C4E94 /* DFTopImg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTopImg.h; sourceTree = "<group>"; };
 		E971C0371D825ACB004C4E94 /* DFTopImg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTopImg.m; sourceTree = "<group>"; };
 		E971C0391D8265AB004C4E94 /* DFForgetPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFForgetPassword.h; sourceTree = "<group>"; };
 		E971C03A1D8265AB004C4E94 /* DFForgetPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFForgetPassword.m; sourceTree = "<group>"; };
 		E971C03B1D8265AB004C4E94 /* DFForgetPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFForgetPassword.xib; sourceTree = "<group>"; };
-		E971C03E1D82B102004C4E94 /* DFRecheader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFRecheader.h; sourceTree = "<group>"; };
-		E971C03F1D82B102004C4E94 /* DFRecheader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFRecheader.m; sourceTree = "<group>"; };
+		E971E4FB1DB9ABBB0037528B /* DFGenderRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGenderRatio.h; sourceTree = "<group>"; };
+		E971E4FC1DB9ABBB0037528B /* DFGenderRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGenderRatio.m; sourceTree = "<group>"; };
 		E973F60A1D9E185C001D9C3F /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		E973F60C1D9E1D81001D9C3F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E97EFE781DA7EB3300ED3DC1 /* DFTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTestViewController.h; sourceTree = "<group>"; };
 		E97EFE791DA7EB3300ED3DC1 /* DFTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTestViewController.m; sourceTree = "<group>"; };
-		E98431AF1D9A6900004C425D /* DFTemplateSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTemplateSelectCell.h; sourceTree = "<group>"; };
-		E98431B01D9A6900004C425D /* DFTemplateSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTemplateSelectCell.m; sourceTree = "<group>"; };
-		E98431B21D9A69DA004C425D /* DFTemplateSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTemplateSelectController.h; sourceTree = "<group>"; };
-		E98431B31D9A69DA004C425D /* DFTemplateSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTemplateSelectController.m; sourceTree = "<group>"; };
 		E99F49E61DA8CF07003F71D1 /* DFfootDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFfootDataController.h; sourceTree = "<group>"; };
 		E99F49E71DA8CF07003F71D1 /* DFfootDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFfootDataController.m; sourceTree = "<group>"; };
 		E99F49EC1DA8CF07003F71D1 /* DFAlreadyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFAlreadyController.h; sourceTree = "<group>"; };
@@ -264,8 +313,6 @@
 		E99F4A441DA8D11B003F71D1 /* DFBarChart.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFBarChart.xib; sourceTree = "<group>"; };
 		E99F4A451DA8D11B003F71D1 /* DFPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPieChart.h; sourceTree = "<group>"; };
 		E99F4A461DA8D11B003F71D1 /* DFPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPieChart.m; sourceTree = "<group>"; };
-		E9A47B2A1D892D5200309821 /* DFfootCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFfootCollectionController.h; sourceTree = "<group>"; };
-		E9A47B2B1D892D5200309821 /* DFfootCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFfootCollectionController.m; sourceTree = "<group>"; };
 		E9A9CE181D923A9F00257459 /* UILabel+DFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+DFExtension.h"; sourceTree = "<group>"; };
 		E9A9CE191D923A9F00257459 /* UILabel+DFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+DFExtension.m"; sourceTree = "<group>"; };
 		E9B0137D1D8F846F002E4DD8 /* DFButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFButton.h; sourceTree = "<group>"; };
@@ -307,23 +354,16 @@
 		E9C348601DAE37D300DAAEEE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E9C348621DAE37F500DAAEEE /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		E9C348641DAE380F00DAAEEE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		E9CBC37B1D9CCC6A00A8B64C /* DFbuyheaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFbuyheaderCell.h; sourceTree = "<group>"; };
-		E9CBC37C1D9CCC6A00A8B64C /* DFbuyheaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFbuyheaderCell.m; sourceTree = "<group>"; };
-		E9CBC37D1D9CCC6A00A8B64C /* DFbuyheaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFbuyheaderCell.xib; sourceTree = "<group>"; };
-		E9CBC3801D9CF2D500A8B64C /* DFbuyContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFbuyContentCell.h; sourceTree = "<group>"; };
-		E9CBC3811D9CF2D500A8B64C /* DFbuyContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFbuyContentCell.m; sourceTree = "<group>"; };
-		E9CBC3821D9CF2D500A8B64C /* DFbuyContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFbuyContentCell.xib; sourceTree = "<group>"; };
-		E9CBC3851D9D053400A8B64C /* DFPayViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPayViewCell.h; sourceTree = "<group>"; };
-		E9CBC3861D9D053400A8B64C /* DFPayViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPayViewCell.m; sourceTree = "<group>"; };
-		E9CBC3871D9D053400A8B64C /* DFPayViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFPayViewCell.xib; sourceTree = "<group>"; };
 		E9CFE4DD1D9627A100F4099D /* DFReadMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFReadMessage.h; sourceTree = "<group>"; };
 		E9CFE4DE1D9627A100F4099D /* DFReadMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFReadMessage.m; sourceTree = "<group>"; };
 		E9D6665B1D98B83000370510 /* DFMerchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFMerchant.h; sourceTree = "<group>"; };
 		E9D6665C1D98B83000370510 /* DFMerchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFMerchant.m; sourceTree = "<group>"; };
+		E9D9DEAA1DB4D55D00CC7A26 /* DFfootDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFfootDataModel.h; sourceTree = "<group>"; };
+		E9D9DEAB1DB4D55D00CC7A26 /* DFfootDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFfootDataModel.m; sourceTree = "<group>"; };
+		E9D9DEAD1DB4DDE900CC7A26 /* DFStoreViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFStoreViewModel.h; sourceTree = "<group>"; };
+		E9D9DEAE1DB4DDE900CC7A26 /* DFStoreViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFStoreViewModel.m; sourceTree = "<group>"; };
 		E9DAA3861DAF284700C9D999 /* DFBuyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFBuyModel.h; sourceTree = "<group>"; };
 		E9DAA3871DAF284700C9D999 /* DFBuyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFBuyModel.m; sourceTree = "<group>"; };
-		E9DAA38C1DAF6E2200C9D999 /* DFBuySuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DFBuySuccessController.h; path = "../../../个人中心/登录与注册/Controller/DFBuySuccessController.h"; sourceTree = "<group>"; };
-		E9DAA38D1DAF6E2200C9D999 /* DFBuySuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DFBuySuccessController.m; path = "../../../个人中心/登录与注册/Controller/DFBuySuccessController.m"; sourceTree = "<group>"; };
 		E9DF04E01D7E622F0004B2AA /* DFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFHomeViewController.h; sourceTree = "<group>"; };
 		E9DF04E11D7E622F0004B2AA /* DFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFHomeViewController.m; sourceTree = "<group>"; };
 		E9DF04F51D7EA9C80004B2AA /* DFMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFMessageController.h; sourceTree = "<group>"; };
@@ -344,19 +384,13 @@
 		E9E014C21D7F07260015D4C9 /* DFDessertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFDessertController.m; sourceTree = "<group>"; };
 		E9E014C41D7F076F0015D4C9 /* DFWestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFWestController.h; sourceTree = "<group>"; };
 		E9E014C51D7F076F0015D4C9 /* DFWestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFWestController.m; sourceTree = "<group>"; };
-		E9E014C81D7F0B4A0015D4C9 /* DFRecCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFRecCollection.h; sourceTree = "<group>"; };
-		E9E014C91D7F0B4A0015D4C9 /* DFRecCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFRecCollection.m; sourceTree = "<group>"; };
-		E9E014CD1D7F0B850015D4C9 /* DFRecCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFRecCell.h; sourceTree = "<group>"; };
-		E9E014CE1D7F0B850015D4C9 /* DFRecCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFRecCell.m; sourceTree = "<group>"; };
-		E9E014CF1D7F0B850015D4C9 /* DFRecCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFRecCell.xib; sourceTree = "<group>"; };
 		E9E201051D86535B00F805AD /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
 		E9E201061D86535B00F805AD /* VPImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPImageCropperViewController.m; sourceTree = "<group>"; };
-		E9E201081D86BBA800F805AD /* DFRecTemplateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFRecTemplateController.h; sourceTree = "<group>"; };
-		E9E201091D86BBA800F805AD /* DFRecTemplateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFRecTemplateController.m; sourceTree = "<group>"; };
+		E9ED17741DB76AA20072C240 /* DFAreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFAreaModel.h; sourceTree = "<group>"; };
+		E9ED17751DB76AA20072C240 /* DFAreaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFAreaModel.m; sourceTree = "<group>"; };
 		E9FB808C1D7D2BF50083D39C /* 点范.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "点范.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FB80901D7D2BF50083D39C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E9FB80991D7D2BF50083D39C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E9FB809B1D7D2BF50083D39C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9FB809E1D7D2BF50083D39C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9FB80A01D7D2BF50083D39C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9FB80A51D7D2BF60083D39C /* 点范Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "点范Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -455,6 +489,237 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E90A142D1DB8AFBA0026986B /* 购买 */ = {
+			isa = PBXGroup;
+			children = (
+				E90A142E1DB8AFBA0026986B /* Controler */,
+				E90A14331DB8AFBA0026986B /* Model */,
+				E90A14341DB8AFBA0026986B /* View */,
+			);
+			path = "购买";
+			sourceTree = "<group>";
+		};
+		E90A142E1DB8AFBA0026986B /* Controler */ = {
+			isa = PBXGroup;
+			children = (
+				E90A142F1DB8AFBA0026986B /* DFBuySuccessController.h */,
+				E90A14301DB8AFBA0026986B /* DFBuySuccessController.m */,
+				E90A14311DB8AFBA0026986B /* DFBuyTempController.h */,
+				E90A14321DB8AFBA0026986B /* DFBuyTempController.m */,
+			);
+			path = Controler;
+			sourceTree = "<group>";
+		};
+		E90A14331DB8AFBA0026986B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E90A14341DB8AFBA0026986B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E90A14351DB8AFBA0026986B /* DFbuyContentCell.h */,
+				E90A14361DB8AFBA0026986B /* DFbuyContentCell.m */,
+				E90A14371DB8AFBA0026986B /* DFbuyContentCell.xib */,
+				E90A14381DB8AFBA0026986B /* DFbuyheaderCell.h */,
+				E90A14391DB8AFBA0026986B /* DFbuyheaderCell.m */,
+				E90A143A1DB8AFBA0026986B /* DFbuyheaderCell.xib */,
+				E90A143B1DB8AFBA0026986B /* DFPayViewCell.h */,
+				E90A143C1DB8AFBA0026986B /* DFPayViewCell.m */,
+				E90A143D1DB8AFBA0026986B /* DFPayViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E90A143E1DB8AFBA0026986B /* 加一页 */ = {
+			isa = PBXGroup;
+			children = (
+				E90A143F1DB8AFBA0026986B /* Controler */,
+				E90A14421DB8AFBA0026986B /* Model */,
+				E90A14431DB8AFBA0026986B /* View */,
+			);
+			path = "加一页";
+			sourceTree = "<group>";
+		};
+		E90A143F1DB8AFBA0026986B /* Controler */ = {
+			isa = PBXGroup;
+			children = (
+				E90A14401DB8AFBA0026986B /* DFTemplateSelectController.h */,
+				E90A14411DB8AFBA0026986B /* DFTemplateSelectController.m */,
+			);
+			path = Controler;
+			sourceTree = "<group>";
+		};
+		E90A14421DB8AFBA0026986B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E90A14431DB8AFBA0026986B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E90A14441DB8AFBA0026986B /* 模板编辑 */ = {
+			isa = PBXGroup;
+			children = (
+				E90A14451DB8AFBA0026986B /* Controler */,
+				E90A144C1DB8AFBA0026986B /* Model */,
+				E90A144D1DB8AFBA0026986B /* View */,
+			);
+			path = "模板编辑";
+			sourceTree = "<group>";
+		};
+		E90A14451DB8AFBA0026986B /* Controler */ = {
+			isa = PBXGroup;
+			children = (
+				E90A14461DB8AFBA0026986B /* DFeditTempalteController.h */,
+				E90A14471DB8AFBA0026986B /* DFeditTempalteController.m */,
+				E90A14481DB8AFBA0026986B /* DFfootCollectionController.h */,
+				E90A14491DB8AFBA0026986B /* DFfootCollectionController.m */,
+				E90A144A1DB8AFBA0026986B /* DFTempWebViewController.h */,
+				E90A144B1DB8AFBA0026986B /* DFTempWebViewController.m */,
+			);
+			path = Controler;
+			sourceTree = "<group>";
+		};
+		E90A144C1DB8AFBA0026986B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E90A144D1DB8AFBA0026986B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E90A144E1DB8AFBA0026986B /* DFLineLayout.h */,
+				E90A144F1DB8AFBA0026986B /* DFLineLayout.m */,
+				E90A14501DB8AFBA0026986B /* DFResultCell.h */,
+				E90A14511DB8AFBA0026986B /* DFResultCell.m */,
+				E90A14521DB8AFBA0026986B /* DFResultCell.xib */,
+				E90A14531DB8AFBA0026986B /* DFTemplateCell.h */,
+				E90A14541DB8AFBA0026986B /* DFTemplateCell.m */,
+				E90A14551DB8AFBA0026986B /* DFTemplateCell.xib */,
+				E90A14561DB8AFBA0026986B /* DFTemplateSelectCell.h */,
+				E90A14571DB8AFBA0026986B /* DFTemplateSelectCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E90A14581DB8AFBA0026986B /* 模板名称 */ = {
+			isa = PBXGroup;
+			children = (
+				E90A14591DB8AFBA0026986B /* Controler */,
+				E90A145C1DB8AFBA0026986B /* Model */,
+				E90A145D1DB8AFBA0026986B /* View */,
+			);
+			path = "模板名称";
+			sourceTree = "<group>";
+		};
+		E90A14591DB8AFBA0026986B /* Controler */ = {
+			isa = PBXGroup;
+			children = (
+				E90A145A1DB8AFBA0026986B /* DFRecTemplateController.h */,
+				E90A145B1DB8AFBA0026986B /* DFRecTemplateController.m */,
+			);
+			path = Controler;
+			sourceTree = "<group>";
+		};
+		E90A145C1DB8AFBA0026986B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E90A145D1DB8AFBA0026986B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E90A145E1DB8AFBA0026986B /* 推荐首页 */ = {
+			isa = PBXGroup;
+			children = (
+				E90A145F1DB8AFBA0026986B /* Controler */,
+				E90A14621DB8AFBA0026986B /* Model */,
+				E90A14631DB8AFBA0026986B /* View */,
+			);
+			path = "推荐首页";
+			sourceTree = "<group>";
+		};
+		E90A145F1DB8AFBA0026986B /* Controler */ = {
+			isa = PBXGroup;
+			children = (
+				E90A14601DB8AFBA0026986B /* DFRecCollection.h */,
+				E90A14611DB8AFBA0026986B /* DFRecCollection.m */,
+			);
+			path = Controler;
+			sourceTree = "<group>";
+		};
+		E90A14621DB8AFBA0026986B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E90A14631DB8AFBA0026986B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E90A14641DB8AFBA0026986B /* DFRecCell.h */,
+				E90A14651DB8AFBA0026986B /* DFRecCell.m */,
+				E90A14661DB8AFBA0026986B /* DFRecCell.xib */,
+				E90A14671DB8AFBA0026986B /* DFRecheader.h */,
+				E90A14681DB8AFBA0026986B /* DFRecheader.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E90A14871DB8B0BA0026986B /* 预览与发布 */ = {
+			isa = PBXGroup;
+			children = (
+				E90A14881DB8B0BA0026986B /* Controller */,
+				E90A148B1DB8B0BA0026986B /* Model */,
+				E90A148C1DB8B0BA0026986B /* View */,
+			);
+			path = "预览与发布";
+			sourceTree = "<group>";
+		};
+		E90A14881DB8B0BA0026986B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E90A14911DB8B3270026986B /* DFPrewViewController.h */,
+				E90A14921DB8B3270026986B /* DFPrewViewController.m */,
+				E90A14941DB8B7E10026986B /* DFPublishViewController.h */,
+				E90A14951DB8B7E10026986B /* DFPublishViewController.m */,
+				E90A14961DB8B7E10026986B /* DFPublishViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E90A148B1DB8B0BA0026986B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E90A148C1DB8B0BA0026986B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E93A5A031D8138F10050232C /* 单例用户 */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +751,12 @@
 		E99F49E81DA8CF07003F71D1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E9D9DEAA1DB4D55D00CC7A26 /* DFfootDataModel.h */,
+				E9D9DEAB1DB4D55D00CC7A26 /* DFfootDataModel.m */,
+				E9ED17741DB76AA20072C240 /* DFAreaModel.h */,
+				E9ED17751DB76AA20072C240 /* DFAreaModel.m */,
+				E971E4FB1DB9ABBB0037528B /* DFGenderRatio.h */,
+				E971E4FC1DB9ABBB0037528B /* DFGenderRatio.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -539,6 +810,10 @@
 				E921FCC01DB0DE220081F317 /* DFPersonalViewController.m */,
 				E9546B041DB1E53000C8B06E /* DFPublishController.h */,
 				E9546B051DB1E53000C8B06E /* DFPublishController.m */,
+				E90A14181DB869F30026986B /* DFNoPublishController.h */,
+				E90A14191DB869F30026986B /* DFNoPublishController.m */,
+				E90A141B1DB86A0F0026986B /* DFMyPublishController.h */,
+				E90A141C1DB86A0F0026986B /* DFMyPublishController.m */,
 				E9546B071DB207C100C8B06E /* DFSettingViewController.h */,
 				E9546B081DB207C100C8B06E /* DFSettingViewController.m */,
 			);
@@ -548,6 +823,8 @@
 		E99F49F01DA8CF07003F71D1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E90A141E1DB8709C0026986B /* DFPersonalTemplate.h */,
+				E90A141F1DB8709C0026986B /* DFPersonalTemplate.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -560,6 +837,9 @@
 				E99F4A341DA8D0EF003F71D1 /* DFDataView.xib */,
 				E9546B0A1DB20B2900C8B06E /* DFSettingHeader.h */,
 				E9546B0B1DB20B2900C8B06E /* DFSettingHeader.m */,
+				E90A14241DB875770026986B /* DFPersonalTemplateCell.h */,
+				E90A14251DB875770026986B /* DFPersonalTemplateCell.m */,
+				E90A14261DB875770026986B /* DFPersonalTemplateCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -586,6 +866,8 @@
 		E99F49F61DA8CF07003F71D1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E9D9DEAD1DB4DDE900CC7A26 /* DFStoreViewModel.h */,
+				E9D9DEAE1DB4DDE900CC7A26 /* DFStoreViewModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -851,9 +1133,13 @@
 		E9E014B11D7F055A0015D4C9 /* 推荐 */ = {
 			isa = PBXGroup;
 			children = (
-				E9E014C71D7F0B4A0015D4C9 /* Controller */,
+				E90A14871DB8B0BA0026986B /* 预览与发布 */,
+				E90A142D1DB8AFBA0026986B /* 购买 */,
+				E90A143E1DB8AFBA0026986B /* 加一页 */,
+				E90A14441DB8AFBA0026986B /* 模板编辑 */,
+				E90A14581DB8AFBA0026986B /* 模板名称 */,
+				E90A145E1DB8AFBA0026986B /* 推荐首页 */,
 				E9E014CA1D7F0B4A0015D4C9 /* Model */,
-				E9E014CB1D7F0B4A0015D4C9 /* View */,
 			);
 			path = "推荐";
 			sourceTree = "<group>";
@@ -885,29 +1171,6 @@
 			path = "西餐";
 			sourceTree = "<group>";
 		};
-		E9E014C71D7F0B4A0015D4C9 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				E9E014C81D7F0B4A0015D4C9 /* DFRecCollection.h */,
-				E9E014C91D7F0B4A0015D4C9 /* DFRecCollection.m */,
-				E9E201081D86BBA800F805AD /* DFRecTemplateController.h */,
-				E9E201091D86BBA800F805AD /* DFRecTemplateController.m */,
-				E927EF941D87D07A00ED5B6E /* DFeditTempalteController.h */,
-				E927EF951D87D07A00ED5B6E /* DFeditTempalteController.m */,
-				E9A47B2A1D892D5200309821 /* DFfootCollectionController.h */,
-				E9A47B2B1D892D5200309821 /* DFfootCollectionController.m */,
-				E98431B21D9A69DA004C425D /* DFTemplateSelectController.h */,
-				E98431B31D9A69DA004C425D /* DFTemplateSelectController.m */,
-				E907EAEB1D9BAA1000AA76C0 /* DFTempWebViewController.h */,
-				E907EAEC1D9BAA1000AA76C0 /* DFTempWebViewController.m */,
-				E968C37A1D9CB6EC00B5B823 /* DFBuyTempController.h */,
-				E968C37B1D9CB6EC00B5B823 /* DFBuyTempController.m */,
-				E9DAA38C1DAF6E2200C9D999 /* DFBuySuccessController.h */,
-				E9DAA38D1DAF6E2200C9D999 /* DFBuySuccessController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		E9E014CA1D7F0B4A0015D4C9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -925,37 +1188,6 @@
 				E9DAA3871DAF284700C9D999 /* DFBuyModel.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		E9E014CB1D7F0B4A0015D4C9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E9E014CD1D7F0B850015D4C9 /* DFRecCell.h */,
-				E9E014CE1D7F0B850015D4C9 /* DFRecCell.m */,
-				E9E014CF1D7F0B850015D4C9 /* DFRecCell.xib */,
-				E971C03E1D82B102004C4E94 /* DFRecheader.h */,
-				E971C03F1D82B102004C4E94 /* DFRecheader.m */,
-				E927EFD91D87F65C00ED5B6E /* DFLineLayout.h */,
-				E927EFDA1D87F65C00ED5B6E /* DFLineLayout.m */,
-				E96234341D96662D00578E94 /* DFTemplateCell.h */,
-				E96234351D96662D00578E94 /* DFTemplateCell.m */,
-				E96234361D96662D00578E94 /* DFTemplateCell.xib */,
-				E962343C1D96727400578E94 /* DFResultCell.h */,
-				E962343D1D96727400578E94 /* DFResultCell.m */,
-				E962343E1D96727400578E94 /* DFResultCell.xib */,
-				E98431AF1D9A6900004C425D /* DFTemplateSelectCell.h */,
-				E98431B01D9A6900004C425D /* DFTemplateSelectCell.m */,
-				E9CBC37B1D9CCC6A00A8B64C /* DFbuyheaderCell.h */,
-				E9CBC37C1D9CCC6A00A8B64C /* DFbuyheaderCell.m */,
-				E9CBC37D1D9CCC6A00A8B64C /* DFbuyheaderCell.xib */,
-				E9CBC3801D9CF2D500A8B64C /* DFbuyContentCell.h */,
-				E9CBC3811D9CF2D500A8B64C /* DFbuyContentCell.m */,
-				E9CBC3821D9CF2D500A8B64C /* DFbuyContentCell.xib */,
-				E9CBC3851D9D053400A8B64C /* DFPayViewCell.h */,
-				E9CBC3861D9D053400A8B64C /* DFPayViewCell.m */,
-				E9CBC3871D9D053400A8B64C /* DFPayViewCell.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		E9E201041D8652E600F805AD /* 访问相册类 */ = {
@@ -994,7 +1226,6 @@
 			children = (
 				E9FB80C21D7D3D110083D39C /* Classes */,
 				E9FB80981D7D2BF50083D39C /* Main.storyboard */,
-				E9FB809B1D7D2BF50083D39C /* Assets.xcassets */,
 				E9FB809D1D7D2BF50083D39C /* LaunchScreen.storyboard */,
 				E9FB80A01D7D2BF50083D39C /* Info.plist */,
 				E9FB808F1D7D2BF50083D39C /* Supporting Files */,
@@ -1005,6 +1236,7 @@
 		E9FB808F1D7D2BF50083D39C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E90A142B1DB89FEC0026986B /* Assets.xcassets */,
 				E9FB80901D7D2BF50083D39C /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1185,29 +1417,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9FB80CF1D7D3D380083D39C /* LoginViewController.xib in Resources */,
+				E90A14791DB8AFBA0026986B /* DFTemplateCell.xib in Resources */,
 				E99F4A361DA8D0EF003F71D1 /* DFDataView.xib in Resources */,
-				E9CBC3891D9D053400A8B64C /* DFPayViewCell.xib in Resources */,
+				E90A146C1DB8AFBA0026986B /* DFbuyContentCell.xib in Resources */,
 				E99F4A3F1DA8D10B003F71D1 /* DFfoodCell.xib in Resources */,
 				E9FB80DB1D7D4DFA0083D39C /* DFRegisterViewController.xib in Resources */,
 				E93D19D41DAA5361009D30AB /* DFQuestionCell.xib in Resources */,
-				E9E014D11D7F0B850015D4C9 /* DFRecCell.xib in Resources */,
 				E9FB809F1D7D2BF50083D39C /* LaunchScreen.storyboard in Resources */,
 				E99F4A481DA8D11B003F71D1 /* DFBarChart.xib in Resources */,
 				E9DF05061D7EAF7D0004B2AA /* DFReadMessageController.xib in Resources */,
 				E971C03D1D8265AB004C4E94 /* DFForgetPassword.xib in Resources */,
-				E9CBC37F1D9CCC6A00A8B64C /* DFbuyheaderCell.xib in Resources */,
-				E96234401D96727400578E94 /* DFResultCell.xib in Resources */,
+				E90A14281DB875770026986B /* DFPersonalTemplateCell.xib in Resources */,
+				E90A14771DB8AFBA0026986B /* DFResultCell.xib in Resources */,
 				E99F4A311DA8D0DA003F71D1 /* DFVoiceEvaducte.xib in Resources */,
+				E90A14981DB8B7E10026986B /* DFPublishViewController.xib in Resources */,
+				E90A146E1DB8AFBA0026986B /* DFbuyheaderCell.xib in Resources */,
 				E99F4A2D1DA8D0DA003F71D1 /* DFfootReadTendency.xib in Resources */,
-				E9FB809C1D7D2BF50083D39C /* Assets.xcassets in Resources */,
 				E99F4A2B1DA8D0DA003F71D1 /* DFfootDataHeader.xib in Resources */,
-				E9CBC3841D9CF2D500A8B64C /* DFbuyContentCell.xib in Resources */,
+				E90A14701DB8AFBA0026986B /* DFPayViewCell.xib in Resources */,
 				E9FB80E01D7D58DF0083D39C /* DFRegisterMessageController.xib in Resources */,
 				E9678F741D9E00CC0043F9C6 /* testVideo.html in Resources */,
 				E9FB809A1D7D2BF50083D39C /* Main.storyboard in Resources */,
+				E90A147E1DB8AFBA0026986B /* DFRecCell.xib in Resources */,
 				E99F4A2F1DA8D0DA003F71D1 /* DFGeneralComment.xib in Resources */,
 				E9DF04FE1D7EA9EA0004B2AA /* DFMessageCell.xib in Resources */,
-				E96234381D96662D00578E94 /* DFTemplateCell.xib in Resources */,
+				E90A142C1DB89FEC0026986B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1281,87 +1515,97 @@
 			buildActionMask = 2147483647;
 			files = (
 				E921FCC11DB0DE220081F317 /* DFPersonalViewController.m in Sources */,
+				E971E4FD1DB9ABBB0037528B /* DFGenderRatio.m in Sources */,
 				E9E014BA1D7F05A40015D4C9 /* DFChineseFoodController.m in Sources */,
 				E9E014C61D7F076F0015D4C9 /* DFWestController.m in Sources */,
+				E90A14731DB8AFBA0026986B /* DFfootCollectionController.m in Sources */,
 				E9C2C9DA1D7FC76700A94678 /* TwoViewController.m in Sources */,
 				E99F4A2C1DA8D0DA003F71D1 /* DFfootReadTendency.m in Sources */,
 				E97EFE7A1DA7EB3300ED3DC1 /* DFTestViewController.m in Sources */,
 				E9B013971D8F89B6002E4DD8 /* DFRecModel.m in Sources */,
-				E927EFDB1D87F65C00ED5B6E /* DFLineLayout.m in Sources */,
 				E9C2C9D11D7FC70700A94678 /* XWPopMenuController.m in Sources */,
 				E9CFE4DF1D9627A100F4099D /* DFReadMessage.m in Sources */,
 				E9FB80DF1D7D58DF0083D39C /* DFRegisterMessageController.m in Sources */,
-				E907EAED1D9BAA1000AA76C0 /* DFTempWebViewController.m in Sources */,
 				E9C2C9D01D7FC70700A94678 /* UIImage+XW.m in Sources */,
 				E95624651D8EA8E00066C22C /* DFMessage.m in Sources */,
-				E9CBC37E1D9CCC6A00A8B64C /* DFbuyheaderCell.m in Sources */,
 				E9B013901D8F846F002E4DD8 /* UIButton+DFExtension.m in Sources */,
 				E99F4A091DA8CF07003F71D1 /* DFDataCenterViewController.m in Sources */,
-				E9CBC3831D9CF2D500A8B64C /* DFbuyContentCell.m in Sources */,
+				E90A14781DB8AFBA0026986B /* DFTemplateCell.m in Sources */,
 				E9B013941D8F855D002E4DD8 /* DFCenterButton.m in Sources */,
 				E9DF04E21D7E622F0004B2AA /* DFHomeViewController.m in Sources */,
 				E9C2C9D91D7FC76700A94678 /* ThreeViewController.m in Sources */,
+				E9D9DEAF1DB4DDE900CC7A26 /* DFStoreViewModel.m in Sources */,
+				E90A14971DB8B7E10026986B /* DFPublishViewController.m in Sources */,
+				E90A146B1DB8AFBA0026986B /* DFbuyContentCell.m in Sources */,
 				E9B0138F1D8F846F002E4DD8 /* NSString+DFExtension.m in Sources */,
 				E9B0138E1D8F846F002E4DD8 /* DFNavigationController.m in Sources */,
+				E90A146F1DB8AFBA0026986B /* DFPayViewCell.m in Sources */,
 				E971C0381D825ACB004C4E94 /* DFTopImg.m in Sources */,
 				E907A6441D90DE3700E91660 /* DFResultModel.m in Sources */,
-				E98431B11D9A6900004C425D /* DFTemplateSelectCell.m in Sources */,
-				E98431B41D9A69DA004C425D /* DFTemplateSelectController.m in Sources */,
 				E9DF04F91D7EA9C80004B2AA /* DFMessageController.m in Sources */,
 				E9546B061DB1E53000C8B06E /* DFPublishController.m in Sources */,
 				E9B0138D1D8F846F002E4DD8 /* DFConst.m in Sources */,
-				E927EF961D87D07A00ED5B6E /* DFeditTempalteController.m in Sources */,
 				E93D19D31DAA5361009D30AB /* DFQuestionCell.m in Sources */,
+				E90A147D1DB8AFBA0026986B /* DFRecCell.m in Sources */,
 				E9B013911D8F846F002E4DD8 /* UIView+DFExtension.m in Sources */,
 				E9FB80D61D7D42680083D39C /* DFCommon.m in Sources */,
 				E99F4A071DA8CF07003F71D1 /* DFStoreViewController.m in Sources */,
 				E99F4A051DA8CF07003F71D1 /* DFAlreadyController.m in Sources */,
-				E96234371D96662D00578E94 /* DFTemplateCell.m in Sources */,
+				E90A141D1DB86A0F0026986B /* DFMyPublishController.m in Sources */,
 				E9A9CE1A1D923A9F00257459 /* UILabel+DFExtension.m in Sources */,
 				E93A5A061D813AC10050232C /* DFUser.m in Sources */,
+				E9ED17761DB76AA20072C240 /* DFAreaModel.m in Sources */,
 				E921FCB81DB075710081F317 /* DFiconChooseController.m in Sources */,
 				E9DF05051D7EAF7D0004B2AA /* DFReadMessageController.m in Sources */,
+				E90A14691DB8AFBA0026986B /* DFBuySuccessController.m in Sources */,
+				E90A147A1DB8AFBA0026986B /* DFTemplateSelectCell.m in Sources */,
 				E9C2C9CF1D7FC70700A94678 /* PublishMenuButton.m in Sources */,
 				E99F4A351DA8D0EF003F71D1 /* DFDataView.m in Sources */,
-				E9DAA38E1DAF6E2200C9D999 /* DFBuySuccessController.m in Sources */,
+				E90A14721DB8AFBA0026986B /* DFeditTempalteController.m in Sources */,
 				E9B013B91D8FE681002E4DD8 /* DFTempMedol.m in Sources */,
+				E90A147F1DB8AFBA0026986B /* DFRecheader.m in Sources */,
 				E99F4A041DA8CF07003F71D1 /* DFfootDataController.m in Sources */,
-				E9CBC3881D9D053400A8B64C /* DFPayViewCell.m in Sources */,
+				E90A147B1DB8AFBA0026986B /* DFRecTemplateController.m in Sources */,
 				E9B0138C1D8F846F002E4DD8 /* DFButton.m in Sources */,
 				E907A6411D90D0B900E91660 /* DFRefreshHeader.m in Sources */,
 				E9FB80CA1D7D3D110083D39C /* ViewController.m in Sources */,
 				E93D19CC1DA9DCC0009D30AB /* JXBarChartView.m in Sources */,
 				E9B0139A1D8F8DF6002E4DD8 /* DFHTTPSessionManager.m in Sources */,
-				E971C0401D82B102004C4E94 /* DFRecheader.m in Sources */,
 				E907A6471D90EBA400E91660 /* DFRefreshFooter.m in Sources */,
+				E90A14711DB8AFBA0026986B /* DFTemplateSelectController.m in Sources */,
 				E9E014C31D7F07260015D4C9 /* DFDessertController.m in Sources */,
 				E9546B091DB207C100C8B06E /* DFSettingViewController.m in Sources */,
 				E99F4A2E1DA8D0DA003F71D1 /* DFGeneralComment.m in Sources */,
-				E9E2010A1D86BBA800F805AD /* DFRecTemplateController.m in Sources */,
+				E90A14271DB875770026986B /* DFPersonalTemplateCell.m in Sources */,
+				E90A14751DB8AFBA0026986B /* DFLineLayout.m in Sources */,
 				E9BD82AE1D94D9D00090EADD /* CALayer+DFExtension.m in Sources */,
-				E9A47B2C1D892D5200309821 /* DFfootCollectionController.m in Sources */,
 				E9DF04FD1D7EA9EA0004B2AA /* DFMessageCell.m in Sources */,
 				E9FB80E71D7D76660083D39C /* LoginViewController.m in Sources */,
 				E99F4A3E1DA8D10B003F71D1 /* DFfoodCell.m in Sources */,
+				E90A147C1DB8AFBA0026986B /* DFRecCollection.m in Sources */,
 				E99F4A471DA8D11B003F71D1 /* DFBarChart.m in Sources */,
 				E99F4A061DA8CF07003F71D1 /* DFMeViewController.m in Sources */,
+				E9D9DEAC1DB4D55D00CC7A26 /* DFfootDataModel.m in Sources */,
+				E90A146D1DB8AFBA0026986B /* DFbuyheaderCell.m in Sources */,
 				E99F4A081DA8CF07003F71D1 /* DFstotreDataController.m in Sources */,
 				E9546B0C1DB20B2900C8B06E /* DFSettingHeader.m in Sources */,
 				E99F4A2A1DA8D0DA003F71D1 /* DFfootDataHeader.m in Sources */,
-				E968C37C1D9CB6EC00B5B823 /* DFBuyTempController.m in Sources */,
-				E962343F1D96727400578E94 /* DFResultCell.m in Sources */,
 				E9C2C9D81D7FC76700A94678 /* OneViewController.m in Sources */,
 				E9D6665D1D98B83000370510 /* DFMerchant.m in Sources */,
 				E9FB80DA1D7D4DFA0083D39C /* DFRegisterViewController.m in Sources */,
+				E90A14201DB8709C0026986B /* DFPersonalTemplate.m in Sources */,
 				E93D19CF1DAA3474009D30AB /* DFStarView.m in Sources */,
+				E90A146A1DB8AFBA0026986B /* DFBuyTempController.m in Sources */,
 				E99F4A301DA8D0DA003F71D1 /* DFVoiceEvaducte.m in Sources */,
-				E9E014D01D7F0B850015D4C9 /* DFRecCell.m in Sources */,
-				E9E014CC1D7F0B4A0015D4C9 /* DFRecCollection.m in Sources */,
+				E90A141A1DB869F30026986B /* DFNoPublishController.m in Sources */,
 				E9E014C01D7F07000015D4C9 /* DFJapanFoodController.m in Sources */,
 				E9E014BD1D7F06C00015D4C9 /* DFQuickFoodController.m in Sources */,
+				E90A14741DB8AFBA0026986B /* DFTempWebViewController.m in Sources */,
 				E971C03C1D8265AB004C4E94 /* DFForgetPassword.m in Sources */,
+				E90A14931DB8B3270026986B /* DFPrewViewController.m in Sources */,
 				E9DAA3881DAF284700C9D999 /* DFBuyModel.m in Sources */,
 				E9FB80C91D7D3D110083D39C /* AppDelegate.m in Sources */,
+				E90A14761DB8AFBA0026986B /* DFResultCell.m in Sources */,
 				E9E201071D86535B00F805AD /* VPImageCropperViewController.m in Sources */,
 				E99F4A411DA8D10B003F71D1 /* DFtableHeader.m in Sources */,
 				E99F4A401DA8D10B003F71D1 /* DFStoreView.m in Sources */,

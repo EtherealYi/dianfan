@@ -8,6 +8,8 @@
 
 #import "DFPersonalViewController.h"
 #import "DFPublishController.h"
+#import "DFNoPublishController.h"
+#import "DFMyPublishController.h"
 
 @interface DFPersonalViewController ()<UIScrollViewDelegate>
 
@@ -37,14 +39,19 @@
     
 }
 
+/**
+ 添加子控件
+ */
 - (void)addChild{
- 
-    for (int i = 0; i < 3; i ++) {
-        DFPublishController *publish = [[DFPublishController alloc]init];
-        [self addChildViewController:publish];
-    }
-    return ;
-    
+    //发布
+    DFPublishController *publish = [[DFPublishController alloc]init];
+    [self addChildViewController:publish];
+    //未发布
+    DFNoPublishController *NoPublsh = [[DFNoPublishController alloc]init];
+    [self addChildViewController:NoPublsh];
+    //我的模板
+    DFMyPublishController *MyPulish = [[DFMyPublishController alloc]init];
+    [self addChildViewController:MyPulish];
 }
 
 

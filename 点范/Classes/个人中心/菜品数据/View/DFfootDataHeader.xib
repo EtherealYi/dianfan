@@ -10,10 +10,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="213" id="KGk-i7-Jjw" customClass="DFfootDataHeader">
-            <rect key="frame" x="0.0" y="0.0" width="405" height="213"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="213"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="405" height="212.5"/>
+                <frame key="frameInset" width="375" height="212"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foot1" translatesAutoresizingMaskIntoConstraints="NO" id="Y36-9P-Oy0">
@@ -41,8 +41,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="男女比例" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRO-vL-ESo">
-                                        <frame key="frameInset" minX="130" minY="20" width="50" height="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男女比例" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRO-vL-ESo">
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -61,16 +60,15 @@
                                             <constraint firstAttribute="width" constant="2" id="f3n-bq-Jbs"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fol-uh-5mx" userLabel="横线2">
-                                        <frame key="frameInset" minX="209" minY="37" width="2" height="65"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fol-uh-5mx" userLabel="横线2">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kLa-eS-kc7" userLabel="男女比例view">
-                                        <frame key="frameInset" minX="109" minY="37" width="90" height="65"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kLa-eS-kc7" userLabel="男女比例view">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="88" id="qxo-hA-NdZ"/>
+                                        </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RHz-8N-GNJ" userLabel="点餐人来自view">
-                                        <frame key="frameInset" minX="221" minY="37" width="174" height="65"/>
-                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHz-8N-GNJ" userLabel="点餐人来自view"/>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点餐人来自" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bt-PL-bAT">
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -95,7 +93,6 @@
                                     <constraint firstItem="bRO-vL-ESo" firstAttribute="top" secondItem="4et-PX-V6e" secondAttribute="top" id="cBE-QG-Ceg"/>
                                     <constraint firstItem="5bt-PL-bAT" firstAttribute="top" secondItem="bRO-vL-ESo" secondAttribute="top" id="f8W-0D-Ipu"/>
                                     <constraint firstItem="RHz-8N-GNJ" firstAttribute="height" secondItem="ToL-4y-cN1" secondAttribute="height" id="hnl-gN-Tgu"/>
-                                    <constraint firstItem="bRO-vL-ESo" firstAttribute="leading" secondItem="4et-PX-V6e" secondAttribute="trailing" constant="50" id="iSb-pZ-jG0"/>
                                     <constraint firstItem="ToL-4y-cN1" firstAttribute="top" secondItem="4et-PX-V6e" secondAttribute="bottom" constant="2" id="kMo-1f-1sU"/>
                                     <constraint firstItem="4et-PX-V6e" firstAttribute="top" secondItem="gc0-eY-0oh" secondAttribute="top" constant="20" id="ll7-cj-xMn"/>
                                     <constraint firstItem="kLa-eS-kc7" firstAttribute="top" secondItem="blO-aX-2KY" secondAttribute="top" id="q3h-fo-ixX"/>
@@ -118,11 +115,6 @@
                             <constraint firstAttribute="trailing" secondItem="gc0-eY-0oh" secondAttribute="trailing" id="zLm-f1-6jP"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="海鲜肉丸拼杂蔬" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcy-S1-V3d">
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#1648" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OR-q6-b1U">
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -130,6 +122,12 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥16" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIk-1m-3hd">
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="海鲜肉丸拼杂蔬" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcy-S1-V3d">
+                        <frame key="frameInset" minX="131" minY="18" width="121.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -150,10 +148,19 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="Footfrom" destination="RHz-8N-GNJ" id="kUS-hq-e9u"/>
-                <outlet property="boyAndGirl" destination="kLa-eS-kc7" id="9Bh-Nf-W6s"/>
+                <outlet property="Footfrom" destination="RHz-8N-GNJ" id="i8X-YY-FWD"/>
+                <outlet property="Num" destination="ToL-4y-cN1" id="spo-ip-C4H"/>
+                <outlet property="boyAndGirl" destination="kLa-eS-kc7" id="aca-4q-ma9"/>
+                <outlet property="boyTolin1" destination="1cj-RB-3V6" id="eER-z0-bT8"/>
+                <outlet property="boyTolin2" destination="PjD-yo-HbU" id="VKK-Sl-rbf"/>
+                <outlet property="dishName" destination="Qcy-S1-V3d" id="Sds-uN-Aa5"/>
+                <outlet property="dishPrice" destination="mIk-1m-3hd" id="VBQ-5X-fol"/>
+                <outlet property="dishSn" destination="2OR-q6-b1U" id="WHX-RH-JAf"/>
+                <outlet property="line1" destination="blO-aX-2KY" id="acB-RU-NP2"/>
+                <outlet property="line2" destination="fol-uh-5mx" id="jzd-g8-dct"/>
+                <outlet property="numtoView" destination="TlN-wd-jCe" id="wK5-0q-Lhr"/>
             </connections>
-            <point key="canvasLocation" x="-87.5" y="101.5"/>
+            <point key="canvasLocation" x="-59" y="101.5"/>
         </tableViewCell>
     </objects>
     <resources>

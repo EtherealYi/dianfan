@@ -104,7 +104,7 @@
                                                     encoding:NSUTF8StringEncoding
                                                        error:nil];
     [webView loadHTMLString:htmlCont baseURL:baseURL];
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hello(a)"]];
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"start()"]];
     [self.view addSubview:webView];
     self.webView = webView;
     
@@ -116,10 +116,10 @@
     //获取js的运行环境
     _context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     //html调用无参数OC
-    _context[@"start"] = ^(){
-        NSLog(@"start");
-        [self startClick];
-    };
+//    _context[@"start"] = ^(){
+//        NSLog(@"start");
+//        //[self startClick];
+//    };
     _context[@"stop"] = ^(){
         NSLog(@"stop");
         [self stopClick];

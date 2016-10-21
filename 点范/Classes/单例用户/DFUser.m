@@ -24,14 +24,19 @@
 - (void)initWithDict:(NSUserDefaults *)dict{
     self.username = [dict objectForKey:@"username"];
     self.token    = [dict objectForKey:@"token"];
-    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"isLogin"];
+    
+    //[[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"isLogin"];
 }
 
 - (void)didLogout{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault removeObjectForKey:@"username"];
+    [userDefault removeObjectForKey:@"token"];
+    [userDefault removeObjectForKey:@"icon"];
     self.username = nil;
     self.token    = nil;
     self.icon     = nil;
-    [[NSUserDefaults standardUserDefaults]setObject:@NO forKey:@"isLogin"];
+    //[[NSUserDefaults standardUserDefaults]setObject:@NO forKey:@"isLogin"];
 }
 - (void)saveIcon:(NSUserDefaults *)userDefault{
     self.icon = [userDefault objectForKey:@"icon"];

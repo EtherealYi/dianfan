@@ -63,11 +63,25 @@
 }
 
 - (void)setUserData{
-    if ([[DFUser sharedManager]isLogin] == YES) {
-        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-        [[DFUser sharedManager] initWithDict:userDefault];
-        NSLog(@"AppDelagate %@",[DFUser sharedManager].token);
-    }
+   
+//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    NSLog(@"userDefault = %@",[userDefault objectForKey:@"token"]);
+//    NSLog(@"BOOL = %@",[[DFUser sharedManager] isLogin]?@"YES":@"NO");
+//    if ([userDefault objectForKey:@"token"] != nil) {
+//        //NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//        [[DFUser sharedManager] initWithDict:userDefault];
+//         NSLog(@"AppDelagate = %@",[DFUser sharedManager].token);
+//    }else{
+//        [[DFUser sharedManager] didLogout];
+//         NSLog(@"AppDelagate = %@",[DFUser sharedManager].token);
+//    }
+
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    //[[DFUser sharedManager]didLogout];
+    NSLog(@"%@",[userDefault objectForKey:@"token"]);
+    [[DFUser sharedManager]initWithDict:userDefault];
+    [[DFUser sharedManager]saveIcon:userDefault];
+
     
 }
 
@@ -97,9 +111,10 @@
     if (result == FALSE) {
         //调用其他SDK，例如支付宝SDK等
         result = [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
-            NSLog(@"支付成功回调");
-            //[[NSNotificationCenter defaultCenter]postNotificationName:@"push" object:self];
-            
+            NSLog(@"%@",url.absoluteString);
+            if ([url.absoluteString containsString:@"success"]) {
+                  [[NSNotificationCenter defaultCenter]postNotificationName:@"push" object:self];
+            }
         }];
     }
     return result;

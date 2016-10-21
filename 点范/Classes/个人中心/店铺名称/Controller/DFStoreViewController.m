@@ -12,14 +12,22 @@
 #import "DFStoreView.h"
 #import "DFtableHeader.h"
 #import "DFstotreDataController.h"
+#import "DFHTTPSessionManager.h"
+#import "DFUser.h"
+#import "DFStoreViewModel.h"
+#import "MJExtension.h"
 
 @interface DFStoreViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)UITableView *tableView;
 /** 底部指示器 */
 @property (nonatomic,weak)UIView *indicatorView;
-
+/** 选中按钮 */
 @property (nonatomic,weak)UIButton *selectButton;
+/** 网络管理者 */
+@property (nonatomic,strong)DFHTTPSessionManager *manager;
+/** 模型数组 */
+@property (nonatomic,strong)NSMutableArray<DFStoreViewModel *> *dishArrays;
 
 @end
 
@@ -27,19 +35,39 @@
 
 static NSString *storeCell = @"storeCell";
 
+#pragma mark - 懒加载
+- (DFHTTPSessionManager *)manager{
+    if (!_manager) {
+        _manager = [DFHTTPSessionManager manager];
+    }
+    return _manager;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"店铺名称";
-   
-    
     [self setHeadView];
     [self setTableView];
+    [self loadListDishes];
+}
+- (void)loadListDishes{
+    NSString *url = @"http://10.0.0.30:8080/appMember/login/dish/listDishes.htm?token=f742c54d-bde1-496e-930b-0802db50b8b6";
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    parameter[@"property"] = @"1";
+    [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        self.dishArrays = [DFStoreViewModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        NSLog(@"%@",self.dishArrays[0].commentNum);
+        [self.tableView reloadData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
     
 }
 - (void)setHeadView{
-
     CGRect frame = CGRectMake(0, 1, self.view.df_width, 148);
     DFStoreView *storeView = [[DFStoreView alloc]initWithFrame:frame];
     storeView.backgroundColor = MainColor;
@@ -61,19 +89,15 @@ static NSString *storeCell = @"storeCell";
     self.tableView = tableView;
 
 }
-
-
-
-
 #pragma mark -UITableView 代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  10;
+    return  self.dishArrays.count;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     DFfoodCell *cell = [tableView dequeueReusableCellWithIdentifier:storeCell forIndexPath:indexPath];
     cell.oderID.text = [NSString stringWithFormat:@"%zd",indexPath.row + 1];
+    cell.stroreModel = self.dishArrays[indexPath.row];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -85,8 +109,6 @@ static NSString *storeCell = @"storeCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 83;
 }
-
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 44;
 }
@@ -103,16 +125,9 @@ static NSString *storeCell = @"storeCell";
  
     [tableHead addSubview:indicatorView];
     self.indicatorView = indicatorView;
-    
-//    //立刻根据文字计算Lable尺寸
-//    [tableHead.readBtn.titleLabel sizeToFit];
-//    indicatorView.df_width = tableHead.readBtn.titleLabel.df_width;
-//    indicatorView.df_centerX = tableHead.readBtn.df_centerX;
-//    
-//    
-//    //默认情况下选中第一个按钮
-//    [self titleClick:tableHead.readBtn];
-//
+  
+    //默认情况下选中第一个按钮
+   // [self titleClick:tableHead.readBtn];
     return tableHead;
 }
 
@@ -125,11 +140,10 @@ static NSString *storeCell = @"storeCell";
     [UIView animateWithDuration:0.25 animations:^{
         CGFloat titlew = [button.currentTitle sizeWithAttributes:@{NSFontAttributeName : button.titleLabel.font}].width;
         self.indicatorView.df_width = titlew ;
+        //self.indicatorView.df_x = button.df_x;
         self.indicatorView.df_centerX = button.df_centerX;
         
     }];
-    
-  
 }
 
 - (void)pushToStoreData{

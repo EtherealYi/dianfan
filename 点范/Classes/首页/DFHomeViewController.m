@@ -61,6 +61,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     //[[DFUser sharedManager]didLogout];
+
+   
 }
 
 #pragma mark -中间滚动视图
@@ -189,14 +191,20 @@
 
 #pragma mark -点击事件
 - (void)meClick{
-    if ([DFUser sharedManager].isLogin == NO ) {//如果没有值，进入未登录界面
-        DFMeViewController *Me = [[DFMeViewController alloc]init];
-        [self.navigationController pushViewController:Me animated:YES];
-    }else{//有值，进入登录界面
+//    if ([[DFUser sharedManager] isLogin] == NO ) {//如果没有值，进入未登录界面
+//        DFMeViewController *Me = [[DFMeViewController alloc]init];
+//        [self.navigationController pushViewController:Me animated:YES];
+//    }else{//有值，进入登录界面
+//        DFAlreadyController *Already = [[DFAlreadyController alloc]init];
+//        [self.navigationController pushViewController:Already animated:YES];
+//    }
+    if ([DFUser sharedManager].token != nil) {
         DFAlreadyController *Already = [[DFAlreadyController alloc]init];
         [self.navigationController pushViewController:Already animated:YES];
+    }else{
+        DFMeViewController *Me = [[DFMeViewController alloc]init];
+        [self.navigationController pushViewController:Me animated:YES];
     }
-
     
 }
 - (void)MessageClick{

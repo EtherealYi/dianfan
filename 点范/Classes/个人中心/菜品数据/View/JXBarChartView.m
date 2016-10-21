@@ -94,7 +94,7 @@
     float marginOfBarAndDigit = 5;
     float marginOfTextAndBar = 8;
     float digitWidth = 25;
-    float textWidth = 20;
+    float textWidth = 30;
     for (int i = 0; i < count; i++) {
         //handle textlabel
         float textMargin_y = (i * (self.barHeight + barMargin)) + starty;
@@ -122,7 +122,8 @@
         [self drawRectangle:barFrame context:self.context];
         //handle digitlabel
         UILabel *digitLabel = [[UILabel alloc] initWithFrame:CGRectMake(barFrame.origin.x + barFrame.size.width + marginOfBarAndDigit, barFrame.origin.y, digitWidth, barFrame.size.height)];
-        NSString *testString = [NSString stringWithFormat:@"%@0%@",self.values[i],@"%"];
+        NSString *testString = [NSString stringWithFormat:@"%@%@",self.values[i],@"%"];
+        
         //digitLabel.text = [self.values[i] stringValue];
         digitLabel.text = testString;
         digitLabel.font = [UIFont systemFontOfSize:10];

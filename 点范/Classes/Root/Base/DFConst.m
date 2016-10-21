@@ -24,8 +24,9 @@ NSString const *AccountAPI = @"http://10.0.0.30:8080/appMember/account/";
 
 NSString const *UploadAPI = @"http://10.0.0.30:8080/appMember/login/file/";
 
-NSString const *PingAPI = @"http://10.0.0.30:8080/pingpp/payment";
+NSString const *PingAPI = @"http://10.0.0.30:8080/pingpp/payment/";
 
-//NSString const *upLoadLogo= @"uploadLogo.htm";
-//
-//NSString const *upLoadAvator = @"uploadAvator.htm";
+NSString const *DishAPI = @"http://10.0.0.30:8080/appMember/login/dish/";
+
+
+

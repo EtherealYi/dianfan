@@ -12,4 +12,7 @@
 - (NSString *)MD5;
 
 + (BOOL)isPureInt:(NSString *)string;
+
+- (NSString *)SubToIndex;
+
 @end

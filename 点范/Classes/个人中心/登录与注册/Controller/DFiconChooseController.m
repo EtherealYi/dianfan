@@ -50,7 +50,11 @@
 - (void)setupChildView{
     UIImageView *imgView = [[UIImageView alloc]init];
     imgView.backgroundColor = MainColor;
-    [imgView sd_setImageWithURL:[NSURL URLWithString:[DFUser sharedManager].icon] placeholderImage:nil options:SDWebImageProgressiveDownload];
+    if ([self.pittureCtr isEqualToString:upLoadAvator]) {
+        
+        [imgView sd_setImageWithURL:[NSURL URLWithString:[DFUser sharedManager].icon] placeholderImage:nil options:SDWebImageProgressiveDownload];
+    }
+    
     [self.view addSubview:imgView];
     self.imgView = imgView;
     
@@ -209,6 +213,10 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@",responseObject);
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        [userDefault setObject:responseObject[@"data"] forKey:@"icon"];
+        [userDefault synchronize];
+        [[DFUser sharedManager] saveIcon:userDefault];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error);
     }];

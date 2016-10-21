@@ -45,7 +45,7 @@ static char eventKey;
 - (void)setText:(NSString *)text andFont:(CGFloat)font andColor:(UIColor *)color{
     
     [self setTitle:text forState:UIControlStateNormal];
-    self.titleLabel.font = [UIFont systemFontOfSize:font];
+    self.titleLabel.font =  [UIFont systemFontOfSize:font];
     //self.tintColor = color;
     [self setTitleColor:color forState:UIControlStateNormal];
     

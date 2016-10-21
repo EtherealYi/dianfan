@@ -28,12 +28,18 @@
 #define DFColor(R,G,B) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1]
 #define MainColor DFColor(197, 56, 39)
 #define WhiteColor [UIColor whiteColor]
+/** 文字大小 */
 #define BaseFont(A) [UIFont systemFontOfSize:A];
+
 #define DFFunc NSLog(@"%s",__func__);
+
 #define apiStr(url) [NSString stringWithFormat:@"%@?token=%@",url,[DFUser sharedManager].token]
+
 #define upLoadLogo @"uploadLogo.htm"
 #define upLoadAvator @"uploadAvator.htm"
 #define MYWriteToFile(data,fileName) [data writeToFile:fileName atomically:YES];
+/** 占位图 */
+#define palceholderImage [UIImage imageNamed:@"nodata"]
 
 #define fDeviceWidth ([UIScreen mainScreen].bounds.size.width)
 #define fDeviceHeight ([UIScreen mainScreen].bounds.size.height)

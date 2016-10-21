@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DFStoreViewModel.h"
 
 @interface DFfoodCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *oderID;
+
+@property (nonatomic,strong)DFStoreViewModel *stroreModel;
 
 
 @end
