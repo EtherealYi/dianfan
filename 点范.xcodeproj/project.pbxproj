@@ -68,6 +68,9 @@
 		E971C03C1D8265AB004C4E94 /* DFForgetPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = E971C03A1D8265AB004C4E94 /* DFForgetPassword.m */; };
 		E971C03D1D8265AB004C4E94 /* DFForgetPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = E971C03B1D8265AB004C4E94 /* DFForgetPassword.xib */; };
 		E971E4FD1DB9ABBB0037528B /* DFGenderRatio.m in Sources */ = {isa = PBXBuildFile; fileRef = E971E4FC1DB9ABBB0037528B /* DFGenderRatio.m */; };
+		E971E5001DB9BB710037528B /* DFDishCommentData.m in Sources */ = {isa = PBXBuildFile; fileRef = E971E4FF1DB9BB710037528B /* DFDishCommentData.m */; };
+		E971E5031DB9BC8A0037528B /* DFCountAndRatio.m in Sources */ = {isa = PBXBuildFile; fileRef = E971E5021DB9BC8A0037528B /* DFCountAndRatio.m */; };
+		E971E5061DB9BC9E0037528B /* DFScoreDistributionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = E971E5051DB9BC9E0037528B /* DFScoreDistributionMap.m */; };
 		E973F60B1D9E185C001D9C3F /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E973F60A1D9E185C001D9C3F /* JavaScriptCore.framework */; };
 		E973F60D1D9E1D81001D9C3F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E973F60C1D9E1D81001D9C3F /* AVFoundation.framework */; };
 		E97EFE7A1DA7EB3300ED3DC1 /* DFTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E97EFE791DA7EB3300ED3DC1 /* DFTestViewController.m */; };
@@ -270,6 +273,12 @@
 		E971C03B1D8265AB004C4E94 /* DFForgetPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFForgetPassword.xib; sourceTree = "<group>"; };
 		E971E4FB1DB9ABBB0037528B /* DFGenderRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGenderRatio.h; sourceTree = "<group>"; };
 		E971E4FC1DB9ABBB0037528B /* DFGenderRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGenderRatio.m; sourceTree = "<group>"; };
+		E971E4FE1DB9BB710037528B /* DFDishCommentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFDishCommentData.h; sourceTree = "<group>"; };
+		E971E4FF1DB9BB710037528B /* DFDishCommentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFDishCommentData.m; sourceTree = "<group>"; };
+		E971E5011DB9BC8A0037528B /* DFCountAndRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFCountAndRatio.h; sourceTree = "<group>"; };
+		E971E5021DB9BC8A0037528B /* DFCountAndRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFCountAndRatio.m; sourceTree = "<group>"; };
+		E971E5041DB9BC9E0037528B /* DFScoreDistributionMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFScoreDistributionMap.h; sourceTree = "<group>"; };
+		E971E5051DB9BC9E0037528B /* DFScoreDistributionMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFScoreDistributionMap.m; sourceTree = "<group>"; };
 		E973F60A1D9E185C001D9C3F /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		E973F60C1D9E1D81001D9C3F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E97EFE781DA7EB3300ED3DC1 /* DFTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTestViewController.h; sourceTree = "<group>"; };
@@ -757,6 +766,12 @@
 				E9ED17751DB76AA20072C240 /* DFAreaModel.m */,
 				E971E4FB1DB9ABBB0037528B /* DFGenderRatio.h */,
 				E971E4FC1DB9ABBB0037528B /* DFGenderRatio.m */,
+				E971E4FE1DB9BB710037528B /* DFDishCommentData.h */,
+				E971E4FF1DB9BB710037528B /* DFDishCommentData.m */,
+				E971E5011DB9BC8A0037528B /* DFCountAndRatio.h */,
+				E971E5021DB9BC8A0037528B /* DFCountAndRatio.m */,
+				E971E5041DB9BC9E0037528B /* DFScoreDistributionMap.h */,
+				E971E5051DB9BC9E0037528B /* DFScoreDistributionMap.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1567,6 +1582,7 @@
 				E99F4A041DA8CF07003F71D1 /* DFfootDataController.m in Sources */,
 				E90A147B1DB8AFBA0026986B /* DFRecTemplateController.m in Sources */,
 				E9B0138C1D8F846F002E4DD8 /* DFButton.m in Sources */,
+				E971E5031DB9BC8A0037528B /* DFCountAndRatio.m in Sources */,
 				E907A6411D90D0B900E91660 /* DFRefreshHeader.m in Sources */,
 				E9FB80CA1D7D3D110083D39C /* ViewController.m in Sources */,
 				E93D19CC1DA9DCC0009D30AB /* JXBarChartView.m in Sources */,
@@ -1584,11 +1600,13 @@
 				E99F4A3E1DA8D10B003F71D1 /* DFfoodCell.m in Sources */,
 				E90A147C1DB8AFBA0026986B /* DFRecCollection.m in Sources */,
 				E99F4A471DA8D11B003F71D1 /* DFBarChart.m in Sources */,
+				E971E5061DB9BC9E0037528B /* DFScoreDistributionMap.m in Sources */,
 				E99F4A061DA8CF07003F71D1 /* DFMeViewController.m in Sources */,
 				E9D9DEAC1DB4D55D00CC7A26 /* DFfootDataModel.m in Sources */,
 				E90A146D1DB8AFBA0026986B /* DFbuyheaderCell.m in Sources */,
 				E99F4A081DA8CF07003F71D1 /* DFstotreDataController.m in Sources */,
 				E9546B0C1DB20B2900C8B06E /* DFSettingHeader.m in Sources */,
+				E971E5001DB9BB710037528B /* DFDishCommentData.m in Sources */,
 				E99F4A2A1DA8D0DA003F71D1 /* DFfootDataHeader.m in Sources */,
 				E9C2C9D81D7FC76700A94678 /* OneViewController.m in Sources */,
 				E9D6665D1D98B83000370510 /* DFMerchant.m in Sources */,

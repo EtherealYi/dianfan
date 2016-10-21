@@ -81,8 +81,8 @@
     return CGRectGetMaxY(self.frame);
 }
 
-static char kActionHandlerTapGestureKey;
-static char kActionHandlerTapBlockKey;
+//static char kActionHandlerTapGestureKey;
+//static char kActionHandlerTapBlockKey;
 ////单点击手势
 //- (void)tapGesture:(GestureActionBlock)block {
 //    self.userInteractionEnabled = YES;

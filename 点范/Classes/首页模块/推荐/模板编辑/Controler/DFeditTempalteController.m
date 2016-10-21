@@ -94,6 +94,7 @@ static NSString *const MerchantID = @"MerchantID";
     [self loadEditTemp];
     [self addChildVc];
     
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadResultID) name:@"loadResult" object:nil];
     
 }
@@ -330,6 +331,8 @@ static NSString *const MerchantID = @"MerchantID";
         webVc.reultID = self.tempMedelS[indexPath.row].temp_id;
         [self.navigationController pushViewController:webVc animated:YES];
 }
+
+
 
 
 

@@ -11,6 +11,7 @@
 #import "DFUser.h"
 #import "DFPrewViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
+#import "SVProgressHUD.h"
 
 @interface DFTempWebViewController ()<UIWebViewDelegate>
 
@@ -49,8 +50,20 @@
     [self.view addSubview:webView];
     [SVProgressHUD dismiss];
 }
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
+
+/**
+ 开始加载
+ */
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    [SVProgressHUD show];
     
+}
+
+/**
+ 加载完成
+ */
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [SVProgressHUD dismiss];
     self.context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
 
     self.context[@"WebInterface"] = ^(){
@@ -58,6 +71,7 @@
     };
     
 }
+
 
 
 - (void)toPrewCtr{

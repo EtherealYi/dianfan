@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DFRecModel.h"
-#import "DFPersonalTemplate.h"
+
 
 @interface DFRecCell : UICollectionViewCell
 /** 推荐模型 */

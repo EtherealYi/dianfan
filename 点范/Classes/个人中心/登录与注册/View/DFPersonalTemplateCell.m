@@ -29,7 +29,7 @@
     
     self.templateName.text = Persontemplate.name;
     
- [self.contentImg sd_setImageWithURL:[NSURL URLWithString:Persontemplate.image] placeholderImage:[UIImage imageNamed:@"nodata"] options:SDWebImageProgressiveDownload];
+ [self.contentImg sd_setImageWithURL:[NSURL URLWithString:Persontemplate.image] placeholderImage:[UIImage imageNamed:@"palfoot"] options:SDWebImageProgressiveDownload];
    
 }
 

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DFDishCommentData.h"
 
 @interface DFGeneralComment : UITableViewCell
+
+@property (nonatomic,strong)DFDishCommentData *dishCommentData;
+
+- (void)setupChildView;
 
 @end

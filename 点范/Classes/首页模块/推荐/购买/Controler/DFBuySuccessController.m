@@ -101,12 +101,11 @@
 
 - (void)pushToMe{
 
-    DFBuyTempController *by = [[DFBuyTempController alloc]init];
-    
-    
-    [UIView animateWithDuration:1.0 animations:^{
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
+//    DFBuyTempController *by = [[DFBuyTempController alloc]init];
+//    
+//    [UIView animateWithDuration:1.0 animations:^{
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {

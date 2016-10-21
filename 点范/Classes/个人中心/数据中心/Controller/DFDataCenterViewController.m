@@ -9,10 +9,18 @@
 #import "DFDataCenterViewController.h"
 #import "DFStoreViewController.h"
 #import "DFRecCell.h"
+#import "DFHTTPSessionManager.h"
+#import "DFUser.h"
+#import "DFPersonalTemplate.h"
+#import "MJExtension.h"
+#import "DFPersonalTemplateCell.h"
 
-@interface DFDataCenterViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface DFDataCenterViewController ()
 
-@property (nonatomic,strong)UICollectionView *collectionView;
+
+@property (nonatomic,strong)DFHTTPSessionManager *manager;
+
+@property (nonatomic,strong)NSMutableArray<DFPersonalTemplate *> *templateArrays;
 
 @end
 
@@ -20,48 +28,49 @@
 
 static NSString *const dataCenter = @"dataCenter";
 
+- (DFHTTPSessionManager *)manager{
+    if (!_manager) {
+        _manager = [DFHTTPSessionManager manager];
+    }
+    return _manager;
+}
+
+
+- (instancetype)init{
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+    //cell之间的水平间距
+    layout.minimumInteritemSpacing = 10 ;
+    //cell之间的垂直间距
+    layout.minimumLineSpacing = 10;
+    return [super initWithCollectionViewLayout:layout];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the vieiw.
     self.title = @"数据中心";
+    self.collectionView.backgroundColor = WhiteColor;
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DFPersonalTemplateCell class]) bundle:nil] forCellWithReuseIdentifier:dataCenter];
+    self.collectionView.showsVerticalScrollIndicator = NO;
+    [self loadPublish];
     
-    [self setCollection];
 }
-- (void)setCollection{
-    //初始化collectionview
-    UICollectionViewFlowLayout *customLayout = [[UICollectionViewFlowLayout alloc]init];
-    customLayout.headerReferenceSize = CGSizeMake(self.view.df_width, 10);//头部大小
-    
-    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:customLayout];
-    
-    
-    //定义每个UICollectionView 横向的间距
-    customLayout.minimumLineSpacing = 5;
-    //定义每个UICollectionView 纵向的间距
-    customLayout.minimumInteritemSpacing = 5;
-    
-    collectionView.backgroundColor = DFColor(238, 238, 238);
-    
-    collectionView.delegate = self;
-    
-    collectionView.dataSource = self;
 
-    //注册
-    [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DFRecCell class]) bundle:nil] forCellWithReuseIdentifier:dataCenter];
+- (void)loadPublish{
+    __weak typeof(self) weakSelf = self;
+    NSString *url = [MemberAPI stringByAppendingString:apiStr(@"myDishTemplateResults.htm")];
     
-    [self.view addSubview:collectionView];
-    
-    self.collectionView = collectionView;
-    
-    
-    
-
-}
-#pragma mark - UICollectionView delegate dataSource
-#pragma mark 定义展示的UICollectionViewCell的个数
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return 3;
+    NSMutableDictionary *parmater = [NSMutableDictionary dictionary];
+    parmater[@"isMarketable"] = @"true";
+    [self.manager GET:url parameters:parmater progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        weakSelf.templateArrays = [DFPersonalTemplate mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplateResults"]];
+        
+        [weakSelf.collectionView reloadData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
 }
 
 #pragma mark 定义展示的Section的个数
@@ -70,39 +79,41 @@ static NSString *const dataCenter = @"dataCenter";
     return 1;
 }
 
-#pragma mark 每个UICollectionView展示的内容
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-//    
-//    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:dataCenter forIndexPath:indexPath];
-//    //[cell sizeToFit];
-//    cell.backgroundColor = [UIColor whiteColor];
-//    //按钮事件就不实现了……
-    DFRecCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:dataCenter forIndexPath:indexPath];
+#pragma mark <UICollectionViewDataSource>
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (self.templateArrays.count > 10) {
+        return 10;
+    }
+    return self.templateArrays.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    DFPersonalTemplateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:dataCenter forIndexPath:indexPath];
+    cell.Persontemplate = self.templateArrays[indexPath.row];
+    [cell.layer cellShadow];
     return cell;
 }
 
+#pragma mark <UICollectionViewDelegate>
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat cellW = (self.view.frame.size.width - 40)/3 - 1;
-    CGFloat cellH = (fDeviceHeight - 40)/3 - 10;
+    //CGFloat cellH = self.collectionView.df_height - 10;
     //return  CGSizeMake((fDeviceWidth - 20) / 3, 180);
-    return CGSizeMake(cellW, cellH);
-  
+    return CGSizeMake(cellW, 160);
+    
 }
-//间距
+
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(0, 5, 64 , 5);
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
-- (void)collectionView:(UICollectionView *)collectionView
-didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     DFStoreViewController *store = [[DFStoreViewController alloc]init];
+    store.distemplateResultID = self.templateArrays[indexPath.row].result_id;
     [self.navigationController pushViewController:store animated:YES];
 }
-
-
-
 
 
 @end

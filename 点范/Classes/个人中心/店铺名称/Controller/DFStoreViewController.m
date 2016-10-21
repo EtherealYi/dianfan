@@ -56,11 +56,11 @@ static NSString *storeCell = @"storeCell";
     NSString *url = @"http://10.0.0.30:8080/appMember/login/dish/listDishes.htm?token=f742c54d-bde1-496e-930b-0802db50b8b6";
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
     parameter[@"property"] = @"1";
+    parameter[@"id"] = self.distemplateResultID;
     [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.dishArrays = [DFStoreViewModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        NSLog(@"%@",self.dishArrays[0].commentNum);
         [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         

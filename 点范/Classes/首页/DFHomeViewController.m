@@ -42,8 +42,6 @@
     self.title = @"模块商城";
     //self.view.backgroundColor = [UIColor whiteColor];
     
-    NSLog(@"%f",self.view.df_width);
-    
     [self setupChild];
     
     [self setupScrollView];
@@ -60,8 +58,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    //[[DFUser sharedManager]didLogout];
-
+//   [[DFUser sharedManager]didLogout];
    
 }
 

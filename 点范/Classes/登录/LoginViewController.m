@@ -65,10 +65,11 @@
     
     //登录事件
     [self.loginBtn addTarget:self action:@selector(loginSuccess) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 - (IBAction)QQLogin:(id)sender {
-    UMSocialDataService *service = [[UMSocialDataService alloc]init];
+    //UMSocialDataService *service = [[UMSocialDataService alloc]init];
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
     
     snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
@@ -76,7 +77,7 @@
         //          获取微博用户名、uid、token等
         
         if (response.responseCode == UMSResponseCodeSuccess) {
-            NSDictionary *dict = [UMSocialAccountManager socialAccountDictionary];
+            //NSDictionary *dict = [UMSocialAccountManager socialAccountDictionary];
         
             UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:snsPlatform.platformName];
             NSLog(@"%@",snsAccount.iconURL);
@@ -223,13 +224,13 @@
 }
 
 - (void)loadIcon{
-    
-    NSString *url = [MemberAPI stringByAppendingString:apiStr(@"getAvator.htm")];
-    NSLog(@"tokrn = %@",[DFUser sharedManager].token);
+    DFFunc
+    NSString *url = [MemberAPI stringByAppendingString:apiStr(@"getAvatorAndUsername.htm")];
     [self.manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSString *imgName = responseObject[@"data"];
+        
+        NSString *imgName = responseObject[@"data"][@"avator"];
         if (imgName.length > 0) {
             NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
             [userDefault setObject:imgName forKey:@"icon"];

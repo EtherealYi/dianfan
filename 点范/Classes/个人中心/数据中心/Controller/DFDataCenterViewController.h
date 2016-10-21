@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DFDataCenterViewController : UIViewController
+@interface DFDataCenterViewController : UICollectionViewController
 
 @end

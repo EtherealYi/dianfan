@@ -10,6 +10,6 @@
 
 @interface DFfootReadTendency : UITableViewCell
 
-- (void)setupTendency;
+
 
 @end

@@ -74,7 +74,7 @@ static NSString * const reuseIdentifier = @"MyPublish";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
+
     return self.tempArrays.count;
 }
 

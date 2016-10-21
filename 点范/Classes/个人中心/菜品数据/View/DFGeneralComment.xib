@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="430" height="195"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="430" height="194.5"/>
+                <frame key="frameInset" width="430" height="194"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总评情况" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1n-3R-qw6">
@@ -101,6 +101,7 @@
             <connections>
                 <outlet property="SoreLab" destination="YVi-a1-h3Z" id="eKN-kF-q9p"/>
                 <outlet property="badView" destination="UiU-H5-bQW" id="L7E-1U-OnX"/>
+                <outlet property="commentLabel" destination="zVf-NJ-ugA" id="Yhf-4s-tVp"/>
                 <outlet property="goodView" destination="x0Z-nT-Gsx" id="Uns-Rt-2F7"/>
                 <outlet property="line" destination="Eum-Ni-AAe" id="5Xv-iP-eWr"/>
             </connections>

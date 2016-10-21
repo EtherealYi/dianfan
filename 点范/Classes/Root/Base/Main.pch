@@ -39,7 +39,7 @@
 #define upLoadAvator @"uploadAvator.htm"
 #define MYWriteToFile(data,fileName) [data writeToFile:fileName atomically:YES];
 /** 占位图 */
-#define palceholderImage [UIImage imageNamed:@"nodata"]
+#define palceholderImage [UIImage imageNamed:@"palfoot"]
 
 #define fDeviceWidth ([UIScreen mainScreen].bounds.size.width)
 #define fDeviceHeight ([UIScreen mainScreen].bounds.size.height)

@@ -10,4 +10,6 @@
 
 @interface DFStoreViewController : UIViewController
 
+@property (nonatomic,copy)NSString *distemplateResultID;
+
 @end

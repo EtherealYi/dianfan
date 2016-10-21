@@ -46,7 +46,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.collectionView.backgroundColor = WhiteColor;
-    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DFRecCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DFPersonalTemplateCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     self.collectionView.showsVerticalScrollIndicator = NO;
     [self loadPublish];
 
@@ -54,17 +54,20 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)loadPublish{
      __weak typeof(self) weakSelf = self;
-    NSString *url = [NSString stringWithFormat:@"http://10.0.0.30:8080/appMember/login/member/myDishTemplateResults.htm?token=%@",[DFUser sharedManager].token];
+//    NSString *url = [NSString stringWithFormat:@"http://10.0.0.30:8080/appMember/login/member/myDishTemplateResults.htm?token=%@",[DFUser sharedManager].token];
+    NSString *url = [MemberAPI stringByAppendingString:apiStr(@"myDishTemplateResults.htm")];
     
     NSMutableDictionary *parmater = [NSMutableDictionary dictionary];
     parmater[@"isMarketable"] = @"true";
     [self.manager GET:url parameters:parmater progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         weakSelf.templateArrays = [DFPersonalTemplate mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplateResults"]];
+        
         [weakSelf.collectionView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+       
     }];
 }
 
@@ -77,7 +80,9 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-
+    if (self.templateArrays.count > 6) {
+        return 6;
+    }
     return self.templateArrays.count;
 }
 
@@ -91,7 +96,7 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDelegate>
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat cellW = (self.view.frame.size.width - 40)/3 - 1;
-    CGFloat cellH = self.collectionView.df_height - 10;
+    //CGFloat cellH = self.collectionView.df_height - 10;
     //return  CGSizeMake((fDeviceWidth - 20) / 3, 180);
     return CGSizeMake(cellW, 160);
     
