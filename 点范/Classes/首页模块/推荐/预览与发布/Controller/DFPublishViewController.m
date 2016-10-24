@@ -7,8 +7,18 @@
 //
 
 #import "DFPublishViewController.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import <CoreImage/CoreImage.h>
+#import "DFTwoCodeViewController.h"
+
+#define kTagShareEdit 101
+#define kTagSharePost 102
+
 
 @interface DFPublishViewController ()
+@property (weak, nonatomic) IBOutlet UIView *weChat;
+@property (weak, nonatomic) IBOutlet UIView *weibo;
+@property (weak, nonatomic) IBOutlet UIView *twoCode;
 
 @end
 
@@ -18,24 +28,49 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"发布成功";
-    
-    //[self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(weChatShare)];
+    [self.weChat addGestureRecognizer:tap];
+    
+    UITapGestureRecognizer *weoboTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(weboShare)];
+    [self.weibo addGestureRecognizer:weoboTap];
+    
+    UITapGestureRecognizer *twoCodeTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(setupTwoCode)];
+    [self.twoCode addGestureRecognizer:twoCodeTap];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupTwoCode{
+
+    DFTwoCodeViewController *twoCode = [[DFTwoCodeViewController alloc]init];
+    [self.navigationController pushViewController:twoCode animated:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)weboShare{
+    UMSocialMessageObject * message = [[UMSocialMessageObject alloc]init];
+    message.text = @"";
+    [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_Sina messageObject:message currentViewController:self completion:^(id result, NSError *error) {
+        
+    }];
 }
-*/
+
+- (void)weChatShare{
+    NSString *text = @"来自觅食邦的分享";
+    
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    
+    messageObject.text = text;
+    
+    [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_WechatTimeLine messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        NSString *message = nil;
+        if (!error) {
+            message = [NSString stringWithFormat:@"分享成功"];
+        } else {
+            message = [NSString stringWithFormat:@"失败原因Code: %d\n",(int)error.code];
+            
+        }
+   
+    }];
+}
+
 
 @end

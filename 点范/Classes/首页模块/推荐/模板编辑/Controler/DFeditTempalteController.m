@@ -41,7 +41,9 @@
 
 @property (nonatomic,copy)NSString *bacgroud;
 
-@property (nonatomic,copy)NSString *number;
+@property (nonatomic,copy)UILabel *numberLab;
+
+
 
 @end
 
@@ -130,13 +132,7 @@ static NSString *const MerchantID = @"MerchantID";
         
         _bacgroud = responseObject[@"data"][@"dishTemplateMerchantPageResults"][@"background"];
 
-//        //提示数字Label
-        UILabel *numLabel = [[UILabel alloc]init];
-        numLabel.frame = CGRectMake(38, 3, 10, 10);
-       
-        NSString *number = [NSString stringWithFormat:@"%zd",self.tempMedelS.count];
-        [numLabel setText:number andFont:11 andColor:WhiteColor];
-        [self.footBtn addSubview:numLabel];
+
         
         [self.collectionView reloadData];
         [SVProgressHUD dismiss];
@@ -160,7 +156,9 @@ static NSString *const MerchantID = @"MerchantID";
         [SVProgressHUD show];
       
         self.tempMedelS = [DFTempMedol mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplatePageResults"]];
-        
+//        NSString *number = [NSString stringWithFormat:@"%zd",self.tempMedelS.count];
+//        [self.numberLab setText:number andFont:11 andColor:WhiteColor];
+ 
         [self.collectionView reloadData];
         [SVProgressHUD dismiss];
 
@@ -218,6 +216,13 @@ static NSString *const MerchantID = @"MerchantID";
     [button addTarget:self action:@selector(showFoot) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     self.footBtn = button;
+//    UILabel *numLabel = [[UILabel alloc]init];
+//    numLabel.frame = CGRectMake(38, 3, 10, 10);
+//    
+//    NSString *number = [NSString stringWithFormat:@"%zd",self.tempMedelS.count];
+//    [numLabel setText:number andFont:11 andColor:WhiteColor];
+//    self.numberLab = numLabel;
+//    [self.footBtn addSubview:numLabel];
 
 }
 #pragma mark - 底部弹出与返回

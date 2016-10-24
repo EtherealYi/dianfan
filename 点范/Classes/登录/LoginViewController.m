@@ -14,14 +14,11 @@
 #import "DFUser.h"
 #import "SVProgressHUD.h"
 #import "DFForgetPassword.h"
-#import "UMSocialQQHandler.h"
-#import "UMSocialSnsPlatformManager.h"
-#import "UMSocial.h"
 #import "DFHTTPSessionManager.h"
-#import "UMSocialDataService.h"
-#import<CommonCrypto/CommonDigest.h>  
+#import<CommonCrypto/CommonDigest.h>
+#import <UMSocialCore/UMSocialCore.h>
 
-@interface LoginViewController ()<UMSocialUIDelegate>
+@interface LoginViewController ()
 /** 登录按钮 **/
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 /** 电话号码 **/
@@ -69,89 +66,87 @@
 }
 
 - (IBAction)QQLogin:(id)sender {
-    //UMSocialDataService *service = [[UMSocialDataService alloc]init];
-    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
     
-    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
-        
-        //          获取微博用户名、uid、token等
-        
-        if (response.responseCode == UMSResponseCodeSuccess) {
-            //NSDictionary *dict = [UMSocialAccountManager socialAccountDictionary];
-        
-            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:snsPlatform.platformName];
-            NSLog(@"%@",snsAccount.iconURL);
-            //本地保存
-            NSString *url = [AccountAPI stringByAppendingString:apiStr(@"thPartyLogin.htm")];
-            
-            NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-            parameter[@"openId"] = snsAccount.usid;
-            [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
-                
-            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                NSLog(@"%@",responseObject);
-                //数据存储
-                NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-                [userDefault setObject:snsAccount.userName forKey:@"username"];
-                [userDefault setObject:responseObject[@"data"][@"token"] forKey:@"token"];
-                [userDefault setObject:snsAccount.iconURL forKey:@"icon"];
-                [userDefault synchronize];
-                [[DFUser sharedManager]initWithDict:userDefault];
-                [[DFUser sharedManager]saveIcon:userDefault];
-                
-               
-                [self back];
-
-                
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                NSLog(@"%@",error);
-            }];
-            
-        }});
-    
-    
+    [self authWithPlatform:UMSocialPlatformType_QQ];
     
 }
 
-/**
- 第三方登录数据持久化
- */
-- (void)loginThiid{
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setObject:self.username forKey:@"username"];
-    [userDefault setObject:self.token forKey:@"token"];
-    [userDefault synchronize];
-    [[DFUser sharedManager]initWithDict:userDefault];
-    [self back];
-    
-    NSLog(@"username = %@,token = %@",[DFUser sharedManager].username,[DFUser sharedManager].token);
+-(void)authWithPlatform:(UMSocialPlatformType)platformType
+{
+    [[UMSocialManager defaultManager]  authWithPlatform:platformType currentViewController:self completion:^(id result, NSError *error) {
+        NSString *message = nil;
+        if (error) {
+
+        }else{
+            if ([result isKindOfClass:[UMSocialAuthResponse class]]) {
+                UMSocialAuthResponse *resp = result;
+      
+            }else{
+
+            }
+        }
+    }];
+    //获取用户信息
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:platformType currentViewController:self completion:^(id result, NSError *error) {
+        UMSocialUserInfoResponse *userinfo =result;
+        
+        if (error) {
+            
+        }else{
+            [self loginThird:userinfo];
+        }
+    }];
 }
+
 
 
 - (IBAction)weChatLogin:(id)sender {
-    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
-    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
-        
-        //          获取微博用户名、uid、token等
-        
-        if (response.responseCode == UMSResponseCodeSuccess) {
-            
-            NSDictionary *dict = [UMSocialAccountManager socialAccountDictionary];
-            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:snsPlatform.platformName];
-            
-            NSLog(@"\nusername = %@,\n usid = %@,\n token = %@ iconUrl = %@,\n unionId = %@,\n thirdPlatformUserProfile = %@,\n thirdPlatformResponse = %@ \n, message = %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL, snsAccount.unionId, response.thirdPlatformUserProfile, response.thirdPlatformResponse, response.message);
-            
-            
-        }});
 
-    
+    [[UMSocialManager defaultManager]  authWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
+        UMSocialAuthResponse *authresponse = result;
+        NSString *message = [NSString stringWithFormat:@"result: %d\n uid: %@\n accessToken: %@\n",(int)error.code,authresponse.uid,authresponse.accessToken];
+    }];
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
+        UMSocialUserInfoResponse *userinfo =result;
+        NSString *message = [NSString stringWithFormat:@"name: %@\n icon: %@\n gender: %@\n",userinfo.name,userinfo.iconurl,userinfo.gender];
+   
+        if (error) {
+            
+        }else{
+            [self loginThird:userinfo];
+        }
+        
+    }];
+
 }
 
-- (void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response{
-}
+- (void)loginThird:(UMSocialUserInfoResponse *)userinfo{
+    //数据存储
+    NSString *url = [AccountAPI stringByAppendingString:apiStr(@"thPartyLogin.htm")];
+    //
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    parameter[@"openId"] = userinfo.uid;
+    [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
+        //数据存储
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        [userDefault setObject:userinfo.name forKey:@"username"];
+        [userDefault setObject:responseObject[@"data"][@"token"] forKey:@"token"];
+        [userDefault setObject:userinfo.iconurl forKey:@"icon"];
+        [userDefault synchronize];
+        [[DFUser sharedManager]initWithDict:userDefault];
+        [[DFUser sharedManager]saveIcon:userDefault];
+        
+        
+        [self back];
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
 
--(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType{
-    DFFunc
 }
 
 
@@ -198,6 +193,15 @@
             [userDefault setObject:responseObject[@"data"][@"token"] forKey:@"token"];
             [userDefault synchronize];
             [[DFUser sharedManager]initWithDict:userDefault];
+            //plist 存储
+            NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+            NSString *fileName = [path stringByAppendingPathComponent:@"123.plist"];
+            NSLog(@"%@",path);
+            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+            [dict setValue:@"1" forKey:@"username"];
+            [dict writeToFile:fileName atomically:YES];
+            
+            
             [self loadIcon];
             [self dismissViewControllerAnimated:YES completion:nil];
             //直接返回主控制器

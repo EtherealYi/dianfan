@@ -21,6 +21,7 @@
 #import "AFNetworking.h"
 #import "DFTestViewController.h"
 #import "DFNavigationController.h"
+#import "DFLoginAndShareController.h"
 
 @interface DFHomeViewController ()<UIScrollViewDelegate>
 /** 选中按钮 **/
@@ -53,12 +54,14 @@
     [self addChildView];
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(meClick) name:@"meClick" object:nil];
+ 
+   
 }
 
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-//   [[DFUser sharedManager]didLogout];
+
    
 }
 
@@ -188,20 +191,26 @@
 
 #pragma mark -点击事件
 - (void)meClick{
-//    if ([[DFUser sharedManager] isLogin] == NO ) {//如果没有值，进入未登录界面
+//    if ([[DFUser sharedManager] isLogin] == @NO ) {//如果没有值，进入未登录界面
 //        DFMeViewController *Me = [[DFMeViewController alloc]init];
 //        [self.navigationController pushViewController:Me animated:YES];
 //    }else{//有值，进入登录界面
 //        DFAlreadyController *Already = [[DFAlreadyController alloc]init];
 //        [self.navigationController pushViewController:Already animated:YES];
 //    }
+// 
+//
+    
     if ([DFUser sharedManager].token != nil) {
         DFAlreadyController *Already = [[DFAlreadyController alloc]init];
         [self.navigationController pushViewController:Already animated:YES];
     }else{
+       
         DFMeViewController *Me = [[DFMeViewController alloc]init];
         [self.navigationController pushViewController:Me animated:YES];
     }
+//    DFLoginAndShareController *loginAndShare = [[DFLoginAndShareController alloc]init];
+//    [self.navigationController pushViewController:loginAndShare animated:YES];
     
 }
 - (void)MessageClick{

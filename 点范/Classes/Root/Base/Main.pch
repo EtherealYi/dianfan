@@ -41,8 +41,12 @@
 /** 占位图 */
 #define palceholderImage [UIImage imageNamed:@"palfoot"]
 
+#define Umkey @"57b432afe0f55a9832001a0a"
+
 #define fDeviceWidth ([UIScreen mainScreen].bounds.size.width)
 #define fDeviceHeight ([UIScreen mainScreen].bounds.size.height)
+
+#define sucess [responseObject[@"code"] isEqual:@0]
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.

@@ -12,10 +12,11 @@
 #import "IQKeyboardManager.h"
 #import "DFHomeViewController.h"
 #import "DFUser.h"
-#import "UMSocial.h"
-#import "UMSocialSinaSSOHandler.h"
-#import "UMSocialQQHandler.h"
-#import "UMSocialWechatHandler.h"
+//#import "UMSocial.h"
+//#import "UMSocialSinaSSOHandler.h"
+//#import "UMSocialQQHandler.h"
+//#import "UMSocialWechatHandler.h"
+#import <UMSocialCore/UMSocialCore.h>
 #import "Pingpp.h"
 #import "DFBuySuccessController.h"
 #import "DFBuyTempController.h"
@@ -31,8 +32,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
-    [UMSocialData setAppKey:@"57b432afe0f55a9832001a0a"];
+    //设置友盟appkey
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@"57b432afe0f55a9832001a0a"];
     //创建窗口
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     //初始化控制器
@@ -49,11 +50,13 @@
     [self setUserData];
    
     [self.window makeKeyAndVisible];
-//    //设置手机QQ 的AppId，Appkey，和分享URL，需要#import "UMSocialQQHandler.h"
-    [UMSocialQQHandler setQQWithAppId:@"100424468" appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://www.umeng.com/social"];
+    //设置微信的appKey和appSecret
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxdc1e388c3822c80b" appSecret:@"3baf1193c85774b3fd9d18447d76cab0" redirectURL:@"http://mobile.umeng.com/social"];
+    //设置分享到QQ互联的appKey和appSecret
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"100424468"  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
     
-    //设置微信AppId，设置分享url，默认使用友盟的网址
-    [UMSocialWechatHandler setWXAppId:@"wxdc1e388c3822c80b" appSecret:@"a393c1527aaccb95f3a4c88d6d1455f6" url:@"http://www.umeng.com/social"];
+    //设置新浪的appKey和appSecret
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"http://sns.whalecloud.com/sina2/callback"];
 
  
     //ping ++
@@ -63,24 +66,14 @@
 }
 
 - (void)setUserData{
-   
-//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    NSLog(@"userDefault = %@",[userDefault objectForKey:@"token"]);
-//    NSLog(@"BOOL = %@",[[DFUser sharedManager] isLogin]?@"YES":@"NO");
-//    if ([userDefault objectForKey:@"token"] != nil) {
-//        //NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//        [[DFUser sharedManager] initWithDict:userDefault];
-//         NSLog(@"AppDelagate = %@",[DFUser sharedManager].token);
-//    }else{
-//        [[DFUser sharedManager] didLogout];
-//         NSLog(@"AppDelagate = %@",[DFUser sharedManager].token);
-//    }
 
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    //[[DFUser sharedManager]didLogout];
-    NSLog(@"%@",[userDefault objectForKey:@"token"]);
-    [[DFUser sharedManager]initWithDict:userDefault];
-    [[DFUser sharedManager]saveIcon:userDefault];
+  
+
+        [[DFUser sharedManager]initWithDict:userDefault];
+        [[DFUser sharedManager]saveIcon:userDefault];
+    
+
 
     
 }
@@ -106,25 +99,35 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
-    BOOL result = [UMSocialSnsService handleOpenURL:url];
-    if (result == FALSE) {
-        //调用其他SDK，例如支付宝SDK等
+//- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
+//    
+//    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+////    if (result == FALSE) {
+////        //调用其他SDK，例如支付宝SDK等
+////        result = [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
+////            NSLog(@"%@",url.absoluteString);
+////            if ([url.absoluteString containsString:@"success"]) {
+////                  [[NSNotificationCenter defaultCenter]postNotificationName:@"push" object:self];
+////            }
+////        }];
+////    }
+//    return result;
+//}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    NSLog(@"%@",url.absoluteString);
+    if (!result) {
+        // 其他如支付等SDK的回调
         result = [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
-            NSLog(@"%@",url.absoluteString);
-            if ([url.absoluteString containsString:@"success"]) {
-                  [[NSNotificationCenter defaultCenter]postNotificationName:@"push" object:self];
-            }
-        }];
+        NSLog(@"%@",url.absoluteString);
+        if ([url.absoluteString containsString:@"success"]) {
+              [[NSNotificationCenter defaultCenter]postNotificationName:@"push" object:self];
+        }
+    }];
+
     }
     return result;
 }
-//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-//{
-//    return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
-//}
-//- (void)applicationDidBecomeActive:(UIApplication *)application{
-//    [UMSocialSnsService  applicationDidBecomeActive];
-//}
 
 @end

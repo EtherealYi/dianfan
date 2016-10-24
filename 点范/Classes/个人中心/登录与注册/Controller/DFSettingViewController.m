@@ -102,10 +102,11 @@ static NSString * SettingCell = @"SettingCell";
             
             [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 //点击按钮的响应事件；
-                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                [userDefaults removeObjectForKey:@"username"];
-                [userDefaults removeObjectForKey:@"token"];
-                [userDefaults synchronize];
+//                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//                [userDefaults removeObjectForKey:@"username"];
+//                [userDefaults removeObjectForKey:@"token"];
+//                [userDefaults removeObjectForKey:@"icon"];
+//                [userDefaults synchronize];
                 [[DFUser sharedManager]didLogout];
                 
                 [self.navigationController popToRootViewControllerAnimated:YES];
