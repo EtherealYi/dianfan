@@ -47,7 +47,7 @@
 
 - (void)weboShare{
     UMSocialMessageObject * message = [[UMSocialMessageObject alloc]init];
-    message.text = @"";
+    message.text = @"来自强大的觅食邦的分享";
     [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_Sina messageObject:message currentViewController:self completion:^(id result, NSError *error) {
         
     }];
