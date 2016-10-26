@@ -69,11 +69,17 @@ static NSString *cellID = @"footData";
     [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        weakSelf.footArrays = [DFfootDataModel mj_objectWithKeyValues:responseObject[@"data"]];
-        weakSelf.footArrays.stroreFoot = [DFStoreViewModel mj_objectWithKeyValues:responseObject[@"data"][@"dish"]];
-        weakSelf.footArrays.areaModel = [DFAreaModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"areaAndRatio"]];
-        weakSelf.footArrays.genderRatio = [DFGenderRatio mj_objectWithKeyValues:responseObject[@"data"][@"genderRatio"]];
-        [weakSelf.tableView reloadData];
+        if (sucess) {
+            weakSelf.footArrays = [DFfootDataModel mj_objectWithKeyValues:responseObject[@"data"]];
+            weakSelf.footArrays.stroreFoot = [DFStoreViewModel mj_objectWithKeyValues:responseObject[@"data"][@"dish"]];
+            weakSelf.footArrays.areaModel = [DFAreaModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"areaAndRatio"]];
+            weakSelf.footArrays.genderRatio = [DFGenderRatio mj_objectWithKeyValues:responseObject[@"data"][@"genderRatio"]];
+            [weakSelf.tableView reloadData];
+        }else{
+            UIAlertController *altrt = [UIAlertController actionWithMessage:MsgMessage];
+            [self presentViewController:altrt animated:YES completion:nil];
+        }
+     
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error);
@@ -83,7 +89,7 @@ static NSString *cellID = @"footData";
     [self.manager POST:dishUrl parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
+        
         weakSelf.disCommentData = [DFDishCommentData mj_objectWithKeyValues:responseObject[@"data"]];
         weakSelf.disCommentData.countAndRation = [DFCountAndRatio mj_objectWithKeyValues:responseObject[@"data"][@"countAndRatio"]];
         weakSelf.disCommentData.scoreMap = [DFScoreDistributionMap mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"ScoreDistributionMap"]];

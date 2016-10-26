@@ -15,4 +15,6 @@
 
 - (NSString *)SubToIndex;
 
++ (NSString *)iphoneType;
+
 @end

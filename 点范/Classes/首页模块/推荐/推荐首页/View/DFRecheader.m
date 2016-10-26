@@ -33,65 +33,58 @@
 
 
 - (instancetype)initWithFrame:(CGRect)frame{
+    
     if (self = [super initWithFrame:frame]) {
+        
+        
+        UIScrollView *scrollView = [[UIScrollView alloc]init];
+        scrollView.frame = CGRectMake(0, 0, self.df_width, self.df_height);
+        //scrollView.backgroundColor = [UIColor purpleColor];
+        //设置图片固定尺寸
+        CGFloat imageW = scrollView.frame.size.width;
+        CGFloat imageH = scrollView.frame.size.height;
+        CGFloat Y = 0;
+        
+        //1.将3张图片添加到scrollView中
+//        for (int i = 0;i < imgCount ; i++) {
+//            //初始化imageView
+//            UIImageView *imageView=[[UIImageView alloc]init];
+//            //设置frame
+//            CGFloat X=i*imageW;
+//            imageView.frame= CGRectMake(X, Y, imageW, imageH);
+//            //设置图片(网络获取)
+//            [imageView sd_setImageWithURL:[NSURL URLWithString:self.imgArrays[i].path] placeholderImage:[UIImage imageNamed:@"zhanwei"] options:SDWebImageProgressiveDownload];
+//            
+//            
+//            [scrollView addSubview:imageView];
+//        }
+        [self loadImg];
+        //设置scrollView内容尺寸
+        CGFloat scrollW=imgCount * imageW;
+        scrollView.contentSize=CGSizeMake(scrollW, 0);
+        
+        //隐藏水平滚动条
+        scrollView.showsHorizontalScrollIndicator=NO;
+        scrollView.pagingEnabled = YES;
+        scrollView.delegate = self;
+        
+        [self addSubview:scrollView];
+        self.Scroller = scrollView;
+        
+        //设置页数
+        UIPageControl *pageCtr = [[UIPageControl alloc]init];
+        pageCtr.frame = CGRectMake(DFMargin,DFMargin , 40, 10);
+        pageCtr.pageIndicatorTintColor = [UIColor whiteColor];
+        pageCtr.currentPageIndicatorTintColor = [UIColor redColor];
+        [self addSubview:pageCtr];
+        self.pageControl = pageCtr;
+        self.pageControl.numberOfPages = imgCount;
+        
+        
+        //设置定时器
+        [self addTimer];
+
        
-        [[AFHTTPSessionManager manager]GET:@"http://10.0.0.30:8080/app/ad/list.htm" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            //NSLog(@"Header = %@",responseObject[@"data"][@"errMsg"]);
-   
-                self.imgArrays = [DFTopImg mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
-            UIScrollView *scrollView = [[UIScrollView alloc]init];
-            scrollView.frame = CGRectMake(0, 0, self.df_width, self.df_height);
-            //scrollView.backgroundColor = [UIColor purpleColor];
-            //设置图片固定尺寸
-            CGFloat imageW = scrollView.frame.size.width;
-            CGFloat imageH = scrollView.frame.size.height;
-            CGFloat Y = 0;
-            
-            //1.将3张图片添加到scrollView中
-            for (int i = 0;i < imgCount ; i++) {
-                //初始化imageView
-                UIImageView *imageView=[[UIImageView alloc]init];
-                //设置frame
-                CGFloat X=i*imageW;
-                imageView.frame= CGRectMake(X, Y, imageW, imageH);
-                //设置图片(网络获取)
-                [imageView sd_setImageWithURL:[NSURL URLWithString:self.imgArrays[i].path] placeholderImage:[UIImage imageNamed:@"zhanwei"] options:SDWebImageProgressiveDownload];
-
-                
-                [scrollView addSubview:imageView];
-            }
-            
-            //设置scrollView内容尺寸
-            CGFloat scrollW=imgCount * imageW;
-            scrollView.contentSize=CGSizeMake(scrollW, 0);
-            
-            //隐藏水平滚动条
-            scrollView.showsHorizontalScrollIndicator=NO;
-            scrollView.pagingEnabled = YES;
-            scrollView.delegate = self;
-            
-            [self addSubview:scrollView];
-            self.Scroller = scrollView;
-            
-            //设置页数
-            UIPageControl *pageCtr = [[UIPageControl alloc]init];
-            pageCtr.frame = CGRectMake(DFMargin,DFMargin , 40, 10);
-            pageCtr.pageIndicatorTintColor = [UIColor whiteColor];
-            pageCtr.currentPageIndicatorTintColor = [UIColor redColor];
-            [self addSubview:pageCtr];
-            self.pageControl = pageCtr;
-            self.pageControl.numberOfPages = imgCount;
-            
-            
-            //设置定时器
-            [self addTimer];
-            
-
-                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            //NSLog(@"%@",error);
-        }];
         
         
         
@@ -101,6 +94,35 @@
     }
 
     return self;
+}
+
+- (void)loadImg{
+    [[AFHTTPSessionManager manager]GET:@"http://10.0.0.30:8080/app/ad/list.htm" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //NSLog(@"Header = %@",responseObject[@"data"][@"errMsg"]);
+        
+        self.imgArrays = [DFTopImg mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+        CGFloat imageW = self.Scroller.frame.size.width;
+        CGFloat imageH = self.Scroller.frame.size.height;
+        CGFloat Y = 0;
+        for (int i = 0;i < imgCount ; i++) {
+            //初始化imageView
+            UIImageView *imageView=[[UIImageView alloc]init];
+            //设置frame
+            CGFloat X=i*imageW;
+            imageView.frame= CGRectMake(X, Y, imageW, imageH);
+            //设置图片(网络获取)
+            [imageView sd_setImageWithURL:[NSURL URLWithString:self.imgArrays[i].path] placeholderImage:[UIImage imageNamed:@"zhanwei"] options:SDWebImageProgressiveDownload];
+            
+            
+            [self.Scroller addSubview:imageView];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //NSLog(@"%@",error);
+    }];
+
 }
 
 -(void)addTimer{

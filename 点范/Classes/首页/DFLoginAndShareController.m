@@ -39,22 +39,22 @@
     [[UMSocialManager defaultManager]  authWithPlatform:platformType currentViewController:self completion:^(id result, NSError *error) {
         NSString *message = nil;
         if (error) {
-            NSLog(@"Auth fail with error %@", error);
+            //NSLog(@"Auth fail with error %@", error);
             message = @"Auth fail";
         }else{
             if ([result isKindOfClass:[UMSocialAuthResponse class]]) {
                 UMSocialAuthResponse *resp = result;
                 // 授权信息
-                NSLog(@"AuthResponse uid: %@", resp.uid);
-                NSLog(@"AuthResponse accessToken: %@", resp.accessToken);
-                NSLog(@"AuthResponse refreshToken: %@", resp.refreshToken);
-                NSLog(@"AuthResponse expiration: %@", resp.expiration);
+//                NSLog(@"AuthResponse uid: %@", resp.uid);
+//                NSLog(@"AuthResponse accessToken: %@", resp.accessToken);
+//                NSLog(@"AuthResponse refreshToken: %@", resp.refreshToken);
+//                NSLog(@"AuthResponse expiration: %@", resp.expiration);
                 
                 // 第三方平台SDK源数据,具体内容视平台而定
-                NSLog(@"AuthOriginalResponse: %@", resp.originalResponse);
+//                NSLog(@"AuthOriginalResponse: %@", resp.originalResponse);
                 message = [NSString stringWithFormat:@"result: %d\n uid: %@\n accessToken: %@\n",(int)error.code,resp.uid,resp.accessToken];
             }else{
-                NSLog(@"Auth fail with unknow error");
+//                NSLog(@"Auth fail with unknow error");
                 message = @"Auth fail";
             }
         }
@@ -72,7 +72,7 @@
     [[UMSocialManager defaultManager] getUserInfoWithPlatform:platformType currentViewController:self completion:^(id result, NSError *error) {
         UMSocialUserInfoResponse *userinfo =result;
         NSString *message = [NSString stringWithFormat:@"name: %@\n icon: %@\n gender: %@\n",userinfo.name,userinfo.iconurl,userinfo.gender];
-        NSLog(@"%@",message);
+//        NSLog(@"%@",message);
     }];
 }
 - (IBAction)wechatshare:(id)sender {

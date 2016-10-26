@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <JavaScriptCore/JavaScriptCore.h>
+
 
 @interface DFTempWebViewController : UIViewController
-
-@property (nonatomic,copy)NSString *reultID;
+/** 模板页面id */
+@property (nonatomic,copy)NSString *PageID;
+/** 模板id */
+@property (nonatomic,copy)NSString *dishTemplateResultId;
 
 @end

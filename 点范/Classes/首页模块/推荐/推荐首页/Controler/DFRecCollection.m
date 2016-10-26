@@ -128,10 +128,16 @@ static NSString * const headerID = @"RecHead";
     [self.manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        self.recModelS = [DFRecModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
-        [self.collectionView reloadData];
-        //让【刷新控件】结束刷新
-        [self.collectionView.mj_header endRefreshing];
+        if (sucess) {
+            self.recModelS = [DFRecModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+            [self.collectionView reloadData];
+            //让【刷新控件】结束刷新
+            [self.collectionView.mj_header endRefreshing];
+        }else{
+            UIAlertController *alter = [UIAlertController actionWithMessage:MsgMessage];
+            [self presentViewController:alter animated:YES completion:nil];
+        }
+    
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.collectionView.mj_header endRefreshing];
@@ -146,11 +152,18 @@ static NSString * const headerID = @"RecHead";
     [self.manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSArray *moreArray = [DFRecModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
-        [self.recModelS addObjectsFromArray:moreArray];
-        [self.collectionView reloadData];
-        //让【刷新控件】结束刷新
-        [self.collectionView.mj_footer endRefreshing];
+        if (sucess) {
+            NSArray *moreArray = [DFRecModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+            [self.recModelS addObjectsFromArray:moreArray];
+            [self.collectionView reloadData];
+            //让【刷新控件】结束刷新
+            [self.collectionView.mj_footer endRefreshing];
+        }else{
+            UIAlertController *alter = [UIAlertController actionWithMessage:MsgMessage];
+            [self presentViewController:alter animated:YES completion:nil];
+
+        }
+   
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.collectionView.mj_footer endRefreshing];

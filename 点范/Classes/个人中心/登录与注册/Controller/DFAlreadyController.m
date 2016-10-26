@@ -19,6 +19,7 @@
 #import "DFSettingViewController.h"
 #import "DFHTTPSessionManager.h"
 #import "UIImageView+WebCache.h"
+#import "DFMessageController.h"
 
 #define ORIGINAL_MAX_WIDTH 640.0f
 
@@ -33,6 +34,8 @@
 @property (nonatomic,strong)DFHTTPSessionManager *manager;
 
 @property (nonatomic,copy)NSString *imgName;
+
+@property (nonatomic,copy)NSString *selectImg;
 
 @end
 
@@ -64,12 +67,12 @@ static NSString *PersonalID = @"PersonalID";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:PersonalID];
 
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0);
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshIcon) name:@"refreshIcon" object:nil];
+    
     [self setupHeader];
     [self setNavItem];
     [self addChild];
-    //[self loadIcon];
-    [self loadPublish];
-
 }
 - (void)addChild{
     //添加子控件
@@ -94,12 +97,9 @@ static NSString *PersonalID = @"PersonalID";
     UIButton *messageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [messageBtn setImage:[UIImage imageNamed:@"消息"] forState:UIControlStateNormal];
     [messageBtn sizeToFit];
-    //[messageBtn addTarget:self action:@selector(MessageClick) forControlEvents:UIControlEventTouchUpInside];
+    [messageBtn addTarget:self action:@selector(MessageClick) forControlEvents:UIControlEventTouchUpInside];
     messageBtn.contentEdgeInsets = UIEdgeInsetsMake(4, 4,4, 3);
     UIBarButtonItem *messageItem = [[UIBarButtonItem alloc]initWithCustomView:messageBtn];
-    
-    
-    
     self.navigationItem.rightBarButtonItems = @[settingItem,messageItem];
 }
 
@@ -113,11 +113,8 @@ static NSString *PersonalID = @"PersonalID";
     bmgView.frame = headView.frame;
 
     [headView addSubview:bmgView];
-
-    
     //设置内容
     //头像
-   
     UIImageView *imageView = [[UIImageView alloc]init];
  
     //CGFloat imgH = icon.size.height * 0.5;
@@ -133,6 +130,7 @@ static NSString *PersonalID = @"PersonalID";
     imageView.layer.borderWidth = 1.5f;
     imageView.layer.borderColor = [UIColor whiteColor].CGColor;
     [imageView setImage:[UIImage imageNamed:@"X键"]];
+    
     if ([DFUser sharedManager].icon) {
         [imageView sd_setImageWithURL:[NSURL URLWithString:[DFUser sharedManager].icon] placeholderImage:nil options:SDWebImageProgressiveDownload];
     }
@@ -196,53 +194,13 @@ static NSString *PersonalID = @"PersonalID";
     
 }
 
-#pragma mark - 网络请求
-- (void)loadIcon{
+#pragma mark - 刷新头像
+- (void)refreshIcon{
     
-    NSString *url = [MemberAPI stringByAppendingString:apiStr(@"getAvator.htm")];
-    NSLog(@"tokrn = %@",[DFUser sharedManager].token);
-    [self.manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        self.imgName = responseObject[@"data"];
-        if (self.imgName.length > 0) {
-            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-            [userDefault setObject:self.imgName forKey:@"icon"];
-            [[DFUser sharedManager] saveIcon:userDefault];
-            //回到主线程刷新UI
-             [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:self.imgName] placeholderImage:nil options:SDWebImageProgressiveDownload];
-        }
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[DFUser sharedManager].icon] placeholderImage:nil options:SDWebImageProgressiveDownload];
+}
 
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-       
-    }];
-}
-- (void)loadPublish{
-    
-    return ;
-    NSString *url1 = [NSString stringWithFormat:@"http://10.0.0.30:8080/appMember/login/member/myDishTemplates.htm?token=%@",[DFUser sharedManager].token];
-    [self.manager GET:url1 parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
-    
-    
-    NSString *url = [NSString stringWithFormat:@"http://10.0.0.30:8080/appMember/login/member/myDishTemplateResults.htm?token=%@",[DFUser sharedManager].token];
-    
-    NSMutableDictionary *parmater = [NSMutableDictionary dictionary];
-    parmater[@"isMarketable"] = @"false";
-    [self.manager GET:url parameters:parmater progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
-}
+
 
 #pragma mark - 页面跳转
 - (void)pushToSetting{
@@ -255,6 +213,11 @@ static NSString *PersonalID = @"PersonalID";
     iconChoose.pittureCtr = [NSString stringWithFormat:@"%@",upLoadAvator];
     [self.navigationController pushViewController:iconChoose animated:YES];
 }
+- (void)MessageClick{
+    DFMessageController *messageVc = [[DFMessageController alloc]init];
+    [self.navigationController pushViewController:messageVc animated:YES];
+}
+
 
 #pragma mark - Table view data source
 

@@ -82,7 +82,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
     //成功后返回登录界面
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
     
         NSNumber *registCode = responseObject[@"code"];
         NSNumber *code = [NSNumber numberWithInt:0];
@@ -99,7 +99,7 @@
         
     
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@",error);
+//        NSLog(@"%@",error);
     }];
 }
 
@@ -110,7 +110,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSLog(@"%@",responseObject[@"code"]);
+//        NSLog(@"%@",responseObject[@"code"]);
         
         NSNumber *code = responseObject[@"code"];
         
@@ -137,7 +137,7 @@
             [self presentViewController:alert animated:true completion:nil];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@",error);
+//        NSLog(@"%@",error);
     }];
     
 }

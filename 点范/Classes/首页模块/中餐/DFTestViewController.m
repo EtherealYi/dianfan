@@ -93,33 +93,18 @@
 
 }
 
-- (void)setupWebView{
-    UIWebView *webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
-    webView.delegate = self;
-    NSString *path = [[NSBundle mainBundle] bundlePath];
-    NSURL *baseURL = [NSURL fileURLWithPath:path];
-    NSString * htmlPath = [[NSBundle mainBundle]
-                           pathForResource:@"testVideo" ofType:@"html"];
-    NSString * htmlCont = [NSString stringWithContentsOfFile:htmlPath
-                                                    encoding:NSUTF8StringEncoding
-                                                       error:nil];
-    [webView loadHTMLString:htmlCont baseURL:baseURL];
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"start()"]];
-    [self.view addSubview:webView];
-    self.webView = webView;
-    
-}
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
     NSLog(@"网页加载完毕");
     //获取js的运行环境
     _context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    //html调用无参数OC
-//    _context[@"start"] = ^(){
-//        NSLog(@"start");
-//        //[self startClick];
-//    };
+//    html调用无参数OC
+        _context[@"start"] = ^(){
+            NSLog(@"start");
+            [self startClick];
+//            UIAlertController *alter = [UIAlertController actionWithMessage:@"hahaa"];
+//            [self presentViewController:alter animated:YES completion:nil];
+        };
     _context[@"stop"] = ^(){
         NSLog(@"stop");
         [self stopClick];
@@ -143,6 +128,25 @@
     //        [self menthod2:name and:str];
     //    };
 }
+
+
+- (void)setupWebView{
+    UIWebView *webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
+    webView.delegate = self;
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
+    NSString * htmlPath = [[NSBundle mainBundle]
+                           pathForResource:@"testVideo" ofType:@"html"];
+    NSString * htmlCont = [NSString stringWithContentsOfFile:htmlPath
+                                                    encoding:NSUTF8StringEncoding
+                                                       error:nil];
+    [webView loadHTMLString:htmlCont baseURL:baseURL];
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"start()"]];
+    [self.view addSubview:webView];
+    self.webView = webView;
+    
+}
+
 
 - (void)startClick{
     //先设置能播放和录音状态

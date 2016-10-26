@@ -49,7 +49,7 @@
 
 - (void)setupChildView{
     UIImageView *imgView = [[UIImageView alloc]init];
-    imgView.backgroundColor = MainColor;
+    imgView.image = [UIImage imageNamed:@"nullIcon"];
     if ([self.pittureCtr isEqualToString:upLoadAvator]) {
         
         [imgView sd_setImageWithURL:[NSURL URLWithString:[DFUser sharedManager].icon] placeholderImage:nil options:SDWebImageProgressiveDownload];
@@ -103,6 +103,7 @@
 - (void)test{
     DFFunc
 }
+
 /*************************访问相册**************************/
 
 //  方法：alterHeadPortrait
@@ -175,8 +176,7 @@
     //保存到 document
     [imageData writeToFile:totalPath atomically:NO];
     //保存到 NSUserDefaults
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    [userDefaults setObject:totalPath forKey:@"avatar"];
+
 }
 
 
@@ -188,6 +188,8 @@
 - (void)imageUpToWeb:(UIImage *)image{
     NSData *imageData = UIImageJPEGRepresentation(self.imgView.image, 0.5);
     NSString *url = [UploadAPI stringByAppendingString:apiStr(self.pittureCtr)];
+    
+    NSLog(@"%@",self.pittureCtr);
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
     [parameter setValue:imageData forKey:@"file"];
     
@@ -212,11 +214,19 @@
        
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
-        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-        [userDefault setObject:responseObject[@"data"] forKey:@"icon"];
-        [userDefault synchronize];
-        [[DFUser sharedManager] saveIcon:userDefault];
+        
+       
+        if ([self.pittureCtr isEqualToString:[NSString stringWithFormat:@"%@",upLoadAvator]]){
+            
+            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+            [userDefault setObject:responseObject[@"data"] forKey:@"icon"];
+            [userDefault synchronize];
+            [[DFUser sharedManager] saveIcon:userDefault];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshIcon" object:nil];
+        }else{
+            
+        }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error);
     }];

@@ -129,7 +129,7 @@
     [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         //数据存储
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         [userDefault setObject:userinfo.name forKey:@"username"];
@@ -196,7 +196,7 @@
             //plist 存储
             NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
             NSString *fileName = [path stringByAppendingPathComponent:@"123.plist"];
-            NSLog(@"%@",path);
+//            NSLog(@"%@",path);
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
             [dict setValue:@"1" forKey:@"username"];
             [dict writeToFile:fileName atomically:YES];

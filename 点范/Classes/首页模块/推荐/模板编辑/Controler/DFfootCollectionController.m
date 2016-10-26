@@ -118,14 +118,16 @@ static NSString * const headID = @"footHead";
     [self.manager GET:url parameters:parmeters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [SVProgressHUD show];
+        if (sucess) {
+            [SVProgressHUD show];
             
             _resultMedelS = [DFResultModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplatePageResults"]];
             [self.collectionView reloadData];
             [SVProgressHUD dismiss];
-    
-        
-      
+        }else{
+            UIAlertController *altrt = [UIAlertController actionWithMessage:MsgMessage];
+            [self presentViewController:altrt animated:YES completion:nil];
+        }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         

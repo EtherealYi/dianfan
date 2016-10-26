@@ -55,7 +55,7 @@
                                                     encoding:NSUTF8StringEncoding
                                                        error:nil];
     [webView loadHTMLString:htmlCont baseURL:baseURL];
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hello(a)"]];
+//    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"start"]];
     [self.view addSubview:webView];
     self.webView = webView;
     
@@ -63,12 +63,14 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
 
-    NSLog(@"网页加载完毕");
+    //NSLog(@"网页加载完毕");
     //获取js的运行环境
     _context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     //html调用无参数OC
     _context[@"start"] = ^(){
         [self recordClick];
+//        UIAlertController *alter = [UIAlertController actionWithMessage:@"haha"];
+//        [self presentViewController:alter animated:YES completion:nil];
     };
     _context[@"stop"] = ^(){
         [self stopClick];

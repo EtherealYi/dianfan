@@ -125,17 +125,23 @@ static NSString *const MerchantID = @"MerchantID";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD show];
-        
-        self.tempMedelS = [DFTempMedol mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplatePageResults"]];
-        
-        self.dishTemplateResultId = responseObject[@"data"][@"dishTemplateResultId"];
-        
-        _bacgroud = responseObject[@"data"][@"dishTemplateMerchantPageResults"][@"background"];
-
-
-        
-        [self.collectionView reloadData];
-        [SVProgressHUD dismiss];
+        if (sucess) {
+            
+            self.tempMedelS = [DFTempMedol mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplatePageResults"]];
+            
+            self.dishTemplateResultId = responseObject[@"data"][@"dishTemplateResultId"];
+            
+            _bacgroud = responseObject[@"data"][@"dishTemplateMerchantPageResults"][@"background"];
+            
+            [self.collectionView reloadData];
+            [SVProgressHUD dismiss];
+        }else{
+            UIAlertController *altrt = [UIAlertController alterWithMessage:MsgMessage handler:^(UIAlertAction *action) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            [self presentViewController:altrt animated:YES completion:nil];
+        }
+       
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error);
     }];
@@ -154,16 +160,15 @@ static NSString *const MerchantID = @"MerchantID";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD show];
-      
-        self.tempMedelS = [DFTempMedol mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplatePageResults"]];
-//        NSString *number = [NSString stringWithFormat:@"%zd",self.tempMedelS.count];
-//        [self.numberLab setText:number andFont:11 andColor:WhiteColor];
- 
-        [self.collectionView reloadData];
-        [SVProgressHUD dismiss];
+        if (sucess) {
+            self.tempMedelS = [DFTempMedol mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplatePageResults"]];
+            [self.collectionView reloadData];
+            [SVProgressHUD dismiss];
+        }else{
+            UIAlertController *altrt = [UIAlertController actionWithMessage:MsgMessage];
+            [self presentViewController:altrt animated:YES completion:nil];
+        }
 
-     
-       
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
@@ -333,7 +338,8 @@ static NSString *const MerchantID = @"MerchantID";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
         DFTempWebViewController *webVc = [[DFTempWebViewController alloc]init];
-        webVc.reultID = self.tempMedelS[indexPath.row].temp_id;
+        webVc.PageID = self.tempMedelS[indexPath.row].temp_id;
+        webVc.dishTemplateResultId = self.dishTemplateResultId;
         [self.navigationController pushViewController:webVc animated:YES];
 }
 

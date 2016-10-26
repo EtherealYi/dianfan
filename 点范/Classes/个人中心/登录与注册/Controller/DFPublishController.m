@@ -13,6 +13,8 @@
 #import "DFPersonalTemplateCell.h"
 #import "DFPersonalTemplate.h"
 #import "MJExtension.h"
+#import "DFTempWebViewController.h"
+#import "DFeditTempalteController.h"
 
 @interface DFPublishController ()
 
@@ -54,7 +56,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)loadPublish{
      __weak typeof(self) weakSelf = self;
-//    NSString *url = [NSString stringWithFormat:@"http://10.0.0.30:8080/appMember/login/member/myDishTemplateResults.htm?token=%@",[DFUser sharedManager].token];
+
     NSString *url = [MemberAPI stringByAppendingString:apiStr(@"myDishTemplateResults.htm")];
     
     NSMutableDictionary *parmater = [NSMutableDictionary dictionary];
@@ -62,8 +64,10 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.manager GET:url parameters:parmater progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        weakSelf.templateArrays = [DFPersonalTemplate mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplateResults"]];
+        if (sucess) {
+           weakSelf.templateArrays = [DFPersonalTemplate mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplateResults"]];
+        }
+     
         
         [weakSelf.collectionView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -105,6 +109,12 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     return UIEdgeInsetsMake(10, 10, 10, 10);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    DFeditTempalteController *editTemp = [[DFeditTempalteController alloc]init];
+    editTemp.rec_id = self.templateArrays[indexPath.row].result_id;
+    [self.navigationController pushViewController:editTemp animated:YES];
 }
 
 @end

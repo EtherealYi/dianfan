@@ -15,13 +15,14 @@
 #import "NSString+DFExtension.h"
 #import "UILabel+DFExtension.h"
 #import "CALayer+DFExtension.h"
+#import "UIAlertController+DFExtension.h"
 
 
-#ifdef DEBUG //处于开发阶段
-#define DFLog(...) NSLog(@"%s %d\n %@\n\n", __func__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])
-#else //处于发布阶段
-#define NSLog(...)
-#endif
+//#ifdef DEBUG //处于开发阶段
+//#define DFLog(...) NSLog(@"%s %d\n %@\n\n", __func__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])
+//#else //处于发布阶段
+//#define NSLog(...)
+//#endif
 
 
 
@@ -37,6 +38,7 @@
 
 #define upLoadLogo @"uploadLogo.htm"
 #define upLoadAvator @"uploadAvator.htm"
+/** 导出文件 */
 #define MYWriteToFile(data,fileName) [data writeToFile:fileName atomically:YES];
 /** 占位图 */
 #define palceholderImage [UIImage imageNamed:@"palfoot"]
@@ -45,8 +47,10 @@
 
 #define fDeviceWidth ([UIScreen mainScreen].bounds.size.width)
 #define fDeviceHeight ([UIScreen mainScreen].bounds.size.height)
-
+/** 是否请求成功 */
 #define sucess [responseObject[@"code"] isEqual:@0]
+/** 错误打印 */
+#define MsgMessage responseObject[@"data"][@"errMsg"]
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.

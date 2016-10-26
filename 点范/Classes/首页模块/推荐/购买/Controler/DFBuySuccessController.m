@@ -49,7 +49,7 @@
     [self.view addSubview:homeBtn];
     
     UIButton *publishBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [publishBtn setText:@"返回个人中心" andFont:14 andColor:WhiteColor];
+    [publishBtn setText:@"返回模板" andFont:14 andColor:WhiteColor];
     [publishBtn CornerAndShdow];
     [self.view addSubview:publishBtn];
 

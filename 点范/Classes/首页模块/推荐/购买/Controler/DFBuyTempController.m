@@ -21,6 +21,7 @@
 #import "DFNavigationController.h"
 #import "DFiconChooseController.h"
 #import "IQKeyboardManager.h"
+#import "UIImageView+WebCache.h"
 
 #define kUrlScheme      @"demoapp001"
 
@@ -49,13 +50,19 @@
 @property (nonatomic,copy)NSString *shopName;
 /** 餐厅类型 */
 @property (nonatomic,copy)NSString *shopType;
+/** 文字框数组 */
+@property (nonatomic,strong)NSArray *textFieldArrays;
+/** logo */
+@property (nonatomic,strong)UIImageView *logoImg;
 
+@property (nonatomic,strong)NSMutableDictionary *charge;
 
 @end
 
 @implementation DFBuyTempController
 
-static NSString *const buyCell = @"buyCell";
+static NSString *buyCell = @"buyCell";
+static NSString *contentCell = @"contentCell";
 
 #pragma mark - 懒加载
 - (NSArray *)payArray{
@@ -84,6 +91,12 @@ static NSString *const buyCell = @"buyCell";
         _manager = [DFHTTPSessionManager manager];
     }
     return _manager;
+}
+- (NSArray *)textFieldArrays{
+    if (!_textFieldArrays) {
+        _textFieldArrays = [NSArray array];
+    }
+    return _textFieldArrays;
 }
 
 #pragma  mark - 初始化
@@ -118,7 +131,15 @@ static NSString *const buyCell = @"buyCell";
                    @"支付宝支付",
                    @"微信支付"
                   ];
+    _textFieldArrays = @[@"1",
+                         @"2",
+                         @"3",
+                         @"4",
+                         @"5"
+                         ];
     [self loadcreateTrade];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DFbuyContentCell class]) bundle:nil] forCellReuseIdentifier:contentCell];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(push) name:@"push" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pop) name:@"pop" object:nil];
 }
@@ -132,15 +153,39 @@ static NSString *const buyCell = @"buyCell";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD show];
-        weakSelf.buyModel = [DFBuyModel mj_objectWithKeyValues:responseObject[@"data"][@"trade"][@"dishTemplate"]];
-        weakSelf.sn = responseObject[@"data"][@"trade"][@"sn"];
-        [self.tableView reloadData];
-        [SVProgressHUD dismiss];
+        if (sucess) {
+            weakSelf.buyModel = [DFBuyModel mj_objectWithKeyValues:responseObject[@"data"][@"trade"][@"dishTemplate"]];
+            weakSelf.sn = responseObject[@"data"][@"trade"][@"sn"];
+            [self.tableView reloadData];
+            [SVProgressHUD dismiss];
+        }else{
+            [SVProgressHUD dismiss];
+            UIAlertController *alter = [UIAlertController alertControllerWithTitle:@"提示" message:MsgMessage preferredStyle:UIAlertControllerStyleAlert];
+            [alter addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }]];
+            [self presentViewController:alter animated:YES completion:nil];
+        }
+      
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
        // NSLog(@"error");
     }];
 }
 
+- (void)loadlgog{
+    NSString *url = [MemberAPI stringByAppendingString:apiStr(@"getLogo.htm")];
+    [self.manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (sucess) {
+            NSString *logoImg = responseObject[@"data"];
+            [self.logoImg sd_setImageWithURL:[NSURL URLWithString:logoImg] placeholderImage:nil options:SDWebImageProgressiveDownload];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -166,14 +211,17 @@ static NSString *const buyCell = @"buyCell";
         }
             break;
         case 1:{
+            
             DFbuyContentCell *cell = [DFbuyContentCell DF_ViewFromXib];
             
             cell.nameLab.text = [_nameArray objectAtIndex:indexPath.row];
             cell.placeholderText.placeholder = [_contentArray objectAtIndex:indexPath.row];
+            //cell.placeholderText.text = [_textFieldArrays objectAtIndex:indexPath.row];
+           
             cell.placeholderText.tag = indexPath.row;
             
             [cell.placeholderText addTarget:self action:@selector(textFieldWithText:) forControlEvents:UIControlEventEditingChanged];
-            
+      
             if(indexPath.row == _nameArray.count - 1) {
                 
                 cell.placeholderText.enabled = NO;
@@ -182,6 +230,7 @@ static NSString *const buyCell = @"buyCell";
                 logoImg.frame = CGRectMake(0, 5, 40, 40);
                 logoImg.df_right = cell.df_right + 40;
                 [cell addSubview:logoImg];
+                self.logoImg = logoImg;
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -212,11 +261,14 @@ static NSString *const buyCell = @"buyCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 2) {
         if (indexPath.row == 0) {
-            [self pingApp:@"alipay"];
-            self.channel = @"alipay";
+//            [self pingApp:@"alipay"];
+//            self.channel = @"alipay";
+            [self push:@"alipay"];
+            
         }else{
-            [self pingApp:@"wx"];
-            self.channel = @"wx";
+            [self push:@"wx"];
+//            [self pingApp:@"wx"];
+//            self.channel = @"wx";
         }
     }else if (indexPath.section == 1){
         if (indexPath.row == 5) {
@@ -249,18 +301,14 @@ static NSString *const buyCell = @"buyCell";
 }
 
 #pragma mark - ping ++
-- (void)pingApp:(NSString *)channel{
+- (void)pingApp:(NSMutableDictionary *)pingDta{
     //取消键盘第一响应者
      [[IQKeyboardManager sharedManager]resignFirstResponder];
     NSString *amountStr = @"100";
     NSURL* url = [NSURL URLWithString:@"http://218.244.151.190/demo/charge"];
     NSMutableURLRequest * postRequest=[NSMutableURLRequest requestWithURL:url];
-    
-    NSDictionary* dict = @{
-                           @"channel" : channel,
-                           @"amount"  : amountStr
-                           };
-    NSData* data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+
+    NSData* data = [NSJSONSerialization dataWithJSONObject:pingDta options:NSJSONWritingPrettyPrinted error:nil];
     NSString *bodyData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     [postRequest setHTTPBody:[NSData dataWithBytes:[bodyData UTF8String] length:strlen([bodyData UTF8String])]];
     [postRequest setHTTPMethod:@"POST"];
@@ -273,25 +321,25 @@ static NSString *const buyCell = @"buyCell";
             NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
             
             if (httpResponse.statusCode != 200) {
-                NSLog(@"statusCode=%ld error = %@", (long)httpResponse.statusCode, connectionError);
+                //NSLog(@"statusCode=%ld error = %@", (long)httpResponse.statusCode, connectionError);
                 
                 return;
             }
             if (connectionError != nil) {
-                NSLog(@"error = %@", connectionError);
+                //NSLog(@"error = %@", connectionError);
                 
                 return;
             }
             NSString* charge = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-             NSLog(@"charge = %@", charge);
+            // NSLog(@"charge = %@", charge);
             [Pingpp createPayment:charge
                    viewController:weakSelf
                      appURLScheme:@"dianfan"
                    withCompletion:^(NSString *result, PingppError *error) {
-                       NSLog(@"completion block: %@", result);
+                       //NSLog(@"completion block: %@", result);
                        if (error == nil) {
                        } else {
-                          NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
+                           
                        }
                 }];
         });
@@ -302,16 +350,16 @@ static NSString *const buyCell = @"buyCell";
 /**
  支付成功,跳转支付成功页面，并上传支付数据
  */
-- (void)push{
-    DFBuySuccessController *buySuccess = [[DFBuySuccessController alloc]init];
-    DFNavigationController *Nav = [[DFNavigationController alloc]initWithRootViewController:buySuccess];
-    buySuccess.sn = self.sn;
-     [self presentViewController:Nav animated:YES completion:nil];
-    
+- (void)push:(NSString *)channel{
+
+//    DFBuySuccessController *buySuccess = [[DFBuySuccessController alloc]init];
+//    buySuccess.sn = self.sn;
+//    [self.navigationController pushViewController:buySuccess animated:YES];
     //上传数据
+
     NSString *url = [PingAPI stringByAppendingString:apiStr(@"index.htm")];
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-    parameter[@"channel"]          = @"alipay";
+    parameter[@"channel"]          = channel;
     parameter[@"logo"]             = @"http://10.0.0.30:8080/i/upload/image/tradeLogo/201610/2cfc6c8f-7fcd-4636-9408-e58989687ce9.jpg";
     parameter[@"shopAddress"]      = self.shopAddress;
     parameter[@"shopContactName"]  = self.shopContactName;
@@ -322,15 +370,25 @@ static NSString *const buyCell = @"buyCell";
     [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+        if (sucess) {
+            self.charge = responseObject[@"data"];
+            [self pingApp:self.charge];
+            
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
    
 }
+
 #pragma mark - 控制器跳转
 - (void)pop{
     [self.navigationController popToRootViewControllerAnimated:NO];
+}
+- (void)push{
+    DFBuySuccessController *buySuccess = [[DFBuySuccessController alloc]init];
+    buySuccess.sn = self.sn;
+    [self.navigationController pushViewController:buySuccess animated:YES];
 }
 
 - (void)dealloc{
@@ -342,18 +400,24 @@ static NSString *const buyCell = @"buyCell";
 
 -(void)textFieldWithText:(UITextField *)textfield
 {
+    
+    
     switch (textfield.tag) {
         case 0:
             self.shopName = textfield.text;
+            
             break;
         case 1:
             self.shopAddress = textfield.text;
+            
             break;
         case 2:
             self.shopContactName = textfield.text;
+
             break;
         case 3:
             self.shopContactPhone = textfield.text;
+           
             break;
         case 4:
             self.shopType = textfield.text;
@@ -361,8 +425,9 @@ static NSString *const buyCell = @"buyCell";
         default:
             break;
     }
-}
 
+
+}
 
 @end
 

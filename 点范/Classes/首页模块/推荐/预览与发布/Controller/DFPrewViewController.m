@@ -10,6 +10,7 @@
 #import "DFPublishViewController.h"
 #import "DFUser.h"
 #import "DFHTTPSessionManager.h"
+#import "DFBuyTempController.h"
 
 @interface DFPrewViewController ()
 
@@ -56,12 +57,27 @@
     [self.manager GET:url parameters:parmater progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject[@"data"][@"errMsg"]);
+        NSLog(@"%@",responseObject);
+        if(sucess){
+            DFPublishViewController *publishCtr = [[DFPublishViewController alloc]init];
+            [self.navigationController pushViewController:publishCtr animated:YES];
+        }else{
+            UIAlertController *alter = [UIAlertController alertControllerWithTitle:@"提示" message:responseObject[@"data"][@"errMsg"] preferredStyle:UIAlertControllerStyleAlert];
+            [alter addAction:[UIAlertAction actionWithTitle:@"去付款" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                DFBuyTempController *buyTemp = [[DFBuyTempController alloc]init];
+                [self.navigationController pushViewController:buyTemp animated:YES];
+            }]];
+            [alter addAction:[UIAlertAction actionWithTitle:@"直接发布" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                DFPublishViewController *publishCtr = [[DFPublishViewController alloc]init];
+                [self.navigationController pushViewController:publishCtr animated:YES];
+            }]];
+            [self presentViewController:alter animated:YES completion:nil];
+            
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
-    DFPublishViewController *publishCtr = [[DFPublishViewController alloc]init];
-    [self.navigationController pushViewController:publishCtr animated:YES];
+    
 }
 
 

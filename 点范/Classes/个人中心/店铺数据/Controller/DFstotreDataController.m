@@ -55,7 +55,7 @@ static NSString *const storeData = @"storeData";
     [self.manager POST:url parameters:parmeter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject[@"data"]);
+//        NSLog(@"%@",responseObject[@"data"]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
@@ -71,7 +71,13 @@ static NSString *const storeData = @"storeData";
     [self.manager POST:url parameters:parmeter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
+        if (sucess) {
+            
+        }else{
+            UIAlertController *altrt = [UIAlertController actionWithMessage:MsgMessage];
+            [self presentViewController:altrt animated:YES completion:nil];
+        }
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];

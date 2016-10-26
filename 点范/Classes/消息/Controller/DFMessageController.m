@@ -53,7 +53,7 @@ static NSString *const MessageID = @"Message";
     [self.manager POST:[MsgAPI stringByAppendingString:url] parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         self.messageArray = [DFMessage mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         self.numberCount = self.messageArray.count;
 

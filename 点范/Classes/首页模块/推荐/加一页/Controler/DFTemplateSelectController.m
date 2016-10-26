@@ -89,14 +89,18 @@ static NSString *const tempSelectID = @"tempSelect";
     [self.manager GET:url parameters:parmeter progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-       
-        _tempArray = [DFTempMedol mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplatePageResults"]];
-        [self.collectionView reloadData];
+        if (sucess) {
+            _tempArray = [DFTempMedol mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplatePageResults"]];
+            [self.collectionView reloadData];
+        }else{
+            UIAlertController *altrt = [UIAlertController actionWithMessage:MsgMessage];
+            [self presentViewController:altrt animated:YES completion:nil];
+        }
+      
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
-    
-    
+
     
 }
 

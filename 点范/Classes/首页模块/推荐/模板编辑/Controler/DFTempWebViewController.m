@@ -12,12 +12,13 @@
 #import "DFPrewViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "SVProgressHUD.h"
+#import "DFJSObject.h"
 
-@interface DFTempWebViewController ()<UIWebViewDelegate>
+@interface DFTempWebViewController ()<UIWebViewDelegate,JSObjectProtocol>
 
 @property (nonatomic,strong)UIWebView *webView;
 
-@property (nonatomic,weak) JSContext * context;
+//@property (nonatomic,weak) JSContext * context;
 
 @end
 
@@ -40,7 +41,7 @@
 - (void)setWebView{
     [SVProgressHUD show];
     UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.df_width, self.view.df_height - 64)];
-    NSString *urlstring = [NSString stringWithFormat:@"http://10.0.0.30:8080/template.htm?dishTemplatePageResultId=%@&token=%@",self.reultID,[DFUser sharedManager].token];
+    NSString *urlstring = [NSString stringWithFormat:@"http://10.0.0.30:8080/template.htm?dishTemplatePageResultId=%@&token=%@",self.PageID,[DFUser sharedManager].token];
    
     NSURL *url = [NSURL URLWithString:urlstring];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
@@ -64,18 +65,28 @@
  */
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [SVProgressHUD dismiss];
-    self.context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
 
-    self.context[@"WebInterface"] = ^(){
-        NSLog(@"stop");
-    };
+     JSContext *context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+ 
+    
+    DFJSObject *testJO=[DFJSObject new];
+    context[@"WebInterface"]=testJO;
+    
+    NSString *alertJS=@"WebInterface.preview()"; //准备执行的js代码
+    //[context evaluateScript:alertJS];//通过oc方法调用js的alert
+    [context evaluateScript:alertJS];
+    
     
 }
 
+- (void)preview{
+//    NSLog(@"调用了");
+}
 
 
 - (void)toPrewCtr{
     DFPrewViewController *prewCtr = [[DFPrewViewController alloc]init];
+    prewCtr.dishTemplateResultId = self.dishTemplateResultId;
     [self.navigationController pushViewController:prewCtr animated:YES];
 }
 

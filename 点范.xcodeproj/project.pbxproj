@@ -43,6 +43,9 @@
 		E90A14931DB8B3270026986B /* DFPrewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14921DB8B3270026986B /* DFPrewViewController.m */; };
 		E90A14971DB8B7E10026986B /* DFPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90A14951DB8B7E10026986B /* DFPublishViewController.m */; };
 		E90A14981DB8B7E10026986B /* DFPublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90A14961DB8B7E10026986B /* DFPublishViewController.xib */; };
+		E91DC6C81DBF68A8006B3DAA /* DFSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91DC6C71DBF68A8006B3DAA /* DFSettingViewController.m */; };
+		E91DC6CC1DBF6921006B3DAA /* DFIdeaBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91DC6CA1DBF6921006B3DAA /* DFIdeaBackViewController.m */; };
+		E91DC6CD1DBF6921006B3DAA /* DFIdeaBackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E91DC6CB1DBF6921006B3DAA /* DFIdeaBackViewController.xib */; };
 		E921FCB81DB075710081F317 /* DFiconChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E921FCB71DB075710081F317 /* DFiconChooseController.m */; };
 		E921FCC11DB0DE220081F317 /* DFPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E921FCC01DB0DE220081F317 /* DFPersonalViewController.m */; };
 		E93A5A061D813AC10050232C /* DFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A5A051D813AC10050232C /* DFUser.m */; };
@@ -51,7 +54,6 @@
 		E93D19D31DAA5361009D30AB /* DFQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D19D11DAA5361009D30AB /* DFQuestionCell.m */; };
 		E93D19D41DAA5361009D30AB /* DFQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93D19D21DAA5361009D30AB /* DFQuestionCell.xib */; };
 		E9546B061DB1E53000C8B06E /* DFPublishController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9546B051DB1E53000C8B06E /* DFPublishController.m */; };
-		E9546B091DB207C100C8B06E /* DFSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9546B081DB207C100C8B06E /* DFSettingViewController.m */; };
 		E9546B0C1DB20B2900C8B06E /* DFSettingHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E9546B0B1DB20B2900C8B06E /* DFSettingHeader.m */; };
 		E95624541D8E9A800066C22C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95624531D8E9A800066C22C /* Security.framework */; };
 		E95624561D8E9A950066C22C /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E95624551D8E9A950066C22C /* libiconv.tbd */; };
@@ -68,6 +70,9 @@
 		E95840E01DBE0DA1004AD565 /* MYSeeBigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95840DE1DBE0DA1004AD565 /* MYSeeBigViewController.m */; };
 		E95840E11DBE0DA1004AD565 /* MYSeeBigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95840DF1DBE0DA1004AD565 /* MYSeeBigViewController.xib */; };
 		E9678F741D9E00CC0043F9C6 /* testVideo.html in Resources */ = {isa = PBXBuildFile; fileRef = E9678F731D9E00CC0043F9C6 /* testVideo.html */; };
+		E96D8EE31DC0A4310024726A /* DFJSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D8EE21DC0A4310024726A /* DFJSObject.m */; };
+		E96D8EE71DC0AA6A0024726A /* DFVersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D8EE51DC0AA6A0024726A /* DFVersionViewController.m */; };
+		E96D8EE81DC0AA6A0024726A /* DFVersionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96D8EE61DC0AA6A0024726A /* DFVersionViewController.xib */; };
 		E971C0381D825ACB004C4E94 /* DFTopImg.m in Sources */ = {isa = PBXBuildFile; fileRef = E971C0371D825ACB004C4E94 /* DFTopImg.m */; };
 		E971C03C1D8265AB004C4E94 /* DFForgetPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = E971C03A1D8265AB004C4E94 /* DFForgetPassword.m */; };
 		E971C03D1D8265AB004C4E94 /* DFForgetPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = E971C03B1D8265AB004C4E94 /* DFForgetPassword.xib */; };
@@ -135,6 +140,9 @@
 		E9B013971D8F89B6002E4DD8 /* DFRecModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B013961D8F89B6002E4DD8 /* DFRecModel.m */; };
 		E9B0139A1D8F8DF6002E4DD8 /* DFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B013991D8F8DF6002E4DD8 /* DFHTTPSessionManager.m */; };
 		E9B013B91D8FE681002E4DD8 /* DFTempMedol.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B013B81D8FE681002E4DD8 /* DFTempMedol.m */; };
+		E9B094281DBEFA34008B63D7 /* UIAlertController+DFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B094271DBEFA34008B63D7 /* UIAlertController+DFExtension.m */; };
+		E9B0942B1DBF4329008B63D7 /* DFVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B0942A1DBF4329008B63D7 /* DFVideoViewController.m */; };
+		E9B0942E1DBF45F9008B63D7 /* DFViedeo2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B0942D1DBF45F9008B63D7 /* DFViedeo2ViewController.m */; };
 		E9BD82AE1D94D9D00090EADD /* CALayer+DFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BD82AD1D94D9D00090EADD /* CALayer+DFExtension.m */; };
 		E9C2C9CF1D7FC70700A94678 /* PublishMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C2C9CA1D7FC70700A94678 /* PublishMenuButton.m */; };
 		E9C2C9D01D7FC70700A94678 /* UIImage+XW.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C2C9CC1D7FC70700A94678 /* UIImage+XW.m */; };
@@ -262,6 +270,11 @@
 		E90A14941DB8B7E10026986B /* DFPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPublishViewController.h; sourceTree = "<group>"; };
 		E90A14951DB8B7E10026986B /* DFPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPublishViewController.m; sourceTree = "<group>"; };
 		E90A14961DB8B7E10026986B /* DFPublishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFPublishViewController.xib; sourceTree = "<group>"; };
+		E91DC6C61DBF68A8006B3DAA /* DFSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFSettingViewController.h; sourceTree = "<group>"; };
+		E91DC6C71DBF68A8006B3DAA /* DFSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFSettingViewController.m; sourceTree = "<group>"; };
+		E91DC6C91DBF6921006B3DAA /* DFIdeaBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFIdeaBackViewController.h; sourceTree = "<group>"; };
+		E91DC6CA1DBF6921006B3DAA /* DFIdeaBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFIdeaBackViewController.m; sourceTree = "<group>"; };
+		E91DC6CB1DBF6921006B3DAA /* DFIdeaBackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFIdeaBackViewController.xib; sourceTree = "<group>"; };
 		E921FCB61DB075710081F317 /* DFiconChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFiconChooseController.h; sourceTree = "<group>"; };
 		E921FCB71DB075710081F317 /* DFiconChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFiconChooseController.m; sourceTree = "<group>"; };
 		E921FCBF1DB0DE220081F317 /* DFPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPersonalViewController.h; sourceTree = "<group>"; };
@@ -277,8 +290,6 @@
 		E93D19D21DAA5361009D30AB /* DFQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFQuestionCell.xib; sourceTree = "<group>"; };
 		E9546B041DB1E53000C8B06E /* DFPublishController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPublishController.h; sourceTree = "<group>"; };
 		E9546B051DB1E53000C8B06E /* DFPublishController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPublishController.m; sourceTree = "<group>"; };
-		E9546B071DB207C100C8B06E /* DFSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFSettingViewController.h; sourceTree = "<group>"; };
-		E9546B081DB207C100C8B06E /* DFSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFSettingViewController.m; sourceTree = "<group>"; };
 		E9546B0A1DB20B2900C8B06E /* DFSettingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFSettingHeader.h; sourceTree = "<group>"; };
 		E9546B0B1DB20B2900C8B06E /* DFSettingHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFSettingHeader.m; sourceTree = "<group>"; };
 		E95624531D8E9A800066C22C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -299,6 +310,11 @@
 		E95840DE1DBE0DA1004AD565 /* MYSeeBigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSeeBigViewController.m; sourceTree = "<group>"; };
 		E95840DF1DBE0DA1004AD565 /* MYSeeBigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYSeeBigViewController.xib; sourceTree = "<group>"; };
 		E9678F731D9E00CC0043F9C6 /* testVideo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = testVideo.html; sourceTree = "<group>"; };
+		E96D8EE11DC0A4310024726A /* DFJSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFJSObject.h; sourceTree = "<group>"; };
+		E96D8EE21DC0A4310024726A /* DFJSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFJSObject.m; sourceTree = "<group>"; };
+		E96D8EE41DC0AA6A0024726A /* DFVersionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFVersionViewController.h; sourceTree = "<group>"; };
+		E96D8EE51DC0AA6A0024726A /* DFVersionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFVersionViewController.m; sourceTree = "<group>"; };
+		E96D8EE61DC0AA6A0024726A /* DFVersionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFVersionViewController.xib; sourceTree = "<group>"; };
 		E971C0361D825ACB004C4E94 /* DFTopImg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTopImg.h; sourceTree = "<group>"; };
 		E971C0371D825ACB004C4E94 /* DFTopImg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTopImg.m; sourceTree = "<group>"; };
 		E971C0391D8265AB004C4E94 /* DFForgetPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFForgetPassword.h; sourceTree = "<group>"; };
@@ -425,6 +441,12 @@
 		E9B013991D8F8DF6002E4DD8 /* DFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFHTTPSessionManager.m; sourceTree = "<group>"; };
 		E9B013B71D8FE681002E4DD8 /* DFTempMedol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTempMedol.h; sourceTree = "<group>"; };
 		E9B013B81D8FE681002E4DD8 /* DFTempMedol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTempMedol.m; sourceTree = "<group>"; };
+		E9B094261DBEFA34008B63D7 /* UIAlertController+DFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+DFExtension.h"; sourceTree = "<group>"; };
+		E9B094271DBEFA34008B63D7 /* UIAlertController+DFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+DFExtension.m"; sourceTree = "<group>"; };
+		E9B094291DBF4329008B63D7 /* DFVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFVideoViewController.h; sourceTree = "<group>"; };
+		E9B0942A1DBF4329008B63D7 /* DFVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFVideoViewController.m; sourceTree = "<group>"; };
+		E9B0942C1DBF45F9008B63D7 /* DFViedeo2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFViedeo2ViewController.h; sourceTree = "<group>"; };
+		E9B0942D1DBF45F9008B63D7 /* DFViedeo2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFViedeo2ViewController.m; sourceTree = "<group>"; };
 		E9BD82AC1D94D9D00090EADD /* CALayer+DFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+DFExtension.h"; sourceTree = "<group>"; };
 		E9BD82AD1D94D9D00090EADD /* CALayer+DFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+DFExtension.m"; sourceTree = "<group>"; };
 		E9C2C9C91D7FC70700A94678 /* PublishMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishMenuButton.h; sourceTree = "<group>"; };
@@ -688,6 +710,8 @@
 				E90A14491DB8AFBA0026986B /* DFfootCollectionController.m */,
 				E90A144A1DB8AFBA0026986B /* DFTempWebViewController.h */,
 				E90A144B1DB8AFBA0026986B /* DFTempWebViewController.m */,
+				E96D8EE11DC0A4310024726A /* DFJSObject.h */,
+				E96D8EE21DC0A4310024726A /* DFJSObject.m */,
 			);
 			path = Controler;
 			sourceTree = "<group>";
@@ -828,6 +852,45 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E91DC6C21DBF6867006B3DAA /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				E91DC6C31DBF6867006B3DAA /* Controller */,
+				E91DC6C41DBF6867006B3DAA /* Model */,
+				E91DC6C51DBF6867006B3DAA /* View */,
+			);
+			path = "设置";
+			sourceTree = "<group>";
+		};
+		E91DC6C31DBF6867006B3DAA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E91DC6C61DBF68A8006B3DAA /* DFSettingViewController.h */,
+				E91DC6C71DBF68A8006B3DAA /* DFSettingViewController.m */,
+				E91DC6C91DBF6921006B3DAA /* DFIdeaBackViewController.h */,
+				E91DC6CA1DBF6921006B3DAA /* DFIdeaBackViewController.m */,
+				E91DC6CB1DBF6921006B3DAA /* DFIdeaBackViewController.xib */,
+				E96D8EE41DC0AA6A0024726A /* DFVersionViewController.h */,
+				E96D8EE51DC0AA6A0024726A /* DFVersionViewController.m */,
+				E96D8EE61DC0AA6A0024726A /* DFVersionViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E91DC6C41DBF6867006B3DAA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E91DC6C51DBF6867006B3DAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E93A5A031D8138F10050232C /* 单例用户 */ = {
 			isa = PBXGroup;
 			children = (
@@ -928,8 +991,6 @@
 				E90A14191DB869F30026986B /* DFNoPublishController.m */,
 				E90A141B1DB86A0F0026986B /* DFMyPublishController.h */,
 				E90A141C1DB86A0F0026986B /* DFMyPublishController.m */,
-				E9546B071DB207C100C8B06E /* DFSettingViewController.h */,
-				E9546B081DB207C100C8B06E /* DFSettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1245,6 +1306,8 @@
 				E9A9CE191D923A9F00257459 /* UILabel+DFExtension.m */,
 				E9BD82AC1D94D9D00090EADD /* CALayer+DFExtension.h */,
 				E9BD82AD1D94D9D00090EADD /* CALayer+DFExtension.m */,
+				E9B094261DBEFA34008B63D7 /* UIAlertController+DFExtension.h */,
+				E9B094271DBEFA34008B63D7 /* UIAlertController+DFExtension.m */,
 			);
 			path = "类别";
 			sourceTree = "<group>";
@@ -1283,6 +1346,7 @@
 		E9DF04E31D7E6BB40004B2AA /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				E91DC6C21DBF6867006B3DAA /* 设置 */,
 				E99F49E41DA8CF07003F71D1 /* 菜品数据 */,
 				E99F49EA1DA8CF07003F71D1 /* 登录与注册 */,
 				E99F49F21DA8CF07003F71D1 /* 店铺名称 */,
@@ -1406,6 +1470,10 @@
 			children = (
 				E9E014C41D7F076F0015D4C9 /* DFWestController.h */,
 				E9E014C51D7F076F0015D4C9 /* DFWestController.m */,
+				E9B094291DBF4329008B63D7 /* DFVideoViewController.h */,
+				E9B0942A1DBF4329008B63D7 /* DFVideoViewController.m */,
+				E9B0942C1DBF45F9008B63D7 /* DFViedeo2ViewController.h */,
+				E9B0942D1DBF45F9008B63D7 /* DFViedeo2ViewController.m */,
 			);
 			path = "西餐";
 			sourceTree = "<group>";
@@ -1661,6 +1729,7 @@
 				E9FB80CF1D7D3D380083D39C /* LoginViewController.xib in Resources */,
 				E90A14791DB8AFBA0026986B /* DFTemplateCell.xib in Resources */,
 				E99F4A361DA8D0EF003F71D1 /* DFDataView.xib in Resources */,
+				E96D8EE81DC0AA6A0024726A /* DFVersionViewController.xib in Resources */,
 				E90A146C1DB8AFBA0026986B /* DFbuyContentCell.xib in Resources */,
 				E9AE988D1DBB438F0071D33F /* README.txt in Resources */,
 				E99F4A3F1DA8D10B003F71D1 /* DFfoodCell.xib in Resources */,
@@ -1682,6 +1751,7 @@
 				E99F4A2D1DA8D0DA003F71D1 /* DFfootReadTendency.xib in Resources */,
 				E99F4A2B1DA8D0DA003F71D1 /* DFfootDataHeader.xib in Resources */,
 				E90A14701DB8AFBA0026986B /* DFPayViewCell.xib in Resources */,
+				E91DC6CD1DBF6921006B3DAA /* DFIdeaBackViewController.xib in Resources */,
 				E9FB80E01D7D58DF0083D39C /* DFRegisterMessageController.xib in Resources */,
 				E9678F741D9E00CC0043F9C6 /* testVideo.html in Resources */,
 				E9FB809A1D7D2BF50083D39C /* Main.storyboard in Resources */,
@@ -1785,6 +1855,7 @@
 				E9DF04E21D7E622F0004B2AA /* DFHomeViewController.m in Sources */,
 				E9C2C9D91D7FC76700A94678 /* ThreeViewController.m in Sources */,
 				E9D9DEAF1DB4DDE900CC7A26 /* DFStoreViewModel.m in Sources */,
+				E9B0942E1DBF45F9008B63D7 /* DFViedeo2ViewController.m in Sources */,
 				E90A14971DB8B7E10026986B /* DFPublishViewController.m in Sources */,
 				E90A146B1DB8AFBA0026986B /* DFbuyContentCell.m in Sources */,
 				E9B0138F1D8F846F002E4DD8 /* NSString+DFExtension.m in Sources */,
@@ -1798,6 +1869,7 @@
 				E93D19D31DAA5361009D30AB /* DFQuestionCell.m in Sources */,
 				E90A147D1DB8AFBA0026986B /* DFRecCell.m in Sources */,
 				E9B013911D8F846F002E4DD8 /* UIView+DFExtension.m in Sources */,
+				E96D8EE71DC0AA6A0024726A /* DFVersionViewController.m in Sources */,
 				E9FB80D61D7D42680083D39C /* DFCommon.m in Sources */,
 				E99F4A071DA8CF07003F71D1 /* DFStoreViewController.m in Sources */,
 				E99F4A051DA8CF07003F71D1 /* DFAlreadyController.m in Sources */,
@@ -1828,10 +1900,11 @@
 				E9B0139A1D8F8DF6002E4DD8 /* DFHTTPSessionManager.m in Sources */,
 				E907A6471D90EBA400E91660 /* DFRefreshFooter.m in Sources */,
 				E90A14711DB8AFBA0026986B /* DFTemplateSelectController.m in Sources */,
+				E91DC6CC1DBF6921006B3DAA /* DFIdeaBackViewController.m in Sources */,
 				E9E014C31D7F07260015D4C9 /* DFDessertController.m in Sources */,
-				E9546B091DB207C100C8B06E /* DFSettingViewController.m in Sources */,
 				E99F4A2E1DA8D0DA003F71D1 /* DFGeneralComment.m in Sources */,
 				E9AE98921DBB438F0071D33F /* UMShareMenuSelectionView.m in Sources */,
+				E96D8EE31DC0A4310024726A /* DFJSObject.m in Sources */,
 				E90A14271DB875770026986B /* DFPersonalTemplateCell.m in Sources */,
 				E90A14751DB8AFBA0026986B /* DFLineLayout.m in Sources */,
 				E9BD82AE1D94D9D00090EADD /* CALayer+DFExtension.m in Sources */,
@@ -1853,6 +1926,8 @@
 				E9C2C9D81D7FC76700A94678 /* OneViewController.m in Sources */,
 				E9D6665D1D98B83000370510 /* DFMerchant.m in Sources */,
 				E9FB80DA1D7D4DFA0083D39C /* DFRegisterViewController.m in Sources */,
+				E91DC6C81DBF68A8006B3DAA /* DFSettingViewController.m in Sources */,
+				E9B0942B1DBF4329008B63D7 /* DFVideoViewController.m in Sources */,
 				E90A14201DB8709C0026986B /* DFPersonalTemplate.m in Sources */,
 				E93D19CF1DAA3474009D30AB /* DFStarView.m in Sources */,
 				E90A146A1DB8AFBA0026986B /* DFBuyTempController.m in Sources */,
@@ -1866,6 +1941,7 @@
 				E9DAA3881DAF284700C9D999 /* DFBuyModel.m in Sources */,
 				E9FB80C91D7D3D110083D39C /* AppDelegate.m in Sources */,
 				E90A14761DB8AFBA0026986B /* DFResultCell.m in Sources */,
+				E9B094281DBEFA34008B63D7 /* UIAlertController+DFExtension.m in Sources */,
 				E9E201071D86535B00F805AD /* VPImageCropperViewController.m in Sources */,
 				E99F4A411DA8D10B003F71D1 /* DFtableHeader.m in Sources */,
 				E99F4A401DA8D10B003F71D1 /* DFStoreView.m in Sources */,

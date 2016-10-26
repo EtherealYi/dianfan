@@ -60,8 +60,14 @@ static NSString *storeCell = @"storeCell";
     [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        self.dishArrays = [DFStoreViewModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        [self.tableView reloadData];
+        if (sucess) {
+            self.dishArrays = [DFStoreViewModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            [self.tableView reloadData];
+        }else{
+            UIAlertController *altrt = [UIAlertController actionWithMessage:MsgMessage];
+            [self presentViewController:altrt animated:YES completion:nil];
+        }
+      
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];

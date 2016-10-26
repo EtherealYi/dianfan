@@ -61,7 +61,9 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-
+//    [[DFUser sharedManager]didLogout];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSLog(@"%@",paths[0]);
    
 }
 
@@ -115,7 +117,7 @@
 //    [messageBtn handleEvent:UIControlEventTouchUpInside withBlock:^{
 //        NSLog(@"Click");
 //    }];
-    messageBtn.contentEdgeInsets = UIEdgeInsetsMake(4, 4,4, 3);
+    messageBtn.contentEdgeInsets = UIEdgeInsetsMake(3, 6,2, -3);
     UIBarButtonItem *messageItem = [[UIBarButtonItem alloc]initWithCustomView:messageBtn];
     
    
