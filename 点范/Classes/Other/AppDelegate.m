@@ -61,6 +61,7 @@
  
     //ping ++
     //[Pingpp setDebugMode:YES];
+    //[Pingpp setPublishableKey:@"pk_test_xxxxxxxxx"];
     
     return YES;
 }
@@ -68,13 +69,8 @@
 - (void)setUserData{
 
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-  
-
         [[DFUser sharedManager]initWithDict:userDefault];
         [[DFUser sharedManager]saveIcon:userDefault];
-    
-
-
     
 }
 

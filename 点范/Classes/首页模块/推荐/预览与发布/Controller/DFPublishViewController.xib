@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DFPublishViewController">
             <connections>
+                <outlet property="pasteView" destination="jRh-KV-DZl" id="eGp-T3-KVO"/>
                 <outlet property="twoCode" destination="rMy-xJ-x5i" id="kWi-Ab-Bpg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weChat" destination="yeZ-wQ-UQ8" id="r0F-Ei-dmO"/>

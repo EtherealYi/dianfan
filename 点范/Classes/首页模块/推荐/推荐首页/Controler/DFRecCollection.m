@@ -128,6 +128,7 @@ static NSString * const headerID = @"RecHead";
     [self.manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         if (sucess) {
             self.recModelS = [DFRecModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
             [self.collectionView reloadData];
@@ -136,6 +137,7 @@ static NSString * const headerID = @"RecHead";
         }else{
             UIAlertController *alter = [UIAlertController actionWithMessage:MsgMessage];
             [self presentViewController:alter animated:YES completion:nil];
+            [self.collectionView.mj_header endRefreshing];
         }
     
         

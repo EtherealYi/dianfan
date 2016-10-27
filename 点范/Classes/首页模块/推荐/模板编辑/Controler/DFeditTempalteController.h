@@ -24,4 +24,9 @@
 
 @property (nonatomic,assign)NSString *dishTemplateMerchantPageResultsID;
 
+//个人模板id
+@property (nonatomic,copy)NSString *dishTemplateResultId;
+
+- (void)loadResultID;
+
 @end

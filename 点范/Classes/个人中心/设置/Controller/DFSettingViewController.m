@@ -160,7 +160,7 @@ static NSString * SettingCell = @"SettingCell";
             }];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+       
     }];
 }
 @end

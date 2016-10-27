@@ -34,8 +34,7 @@
 /** 模板模型 */
 @property (nonatomic,strong)NSMutableArray<DFTempMedol *> *tempMedelS;
 
-//个人模板id
-@property (nonatomic,copy)NSString *dishTemplateResultId;
+
 
 @property (nonatomic,strong)DFMerchant *merchantMedel;
 

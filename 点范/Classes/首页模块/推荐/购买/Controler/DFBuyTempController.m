@@ -138,7 +138,7 @@ static NSString *contentCell = @"contentCell";
                          @"5"
                          ];
     [self loadcreateTrade];
-    
+    [self logoImg];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DFbuyContentCell class]) bundle:nil] forCellReuseIdentifier:contentCell];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(push) name:@"push" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pop) name:@"pop" object:nil];
@@ -370,10 +370,19 @@ static NSString *contentCell = @"contentCell";
     [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
         if (sucess) {
             self.charge = responseObject[@"data"];
-            [self pingApp:self.charge];
+            //[self pingApp:self.charge];
+            [Pingpp createPayment:self.charge viewController:self appURLScheme:@"dianfan" withCompletion:^(NSString *result, PingppError *error) {
+              
+            }];
             
+        }else{
+            UIAlertController *alter = [UIAlertController alterWithMessage:MsgMessage handler:^(UIAlertAction *action) {
+                
+            }];
+            [self presentViewController:alter animated:YES completion:nil];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         

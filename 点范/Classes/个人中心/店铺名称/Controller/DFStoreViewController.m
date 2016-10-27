@@ -16,6 +16,7 @@
 #import "DFUser.h"
 #import "DFStoreViewModel.h"
 #import "MJExtension.h"
+#import "SVProgressHUD.h"
 
 @interface DFStoreViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -28,7 +29,8 @@
 @property (nonatomic,strong)DFHTTPSessionManager *manager;
 /** 模型数组 */
 @property (nonatomic,strong)NSMutableArray<DFStoreViewModel *> *dishArrays;
-
+/** 浏览量 */
+@property (nonatomic,strong)UIButton *readBtn;
 @end
 
 @implementation DFStoreViewController
@@ -50,20 +52,26 @@ static NSString *storeCell = @"storeCell";
     self.title = @"店铺名称";
     [self setHeadView];
     [self setTableView];
-    [self loadListDishes];
+    [self loadListDishes:0];
+
 }
-- (void)loadListDishes{
-    NSString *url = @"http://10.0.0.30:8080/appMember/login/dish/listDishes.htm?token=f742c54d-bde1-496e-930b-0802db50b8b6";
+- (void)loadListDishes:(NSUInteger )property{
+
+    NSString *url = [DishAPI stringByAppendingString:apiStr(@"listDishes.htm")];
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-    parameter[@"property"] = @"1";
+    parameter[@"property"] = @(property);
     parameter[@"id"] = self.distemplateResultID;
     [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [SVProgressHUD show];
         if (sucess) {
             self.dishArrays = [DFStoreViewModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             [self.tableView reloadData];
+            
+            [SVProgressHUD dismiss];
         }else{
+            [SVProgressHUD dismiss];
             UIAlertController *altrt = [UIAlertController actionWithMessage:MsgMessage];
             [self presentViewController:altrt animated:YES completion:nil];
         }
@@ -74,17 +82,48 @@ static NSString *storeCell = @"storeCell";
     
 }
 - (void)setHeadView{
-    CGRect frame = CGRectMake(0, 1, self.view.df_width, 148);
+    UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 1, fDeviceWidth, 205)];
+    headView.backgroundColor = WhiteColor;
+   
+    
+    CGRect frame = CGRectMake(0, 0, self.view.df_width, 145);
     DFStoreView *storeView = [[DFStoreView alloc]initWithFrame:frame];
     storeView.backgroundColor = MainColor;
     storeView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pushToStoreData)];
     [storeView addGestureRecognizer:tap];
+    [headView addSubview:storeView];
     
-    [self.view addSubview:storeView];
+    DFtableHeader *tableHead = [[DFtableHeader alloc]initWithFrame:CGRectMake(0, 0, self.view.df_width, 44)];
+    tableHead.df_y = headView.df_height - 44;
+    tableHead.readBtn.tag = 0;
+    tableHead.commentBtn.tag = 1;
+    tableHead.orderBtn.tag = 2;
+
+    [tableHead.orderBtn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
+
+    [tableHead.commentBtn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
+    [tableHead.readBtn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.readBtn = tableHead.readBtn;
+
+    UIView *indicatorView = [[UIView alloc]init];
+    indicatorView.backgroundColor = [UIColor whiteColor];
+    indicatorView.df_height = 2;
+    indicatorView.df_y = tableHead.df_height - 5;
+
+    [tableHead addSubview:indicatorView];
+    self.indicatorView = indicatorView;
+    
+    [headView addSubview:tableHead];
+    
+    
+    
+     [self.view addSubview:headView];
+    
 }
 - (void)setTableView{
-    CGRect frame = CGRectMake(0, 150 + DFMargin, self.view.df_width, self.view.df_height);
+  
+    CGRect frame = CGRectMake(0, 205 + DFMargin, self.view.df_width, self.view.df_height);
     UITableView *tableView = [[UITableView alloc]initWithFrame:frame style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -115,41 +154,39 @@ static NSString *storeCell = @"storeCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 83;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 44;
-}
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    DFtableHeader *tableHead = [[DFtableHeader alloc]initWithFrame:CGRectMake(0, 0, self.view.df_width, 44)];
-    [tableHead.orderBtn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
-    [tableHead.commentBtn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
-    [tableHead.readBtn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIView *indicatorView = [[UIView alloc]init];
-    indicatorView.backgroundColor = [UIColor whiteColor];
-    indicatorView.df_height = 2;
-    indicatorView.df_y = tableHead.df_height - 5;
- 
-    [tableHead addSubview:indicatorView];
-    self.indicatorView = indicatorView;
-  
-    //默认情况下选中第一个按钮
-   // [self titleClick:tableHead.readBtn];
-    return tableHead;
-}
 
 #pragma mark headView点击事件
 -(void)titleClick:(UIButton *)button{
+   
+    switch (button.tag) {
+        case 0:{
+            [self loadListDishes:0];
+        }
+            
+            break;
+        case 1:{
+            [self loadListDishes:1];
+        }
+            break;
+        case 2:{
+            [self loadListDishes:2];
+        }
+            break;
+        default:
+            break;
+    }
+    
     self.selectButton.selected = NO;
     button.selected = YES;
     self.selectButton = button;
     
     [UIView animateWithDuration:0.25 animations:^{
-        CGFloat titlew = [button.currentTitle sizeWithAttributes:@{NSFontAttributeName : button.titleLabel.font}].width;
-        self.indicatorView.df_width = titlew ;
-        //self.indicatorView.df_x = button.df_x;
-        self.indicatorView.df_centerX = button.df_centerX;
+    CGFloat titlew = [button.currentTitle sizeWithAttributes:@{NSFontAttributeName : button.titleLabel.font}].width;
+    self.indicatorView.df_width = titlew ;
+    self.indicatorView.df_x = button.df_x;
         
     }];
+
 }
 
 - (void)pushToStoreData{

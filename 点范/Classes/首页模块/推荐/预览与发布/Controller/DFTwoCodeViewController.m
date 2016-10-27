@@ -28,7 +28,7 @@
     [filter setDefaults];
 
     // 3.给过滤器添加数据(正则表达式/帐号和密码) -- 通过KVC设置过滤器,只能设置NSData类型
-    NSString *dataString = @"http://www.baidu.com";
+    NSString *dataString = @"http://www.feng.com/";
     NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
     [filter setValue:data forKeyPath:@"inputMessage"];
 

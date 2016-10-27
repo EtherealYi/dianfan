@@ -84,9 +84,10 @@
 
 #pragma mark -显示子控件
 - (void)addChildView{
+    
     NSUInteger index = self.scrollView.contentOffset.x / self.scrollView.df_width;
     UIViewController *childVc = self.childViewControllers[index];
-    if (childVc.isViewLoaded) return;
+//    if ([childVc isViewLoaded]) [childVc.view removeFromSuperview];
     childVc.view.frame = self.scrollView.bounds;
     childVc.view.df_y = 0;
 

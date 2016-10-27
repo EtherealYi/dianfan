@@ -64,6 +64,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.manager GET:url parameters:parmater progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         if (sucess) {
            weakSelf.templateArrays = [DFPersonalTemplate mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplateResults"]];
         }
@@ -114,6 +115,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     DFeditTempalteController *editTemp = [[DFeditTempalteController alloc]init];
     editTemp.rec_id = self.templateArrays[indexPath.row].result_id;
+    
     [self.navigationController pushViewController:editTemp animated:YES];
 }
 

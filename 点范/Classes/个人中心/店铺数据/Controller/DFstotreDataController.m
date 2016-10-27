@@ -41,9 +41,6 @@ static NSString *const storeData = @"storeData";
     [self loadScanData];
     self.isSetup = NO;
     
-//    [self.view setNeedsLayout];
-//    [self.view layoutIfNeeded];
-    
 }
 - (void)loadShareRequest{
     NSString *url = [MemberAPI stringByAppendingString:apiStr(@"loadShareData.htm")];

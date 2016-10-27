@@ -20,6 +20,7 @@
         UILabel *label = [[UILabel alloc]init];
         label.frame = CGRectMake(DFMargin, 0, 100, 44);
         [label setText:@"菜品排行榜" andFont:14 andColor:WhiteColor];
+        
         [self addSubview:label];
         
         //点餐按钮
@@ -60,28 +61,32 @@
         [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(orderBtn.mas_top).offset(15);
             //make.height.equalTo(orderBtn.mas_height);
-            make.right.equalTo(orderBtn.mas_left).offset(-6);
-            make.size.mas_equalTo(CGSizeMake(2, 15));
+            make.right.equalTo(orderBtn.mas_left).offset(-8);
+            make.size.mas_equalTo(CGSizeMake(1, 15));
         }];
         
         //点评约束
         [commentBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(orderBtn.mas_top);
             make.height.equalTo(self.mas_height);
-            make.right.equalTo(orderBtn.mas_left).offset(-15);
+            make.right.equalTo(line1.mas_left).offset(-8);
         }];
         
         
-        //浏览约束
-        [readBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(self.mas_height);
-            make.right.equalTo(commentBtn.mas_left).offset(-15);
-        }];
+       
         
         [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(line1.mas_top);
             
-            make.left.equalTo(readBtn.mas_right).offset(6);
-            make.size.mas_equalTo(CGSizeMake(2, 15));
+            make.right.equalTo(commentBtn.mas_left).offset(-8);
+            make.size.mas_equalTo(CGSizeMake(1, 15));
+        }];
+
+        //浏览约束
+        [readBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(orderBtn.mas_top);
+            make.height.equalTo(self.mas_height);
+            make.right.equalTo(line2.mas_left).offset(-8);
         }];
         
     }

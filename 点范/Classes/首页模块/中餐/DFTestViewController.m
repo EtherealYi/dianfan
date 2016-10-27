@@ -22,6 +22,8 @@
 
 @property (nonatomic,weak) JSContext * context;
 
+@property (nonatomic,strong)UILabel *lab;
+
 @end
 
 @implementation DFTestViewController
@@ -142,13 +144,24 @@
                                                        error:nil];
     [webView loadHTMLString:htmlCont baseURL:baseURL];
     [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"start()"]];
+    UILabel *lab = [[UILabel alloc]init];
+    lab.frame = CGRectMake(10, 50, 100, 30);
+    lab.df_centerX = webView.df_centerX;
+    lab.backgroundColor = MainColor;
+    lab.text = @"正在录音";
+    lab.hidden = YES;
+    [webView addSubview:lab];
+    self.lab = lab;
     [self.view addSubview:webView];
     self.webView = webView;
+    
     
 }
 
 
 - (void)startClick{
+    self.lab.hidden = NO;
+    
     //先设置能播放和录音状态
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
     self.isRecording = YES;
@@ -163,6 +176,7 @@
 }
 
 - (void)stopClick{
+    self.lab.hidden = YES;
     self.isRecording = NO;
     //录音停止
     [recorder stop];
