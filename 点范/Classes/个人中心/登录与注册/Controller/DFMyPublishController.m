@@ -88,7 +88,7 @@ static NSString * const reuseIdentifier = @"MyPublish";
 #pragma mark <UICollectionViewDelegate>
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat cellW = (self.view.frame.size.width - 40)/3 - 1;
-    CGFloat cellH = self.collectionView.df_height - 10;
+//    CGFloat cellH = self.collectionView.df_height - 10;
     //return  CGSizeMake((fDeviceWidth - 20) / 3, 180);
     return CGSizeMake(cellW, 160);
     

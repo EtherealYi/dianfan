@@ -11,7 +11,6 @@
 #import "UIImageView+WebCache.h"
 #import "MJExtension.h"
 #import "DFTopImg.h"
-
 #define  imgCount 3
 
 @interface DFRecheader()<UIScrollViewDelegate>
@@ -26,11 +25,18 @@
 /** 图片数组 */
 @property (nonatomic,strong)NSMutableArray<DFTopImg *> *imgArrays;
 
+@property (nonatomic,strong)AFHTTPSessionManager *manager;
+
 @end
 
 @implementation DFRecheader
 
-
+- (AFHTTPSessionManager *)manager{
+    if (!_manager) {
+        _manager = [AFHTTPSessionManager manager];
+    }
+    return _manager;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame{
     
@@ -42,8 +48,8 @@
         //scrollView.backgroundColor = [UIColor purpleColor];
         //设置图片固定尺寸
         CGFloat imageW = scrollView.frame.size.width;
-        CGFloat imageH = scrollView.frame.size.height;
-        CGFloat Y = 0;
+//        CGFloat imageH = scrollView.frame.size.height;
+//        CGFloat Y = 0;
         
         //1.将3张图片添加到scrollView中
 //        for (int i = 0;i < imgCount ; i++) {
@@ -97,12 +103,13 @@
 }
 
 - (void)loadImg{
-    [[AFHTTPSessionManager manager]GET:@"http://10.0.0.30:8080/app/ad/list.htm" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    WeakSelf
+    [weakSelf.manager GET:@"http://10.0.0.30:8080/app/ad/list.htm" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //NSLog(@"Header = %@",responseObject[@"data"][@"errMsg"]);
         
-        self.imgArrays = [DFTopImg mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+        weakSelf.imgArrays = [DFTopImg mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
         CGFloat imageW = self.Scroller.frame.size.width;
         CGFloat imageH = self.Scroller.frame.size.height;
         CGFloat Y = 0;
@@ -116,7 +123,7 @@
             [imageView sd_setImageWithURL:[NSURL URLWithString:self.imgArrays[i].path] placeholderImage:[UIImage imageNamed:@"zhanwei"] options:SDWebImageProgressiveDownload];
             
             
-            [self.Scroller addSubview:imageView];
+            [weakSelf.Scroller addSubview:imageView];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

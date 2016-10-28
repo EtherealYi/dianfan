@@ -112,9 +112,9 @@
     [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_WechatTimeLine messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
         NSString *message = nil;
         if (!error) {
-            message = [NSString stringWithFormat:@"分享成功"];
+//            message = [NSString stringWithFormat:@"分享成功"];
         } else {
-            message = [NSString stringWithFormat:@"失败原因Code: %d\n",(int)error.code];
+//            message = [NSString stringWithFormat:@"失败原因Code: %d\n",(int)error.code];
             
         }
    

@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - AMAnimatedNumber (0.0.1)
+  - FSCalendar (2.3.1)
   - IQKeyboardManager (4.0.4)
   - Masonry (1.0.1)
   - MJExtension (3.0.13)
@@ -35,12 +36,14 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - SSLunarDate (0.0.1)
   - SVProgressHUD (2.0.3)
   - UICountingLabel (1.2.0)
 
 DEPENDENCIES:
   - AFNetworking
   - AMAnimatedNumber
+  - FSCalendar
   - IQKeyboardManager
   - Masonry
   - MJExtension
@@ -48,11 +51,13 @@ DEPENDENCIES:
   - Pingpp
   - PNChart
   - SDWebImage
+  - SSLunarDate
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AMAnimatedNumber: 38520cc5b16fd21fecc3705b16d5002a7c13b09d
+  FSCalendar: 6a68532ec1228e389c3c7274e3410b78702f77b6
   IQKeyboardManager: 4a6f83b540283c2645aaeba2bd8dc0f09b5c77f8
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
@@ -60,9 +65,10 @@ SPEC CHECKSUMS:
   Pingpp: b5ad287bd6969d69cff1f2438ea63147976711c9
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SSLunarDate: d5d7d581f7e7e157c8d704a5f053b4ebcf760bba
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-PODFILE CHECKSUM: 27f21b75a48f860f452165cad96f87e52b8f2b20
+PODFILE CHECKSUM: ffaca83d5e78a75733fe16084845a0db561ab945
 
 COCOAPODS: 1.0.1

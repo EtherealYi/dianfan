@@ -48,6 +48,9 @@
 		E91DC6CD1DBF6921006B3DAA /* DFIdeaBackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E91DC6CB1DBF6921006B3DAA /* DFIdeaBackViewController.xib */; };
 		E921FCB81DB075710081F317 /* DFiconChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E921FCB71DB075710081F317 /* DFiconChooseController.m */; };
 		E921FCC11DB0DE220081F317 /* DFPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E921FCC01DB0DE220081F317 /* DFPersonalViewController.m */; };
+		E92C7D701DC2F1850033541F /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E92C7D6F1DC2F1850033541F /* libz.1.1.3.tbd */; };
+		E92C7D731DC32E7D0033541F /* DFDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C7D721DC32E7D0033541F /* DFDateViewController.m */; };
+		E92C7D761DC32F590033541F /* NSDate+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C7D751DC32F590033541F /* NSDate+FSExtension.m */; };
 		E93A5A061D813AC10050232C /* DFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A5A051D813AC10050232C /* DFUser.m */; };
 		E93D19CC1DA9DCC0009D30AB /* JXBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D19CB1DA9DCC0009D30AB /* JXBarChartView.m */; };
 		E93D19CF1DAA3474009D30AB /* DFStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D19CE1DAA3474009D30AB /* DFStarView.m */; };
@@ -279,6 +282,11 @@
 		E921FCB71DB075710081F317 /* DFiconChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFiconChooseController.m; sourceTree = "<group>"; };
 		E921FCBF1DB0DE220081F317 /* DFPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPersonalViewController.h; sourceTree = "<group>"; };
 		E921FCC01DB0DE220081F317 /* DFPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFPersonalViewController.m; sourceTree = "<group>"; };
+		E92C7D6F1DC2F1850033541F /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
+		E92C7D711DC32E7D0033541F /* DFDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFDateViewController.h; sourceTree = "<group>"; };
+		E92C7D721DC32E7D0033541F /* DFDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFDateViewController.m; sourceTree = "<group>"; };
+		E92C7D741DC32F590033541F /* NSDate+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FSExtension.h"; sourceTree = "<group>"; };
+		E92C7D751DC32F590033541F /* NSDate+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FSExtension.m"; sourceTree = "<group>"; };
 		E93A5A041D813AC10050232C /* DFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUser.h; sourceTree = "<group>"; };
 		E93A5A051D813AC10050232C /* DFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFUser.m; sourceTree = "<group>"; };
 		E93D19CA1DA9DCC0009D30AB /* JXBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXBarChartView.h; sourceTree = "<group>"; };
@@ -532,6 +540,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E92C7D701DC2F1850033541F /* libz.1.1.3.tbd in Frameworks */,
+				E95624601D8E9ACF0066C22C /* libstdc++.tbd in Frameworks */,
 				E9AE989D1DBB4BC00071D33F /* libc++abi.tbd in Frameworks */,
 				E95624621D8E9AD80066C22C /* libz.tbd in Frameworks */,
 				E957EBBC1DAB7DB000164805 /* libc++.tbd in Frameworks */,
@@ -553,7 +563,6 @@
 				E973F60D1D9E1D81001D9C3F /* AVFoundation.framework in Frameworks */,
 				E9AE988F1DBB438F0071D33F /* UMSocialNetwork.framework in Frameworks */,
 				E973F60B1D9E185C001D9C3F /* JavaScriptCore.framework in Frameworks */,
-				E95624601D8E9ACF0066C22C /* libstdc++.tbd in Frameworks */,
 				E956245A1D8E9AAC0066C22C /* CoreGraphics.framework in Frameworks */,
 				E9AE98861DBB438F0071D33F /* libSocialRenren.a in Frameworks */,
 				E9AE98871DBB438F0071D33F /* libSocialSina.a in Frameworks */,
@@ -592,6 +601,7 @@
 		C7EF4E3F4397C46A711F1528 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E92C7D6F1DC2F1850033541F /* libz.1.1.3.tbd */,
 				E9AE989C1DBB4BC00071D33F /* libc++abi.tbd */,
 				E9AE98951DBB44580071D33F /* ImageIO.framework */,
 				E9C348641DAE380F00DAAEEE /* CoreMotion.framework */,
@@ -1034,6 +1044,8 @@
 			children = (
 				E99F49F41DA8CF07003F71D1 /* DFStoreViewController.h */,
 				E99F49F51DA8CF07003F71D1 /* DFStoreViewController.m */,
+				E92C7D711DC32E7D0033541F /* DFDateViewController.h */,
+				E92C7D721DC32E7D0033541F /* DFDateViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1296,6 +1308,8 @@
 		E9B013851D8F846F002E4DD8 /* 类别 */ = {
 			isa = PBXGroup;
 			children = (
+				E92C7D741DC32F590033541F /* NSDate+FSExtension.h */,
+				E92C7D751DC32F590033541F /* NSDate+FSExtension.m */,
 				E9B013861D8F846F002E4DD8 /* NSString+DFExtension.h */,
 				E9B013871D8F846F002E4DD8 /* NSString+DFExtension.m */,
 				E9B013881D8F846F002E4DD8 /* UIButton+DFExtension.h */,
@@ -1848,6 +1862,7 @@
 				E9FB80DF1D7D58DF0083D39C /* DFRegisterMessageController.m in Sources */,
 				E9C2C9D01D7FC70700A94678 /* UIImage+XW.m in Sources */,
 				E95624651D8EA8E00066C22C /* DFMessage.m in Sources */,
+				E92C7D761DC32F590033541F /* NSDate+FSExtension.m in Sources */,
 				E9B013901D8F846F002E4DD8 /* UIButton+DFExtension.m in Sources */,
 				E99F4A091DA8CF07003F71D1 /* DFDataCenterViewController.m in Sources */,
 				E90A14781DB8AFBA0026986B /* DFTemplateCell.m in Sources */,
@@ -1944,6 +1959,7 @@
 				E9B094281DBEFA34008B63D7 /* UIAlertController+DFExtension.m in Sources */,
 				E9E201071D86535B00F805AD /* VPImageCropperViewController.m in Sources */,
 				E99F4A411DA8D10B003F71D1 /* DFtableHeader.m in Sources */,
+				E92C7D731DC32E7D0033541F /* DFDateViewController.m in Sources */,
 				E99F4A401DA8D10B003F71D1 /* DFStoreView.m in Sources */,
 				E99F4A491DA8D11B003F71D1 /* DFPieChart.m in Sources */,
 				E9FB80911D7D2BF50083D39C /* main.m in Sources */,

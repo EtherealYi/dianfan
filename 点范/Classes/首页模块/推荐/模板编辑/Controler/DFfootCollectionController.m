@@ -104,7 +104,7 @@ static NSString * const headID = @"footHead";
 - (void)dealloc{
     [SVProgressHUD dismiss];
     [[NSNotificationCenter defaultCenter]removeObserver:self];
-    [self.manager.operationQueue cancelAllOperations];
+    [_manager.operationQueue cancelAllOperations];
      
 }
 //加载网络数据

@@ -119,30 +119,35 @@ static NSString *const MerchantID = @"MerchantID";
 
     NSMutableDictionary *parmaters = [NSMutableDictionary dictionary];
     parmaters[@"dishTemplateId"] = [NSString stringWithFormat:@"%@",self.rec_id];
-    
-    [self.manager GET:url parameters:parmaters progress:^(NSProgress * _Nonnull downloadProgress) {
+    __weak typeof(self) weakSelf = self;
+    [weakSelf.manager GET:url parameters:parmaters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD show];
         if (sucess) {
             
-            self.tempMedelS = [DFTempMedol mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplatePageResults"]];
+            weakSelf.tempMedelS = [DFTempMedol mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplatePageResults"]];
             
-            self.dishTemplateResultId = responseObject[@"data"][@"dishTemplateResultId"];
+            weakSelf.dishTemplateResultId = responseObject[@"data"][@"dishTemplateResultId"];
             
             _bacgroud = responseObject[@"data"][@"dishTemplateMerchantPageResults"][@"background"];
             
-            [self.collectionView reloadData];
+            [weakSelf.collectionView reloadData];
             [SVProgressHUD dismiss];
         }else{
             UIAlertController *altrt = [UIAlertController alterWithMessage:MsgMessage handler:^(UIAlertAction *action) {
-                [self.navigationController popViewControllerAnimated:YES];
+                [weakSelf.navigationController popViewControllerAnimated:YES];
             }];
-            [self presentViewController:altrt animated:YES completion:nil];
+            [weakSelf presentViewController:altrt animated:YES completion:nil];
         }
        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@",error);
+//        NSLog(@"%@",error);
+        UIAlertController *alter = [UIAlertController alterWithMessage:@"用户未登录" handler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }];
+        [weakSelf presentViewController:alter animated:YES completion:nil];
+        
     }];
 
 }
@@ -154,18 +159,18 @@ static NSString *const MerchantID = @"MerchantID";
     NSString *url = [TemplataAPI stringByAppendingString:apiStr(@"pageResultList.htm")];
     NSMutableDictionary *parmater = [NSMutableDictionary dictionary];
     parmater[@"dishTemplateResultId"] = self.dishTemplateResultId;
-    
+    __weak typeof(self) weakSelf = self;
     [self.manager GET:url parameters:parmater progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD show];
         if (sucess) {
-            self.tempMedelS = [DFTempMedol mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplatePageResults"]];
-            [self.collectionView reloadData];
+            weakSelf.tempMedelS = [DFTempMedol mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"dishTemplatePageResults"]];
+            [weakSelf.collectionView reloadData];
             [SVProgressHUD dismiss];
         }else{
             UIAlertController *altrt = [UIAlertController actionWithMessage:MsgMessage];
-            [self presentViewController:altrt animated:YES completion:nil];
+            [weakSelf presentViewController:altrt animated:YES completion:nil];
         }
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FSCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IQKeyboardManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -49,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SSLunarDate.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,7 +77,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2CA64B368E3E9BB80CB6E0F1AAA5F26C</key>
+		<key>252EA32B4F7A47FC5C3759FF0183DCCE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2B5C26110F11C020B28A8B08562E823F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2C329808252A3940D54694CAE509CB65</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3B26DCE936ABDC8EFEF513BACB290A9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,7 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>68B125678AA4066E78453BF4AD5222D6</key>
+		<key>6D49EB257FB55DA270AE4061D68B2A03</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -108,11 +133,6 @@
 			<true/>
 		</dict>
 		<key>D0D0C9D20C43FA94D4C88FBFE2601B8E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F08B2DEF946C9D25909AD0C1F516AD06</key>
 		<dict>
 			<key>primary</key>
 			<true/>

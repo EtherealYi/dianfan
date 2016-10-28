@@ -66,7 +66,7 @@ static NSString *cellID = @"footData";
     parameter[@"month"] = @"9";
     parameter[@"data"]  = @"28";
     __weak typeof(self) weakSelf = self;
-    [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
+    [weakSelf.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (sucess) {
@@ -133,8 +133,10 @@ static NSString *cellID = @"footData";
         return cell;
     }else if (indexPath.section == 2){
         DFGeneralComment *cell = [DFGeneralComment DF_ViewFromXib];
-        cell.dishCommentData = self.disCommentData;
-        [cell setupChildView];
+        if (!cell) {
+            cell.dishCommentData = self.disCommentData;
+            [cell setupChildView];
+        }
         return cell;
     }else if (indexPath.section == 3){
         DFVoiceEvaducte *cell = [DFVoiceEvaducte DF_ViewFromXib];

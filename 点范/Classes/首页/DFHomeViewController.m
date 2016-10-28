@@ -52,8 +52,6 @@
     [self setupTitleView];
     
     [self addChildView];
-
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(meClick) name:@"meClick" object:nil];
  
    
 }
@@ -203,15 +201,16 @@
 //    }
 // 
 //
-    
-    if ([DFUser sharedManager].token != nil) {
-        DFAlreadyController *Already = [[DFAlreadyController alloc]init];
-        [self.navigationController pushViewController:Already animated:YES];
-    }else{
-       
-        DFMeViewController *Me = [[DFMeViewController alloc]init];
-        [self.navigationController pushViewController:Me animated:YES];
-    }
+
+        
+        if ([DFUser sharedManager].token.length > 0) {
+            DFAlreadyController *Already = [[DFAlreadyController alloc]init];
+            [self.navigationController pushViewController:Already animated:YES];
+        }else{
+            DFMeViewController *Me = [[DFMeViewController alloc]init];
+            [self.navigationController pushViewController:Me animated:YES];
+        }
+
 //    DFLoginAndShareController *loginAndShare = [[DFLoginAndShareController alloc]init];
 //    [self.navigationController pushViewController:loginAndShare animated:YES];
     
@@ -261,9 +260,11 @@
     [self addChildView];
 }
 
+- (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+}
 
 - (void)dealloc{
     
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 @end

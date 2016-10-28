@@ -49,7 +49,8 @@ static NSString *const storeData = @"storeData";
     parmeter[@"month"] = @"10";
     parmeter[@"range"] = @"RANGE_DAY";
     parmeter[@"year"] = @"2016";
-    [self.manager POST:url parameters:parmeter progress:^(NSProgress * _Nonnull uploadProgress) {
+    WeakSelf
+    [weakSelf.manager POST:url parameters:parmeter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        NSLog(@"%@",responseObject[@"data"]);
@@ -65,7 +66,8 @@ static NSString *const storeData = @"storeData";
     parmeter[@"month"] = @"9";
     parmeter[@"range"] = @"RANGE_DAY";
     parmeter[@"year"]  = @"2016";
-    [self.manager POST:url parameters:parmeter progress:^(NSProgress * _Nonnull uploadProgress) {
+    WeakSelf
+    [weakSelf.manager POST:url parameters:parmeter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (sucess) {

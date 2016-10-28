@@ -47,6 +47,8 @@
 - (NSString *)SubToIndex{
    
     NSString *outPut = [NSString string];
+//    outPut = [self substringToIndex:(self.length - 3)];
+//    return outPut;
     outPut = [self substringToIndex:(self.length - 3)];
     return outPut;
 }

@@ -15,4 +15,6 @@ pod 'PNChart'
 pod 'Masonry'
 pod 'AMAnimatedNumber'
 pod 'Pingpp'
+pod 'FSCalendar'
+pod 'SSLunarDate'
 end

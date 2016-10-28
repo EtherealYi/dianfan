@@ -104,11 +104,11 @@
 
     [[UMSocialManager defaultManager]  authWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
         UMSocialAuthResponse *authresponse = result;
-        NSString *message = [NSString stringWithFormat:@"result: %d\n uid: %@\n accessToken: %@\n",(int)error.code,authresponse.uid,authresponse.accessToken];
+//        NSString *message = [NSString stringWithFormat:@"result: %d\n uid: %@\n accessToken: %@\n",(int)error.code,authresponse.uid,authresponse.accessToken];
     }];
     [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
         UMSocialUserInfoResponse *userinfo =result;
-        NSString *message = [NSString stringWithFormat:@"name: %@\n icon: %@\n gender: %@\n",userinfo.name,userinfo.iconurl,userinfo.gender];
+//        NSString *message = [NSString stringWithFormat:@"name: %@\n icon: %@\n gender: %@\n",userinfo.name,userinfo.iconurl,userinfo.gender];
    
         if (error) {
             
@@ -152,7 +152,7 @@
 
 //当页面出现时候清除输入框内容
 - (void)viewWillAppear:(BOOL)animated{
- 
+    [super viewWillAppear:YES];
     self.accont.text = nil;
     self.pwdText.text = nil;
 }
@@ -230,7 +230,8 @@
 - (void)loadIcon{
     DFFunc
     NSString *url = [MemberAPI stringByAppendingString:apiStr(@"getAvatorAndUsername.htm")];
-    [self.manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+    WeakSelf
+    [weakSelf.manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -268,6 +269,7 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:YES];
     [SVProgressHUD dismiss];
 }
 

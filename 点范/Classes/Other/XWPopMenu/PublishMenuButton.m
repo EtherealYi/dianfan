@@ -15,16 +15,24 @@
  */
 -(instancetype)initWithFrame:(CGRect)frame{
     
-    if (self == [super initWithFrame:frame]) {
-        //self.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-        //self.imageView.contentMode = UIViewContentModeCenter;
+//    if (self = [super initWithFrame:frame]) {
+//        //self.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+//        //self.imageView.contentMode = UIViewContentModeCenter;
+//        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+//    
+//        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+//        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        self.titleLabel.font = [UIFont systemFontOfSize:12];
+//    }
+//    
+//    return self;
+    if (self = [super initWithFrame:frame]) {
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    
+
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         self.titleLabel.font = [UIFont systemFontOfSize:12];
     }
-    
     return self;
 }
 

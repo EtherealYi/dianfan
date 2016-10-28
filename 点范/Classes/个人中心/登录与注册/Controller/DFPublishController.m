@@ -61,7 +61,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     NSMutableDictionary *parmater = [NSMutableDictionary dictionary];
     parmater[@"isMarketable"] = @"true";
-    [self.manager GET:url parameters:parmater progress:^(NSProgress * _Nonnull downloadProgress) {
+    [weakSelf.manager GET:url parameters:parmater progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         

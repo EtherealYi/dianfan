@@ -146,16 +146,17 @@ static NSString * SettingCell = @"SettingCell";
 
 - (void)loginout{
     NSString *url = [AccountAPI stringByAppendingString:apiStr(@"loginOut.htm")];
-    [self.manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+    __weak typeof(self) weakSelf = self;
+    [weakSelf.manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (sucess) {
             [[DFUser sharedManager]didLogout];
             
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }else{
             UIAlertController *alter = [UIAlertController actionWithMessage:MsgMessage];
-            [self presentViewController:alter animated:YES completion:^{
+            [weakSelf presentViewController:alter animated:YES completion:^{
                 
             }];
         }

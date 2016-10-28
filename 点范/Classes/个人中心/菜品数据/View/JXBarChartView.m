@@ -50,6 +50,7 @@
         size_t count = 3;
         CGGradientRef defaultGradient = CGGradientCreateWithColorComponents(colorSpace, colorComponents, locations, count);
         _gradient = gradient ?  gradient : defaultGradient;
+        
         self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0];
     
     }
@@ -123,6 +124,7 @@
         //handle digitlabel
         UILabel *digitLabel = [[UILabel alloc] initWithFrame:CGRectMake(barFrame.origin.x + barFrame.size.width + marginOfBarAndDigit, barFrame.origin.y, digitWidth, barFrame.size.height)];
         NSString *testString = [NSString stringWithFormat:@"%@%@",self.values[i],@"%"];
+        
         
         //digitLabel.text = [self.values[i] stringValue];
         digitLabel.text = testString;

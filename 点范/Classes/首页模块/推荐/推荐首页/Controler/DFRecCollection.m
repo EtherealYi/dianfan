@@ -210,14 +210,17 @@ static NSString * const headerID = @"RecHead";
     if (indexPath.section == 0) {
         UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:headerID forIndexPath:indexPath];
         //cell.backgroundColor = [UIColor greenColor];
-        cell.layer.shadowOpacity = 0.2;
-        //cell.layer.shadowRadius = 4;
-        cell.layer.shadowOffset = CGSizeMake(4, 0);
-        cell.layer.shadowColor = [UIColor blackColor].CGColor;
-
+        if (!cell) {
+            cell.layer.shadowOpacity = 0.2;
+            //cell.layer.shadowRadius = 4;
+            cell.layer.shadowOffset = CGSizeMake(4, 0);
+            cell.layer.shadowColor = [UIColor blackColor].CGColor;
+        }
         
-        DFRecheader *recheader = [[DFRecheader alloc]initWithFrame:CGRectMake(0, 0, cell.df_width, cell.df_height)];
-        [cell.contentView addSubview:recheader];
+            DFRecheader *recheader = [[DFRecheader alloc]initWithFrame:CGRectMake(0, 0, cell.df_width, cell.df_height)];
+            [cell.contentView addSubview:recheader];
+        
+   
         return cell;
     }else{
         

@@ -272,8 +272,6 @@ static NSString *contentCell = @"contentCell";
         }
     }else if (indexPath.section == 1){
         if (indexPath.row == 5) {
-          
-            
             DFiconChooseController *iconChoose = [[DFiconChooseController alloc]init];
             iconChoose.pittureCtr = upLoadLogo;
             [self.navigationController pushViewController:iconChoose animated:YES];
@@ -370,7 +368,7 @@ static NSString *contentCell = @"contentCell";
     [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
+        
         if (sucess) {
             self.charge = responseObject[@"data"];
             //[self pingApp:self.charge];

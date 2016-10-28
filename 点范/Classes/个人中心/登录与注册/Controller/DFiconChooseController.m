@@ -192,8 +192,8 @@
     NSLog(@"%@",self.pittureCtr);
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
     [parameter setValue:imageData forKey:@"file"];
-    
-    [self.manager POST:url parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    __weak typeof(self) weakSelf = self;
+    [weakSelf.manager POST:url parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyyMMddHHmmss";
         NSString *str = [formatter stringFromDate:[NSDate date]];
@@ -207,7 +207,7 @@
                 [alter addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     
                 }]];
-                [self presentViewController:alter animated:YES completion:nil];
+                [weakSelf presentViewController:alter animated:YES completion:nil];
                 [SVProgressHUD dismiss];
             }
         

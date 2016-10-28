@@ -69,10 +69,10 @@ static NSString *PersonalID = @"PersonalID";
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0);
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshIcon) name:@"refreshIcon" object:nil];
-    
+    [self addChild];
     [self setupHeader];
     [self setNavItem];
-    [self addChild];
+    
 }
 - (void)addChild{
     //添加子控件

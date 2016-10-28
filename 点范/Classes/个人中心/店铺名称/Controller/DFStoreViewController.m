@@ -17,6 +17,7 @@
 #import "DFStoreViewModel.h"
 #import "MJExtension.h"
 #import "SVProgressHUD.h"
+#import "DFDateViewController.h"
 
 @interface DFStoreViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -31,6 +32,8 @@
 @property (nonatomic,strong)NSMutableArray<DFStoreViewModel *> *dishArrays;
 /** 浏览量 */
 @property (nonatomic,strong)UIButton *readBtn;
+
+@property (nonatomic,strong)UIButton *timeBtn;
 @end
 
 @implementation DFStoreViewController
@@ -50,6 +53,7 @@ static NSString *storeCell = @"storeCell";
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"店铺名称";
+
     [self setHeadView];
     [self setTableView];
     [self loadListDishes:0];
@@ -61,19 +65,20 @@ static NSString *storeCell = @"storeCell";
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
     parameter[@"property"] = @(property);
     parameter[@"id"] = self.distemplateResultID;
-    [self.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
+    WeakSelf
+    [weakSelf.manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD show];
         if (sucess) {
-            self.dishArrays = [DFStoreViewModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-            [self.tableView reloadData];
+            weakSelf.dishArrays = [DFStoreViewModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            [weakSelf.tableView reloadData];
             
             [SVProgressHUD dismiss];
         }else{
             [SVProgressHUD dismiss];
             UIAlertController *altrt = [UIAlertController actionWithMessage:MsgMessage];
-            [self presentViewController:altrt animated:YES completion:nil];
+            [weakSelf presentViewController:altrt animated:YES completion:nil];
         }
       
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -90,8 +95,10 @@ static NSString *storeCell = @"storeCell";
     DFStoreView *storeView = [[DFStoreView alloc]initWithFrame:frame];
     storeView.backgroundColor = MainColor;
     storeView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pushToStoreData)];
-    [storeView addGestureRecognizer:tap];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pushToStoreData)];
+//    [storeView addGestureRecognizer:tap];
+    [storeView.timeBtn addTarget:self action:@selector(pushToDate) forControlEvents:UIControlEventTouchUpInside];
+    self.timeBtn = storeView.timeBtn;
     [headView addSubview:storeView];
     
     DFtableHeader *tableHead = [[DFtableHeader alloc]initWithFrame:CGRectMake(0, 0, self.view.df_width, 44)];
@@ -191,7 +198,19 @@ static NSString *storeCell = @"storeCell";
 
 - (void)pushToStoreData{
     DFstotreDataController *storeData = [[DFstotreDataController alloc]init];
+    
     [self.navigationController pushViewController:storeData animated:YES];
 }
+
+- (void)pushToDate{
+    DFDateViewController *dateCtr = [[DFDateViewController alloc]init];
+    dateCtr.block = ^(NSString *str){
+        [self.timeBtn setTitle:str forState:UIControlStateNormal];
+    };
+    [self.navigationController pushViewController:dateCtr animated:YES];
+}
+
+#pragma mark - DateDelegate
+
 
 @end

@@ -10,6 +10,6 @@
 
 @interface DFStoreView : UIView
 
-
+@property (nonatomic,strong)UIButton *timeBtn;
 
 @end
