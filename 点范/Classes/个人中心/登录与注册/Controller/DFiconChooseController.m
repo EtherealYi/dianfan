@@ -8,11 +8,7 @@
 
 #import "DFiconChooseController.h"
 #import "Masonry.h"
-#import "VPImageCropperViewController.h"
-#import <AssetsLibrary/AssetsLibrary.h>
-#import <AssetsLibrary/ALAssetsGroup.h>
-#import <AssetsLibrary/ALAssetRepresentation.h>
-#import <MobileCoreServices/MobileCoreServices.h>
+
 #import "DFUser.h"
 #import "DFHTTPSessionManager.h"
 #import "AFNetworking.h"
