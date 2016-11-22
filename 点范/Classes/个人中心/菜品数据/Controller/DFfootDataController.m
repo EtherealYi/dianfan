@@ -178,7 +178,7 @@ static NSString *cellID = @"footData";
     
     [view addSubview:questionLab];
         
-        
+        int a;
     UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     moreBtn.frame = CGRectMake(0, 5, 40, 20);
     moreBtn.df_right = fDeviceWidth - 10;
